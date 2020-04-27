@@ -6,6 +6,9 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.15rem;
+  background: #fff;
+  position: sticky;
+  top: 0;
 }
 .head-address {
   width: 1.45rem;

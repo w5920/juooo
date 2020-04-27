@@ -1,0 +1,30 @@
+.foot {
+  height: 1.41rem;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+}
+.navfoot {
+  display: flex;
+}
+.footCommon {
+  width: 25%;
+  height: 1.41rem;
+  position: relative;
+  text-align: center;
+}
+.footCommon img {
+  width: 0.81rem;
+  height: 0.81rem;
+  margin: 0 auto;
+}
+.footCommon > a {
+  display: inline-block;
+  font-size: 0.32rem;
+  color: #232323;
+  position: absolute;
+  left: 1.05rem;
+  bottom: 0.2rem;
+}

@@ -70,3 +70,6 @@ img,
 input {
   display: block;
 }
+body {
+  padding-bottom: 1.41rem;
+}
