@@ -12,7 +12,7 @@ import './assets/css/phone_common.css'
 import { Provider } from 'react-redux'
 
 import store from './store'
-console.log(store, store.getState());
+
 
 ReactDOM.render(
   <React.StrictMode>

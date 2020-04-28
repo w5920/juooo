@@ -8,6 +8,13 @@
     height: 419px;
     overflow: hidden;
     background: url(../../img/personal_bg.png) no-repeat top center;
+    background-position-y: -470px;
+    position: relative;
+}
+.settingEnter{
+    position: absolute;
+    top:30px;
+    right:30px;
 }
 .topMain{
     width: 690px;
@@ -42,14 +49,24 @@
     top: 0;
     left:176px;
 }
-.mineInfo_userName{   
+.mineInfo_userNameOne{   
     color:#232323;
     line-height: 60px;
 }
-.mineInfo_userId{
+.mineInfo_userNameZero{
+    color:#000000;
+    font-weight: 700;
+}
+.mineInfo_userIdOne{
     color:#999;
     line-height: 42px;
 }
+.mineInfo_userIdZero{
+    color:#999;
+    line-height: 42px;
+    font-size: 24px;
+}
+
 .mineInfo_labal{
     width: 100%;
     height: 54px;
@@ -74,13 +91,15 @@
     font-size: 30px;
     border-right: 2px solid #999;
 }
-.mineInfo_contLast{
-    width: 25%;
-    font-size: 30px;
-}
 .mineInfo_contNum{
     line-height: 46px;
     margin-bottom: 15px;
+    color:#FF6743;
+}
+.mineInfo_contLast{
+    width: 25%;
+    font-size: 30px;
+    color:#232323;
 }
 .mineInfo_contName{
     line-height: 40px;
@@ -89,12 +108,27 @@
 .myjuoooVipBanner{
     width: 750px;
     height: 180px;
-    background-color: blue;
+    text-align: center;
+    padding: 0 5px;
 }
-
+.addVipImg{
+    width: 740px;
+    height: 180px;
+}
 /* 链接 */
 .myjuoooLink{
     width: 750px;
     height: 394px;
-    background-color: blueviolet;
+}
+.myjuoooLink_conts{
+    width: 690px;
+    height: 185px;
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+}
+.myjuoooLink_cont{
+    width: 25%;
+    padding: 31px 0 40px;
 }
