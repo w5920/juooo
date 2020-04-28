@@ -17,10 +17,10 @@ class Home extends Component {
             <img src={require("../../assets/img/calendar.png")} alt="" />
           </div>
         </div>
-        <div class={style["adv"]}>
+        <div className={style["adv"]}>
           <img src={require("../../assets/img/adv.jpg")} alt="" />
         </div>
-        <div class={style["typedetaile"]}>
+        <div className={style["typedetaile"]}>
           <ul>
             <li>
               <img src={require("../../assets/img/m.png")} alt="" />
@@ -119,7 +119,247 @@ class Home extends Component {
               </span>
             </p>
           </div>
-          <div className={style["hotshowlist"]}></div>
+          <div className={style["hotshowlist"]}>
+            <ul>
+              <li>
+                <div>
+                  <img src={require("../../assets/img/hoot.jpg")} />
+                </div>
+                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+              </li>
+              <li>
+                <div>
+                  <img src={require("../../assets/img/hoot.jpg")} />
+                </div>
+                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+              </li>
+              <li>
+                <div>
+                  <img src={require("../../assets/img/hoot.jpg")} />
+                </div>
+                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+              </li>
+              <li>
+                <div>
+                  <img src={require("../../assets/img/hoot.jpg")} />
+                </div>
+                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+              </li>
+              <li>
+                <div>
+                  <img src={require("../../assets/img/hoot.jpg")} />
+                </div>
+                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* 循回演出 */}
+        <div className={style["tourshow"]}>
+          <div className={style["hotshowTitle"]}>
+            <p className={style["hot"]}>巡回演出</p>
+            <p className={style["hotAll"]}>
+              <span>全部</span>
+              <span className={style["hotlink"]}>
+                <img src={require("../../assets/img/arrow.png")} alt="" />
+              </span>
+            </p>
+          </div>
+          <div className={style["tourintroduce"]}>
+            <div className={style["tourimg"]}>
+              <img src={require("../../assets/img/tour.jpg")} alt="" />
+            </div>
+            <div className={style["tour-schedule"]}>
+              <p className={style["tour-time"]}>2020.08.13 - 10.03</p>
+              <p className={style["tour-title"]}>
+                聚橙制作 | 法语音乐剧《摇滚红与黑》
+              </p>
+              <div className={style["tour-price"]}>
+                <mark>￥</mark>
+                <mark>80</mark>
+                <span>起</span>
+              </div>
+              <div className={style["tour-location"]}>
+                <div className={style["tour-location-num"]}>
+                  <span>6</span>
+                  <span>巡城演</span>
+                </div>
+                <div className={style["tour-detaile-location"]}>
+                  <span>
+                    上海
+                    <i>|</i>
+                  </span>
+                  <span>
+                    广州
+                    <i>|</i>
+                  </span>
+                  <span>
+                    深圳
+                    <i>|</i>
+                  </span>
+                  <span>
+                    成都
+                    <i>|</i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 舞台剧 */}
+        <div className={style["stageplay"]}>
+          <div className={style["hotshowTitle"]}>
+            <p className={style["hot"]} style={{ marginLeft: "0.4rem" }}>
+              舞台剧
+            </p>
+            <p className={style["hotAll"]}>
+              <span>全部</span>
+              <span className={style["hotlink"]}>
+                <img src={require("../../assets/img/arrow.png")} alt="" />
+              </span>
+            </p>
+          </div>
+          <div className={style["stageitem"]}>
+            <div className={`${style["tourimg"]} ${style["tourimg-logo"]}`}>
+              <img src={require("../../assets/img/tour.jpg")} alt="" />
+              <div className={style["juooobookslog"]}></div>
+            </div>
+            <div className={style["stagetime"]}>
+              <p className={style["stages-date"]}>
+                <strong>2020.07.03</strong>
+                <span>周五 20:00</span>
+              </p>
+              <p className={style["stage-title"]}>
+                【演出延期】2020第七届城市戏剧节荒诞喜剧《劫出人生》-深圳站
+              </p>
+              <p className={style["stage-tip"]}>
+                深圳 | 南山文体中心剧院小剧院
+              </p>
+            </div>
+          </div>
+          <div className={`${style["hotshowlist"]} ${style["stagelist"]}`}>
+            <ul>
+              <li>
+                <div className={style["tourimg-logo"]}>
+                  <div className={style["juooobookslog"]}></div>
+                  <img src={require("../../assets/img/hoot.jpg")} />
+                </div>
+                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+                <span className={style["stage-price"]}>
+                  <strong>￥99</strong>
+                  <span>起</span>
+                </span>
+              </li>
+              <li>
+                <div className={style["tourimg-logo"]}>
+                  <div className={style["juooobookslog"]}></div>
+                  <img src={require("../../assets/img/hoot.jpg")} />
+                </div>
+                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+                <span className={style["stage-price"]}>
+                  <strong>￥99</strong>
+                  <span>起</span>
+                </span>
+              </li>
+              <li>
+                <div className={style["tourimg-logo"]}>
+                  <div className={style["juooobookslog"]}></div>
+                  <img src={require("../../assets/img/hoot.jpg")} />
+                </div>
+                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+                <span className={style["stage-price"]}>
+                  <strong>￥99</strong>
+                  <span>起</span>
+                </span>
+              </li>
+              <li>
+                <div className={style["tourimg-logo"]}>
+                  <div className={style["juooobookslog"]}></div>
+                  <img src={require("../../assets/img/hoot.jpg")} />
+                </div>
+                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+                <span className={style["stage-price"]}>
+                  <strong>￥99</strong>
+                  <span>起</span>
+                </span>
+              </li>
+              <li>
+                <div className={style["tourimg-logo"]}>
+                  <div className={style["juooobookslog"]}></div>
+                  <img src={require("../../assets/img/hoot.jpg")} />
+                </div>
+                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+                <span className={style["stage-price"]}>
+                  <strong>￥99</strong>
+                  <span>起</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* 为你推荐 */}
+        <div>
+          <div className={style["hotshowTitle"]}>
+            <p className={style["hot"]} style={{ marginLeft: "0.4rem" }}>
+              为你推荐
+            </p>
+          </div>
+          <div className={style["recommend-waterfall"]}>
+            <div className={style["recommend-left"]}>
+              {/* 为你推荐 瀑布流 图片 */}
+              <div className={style["recommend-img"]}>
+                <img src={require("../../assets/img/recommend.jpg")} alt="" />
+                <span className={style["recommend-tip"]}>深圳</span>
+              </div>
+              <div className={style["recommend-title"]}>
+                <div className={style["sponsor"]}>
+                  <img src={require("../../assets/img/i.png")} alt="" />
+                  <p>
+                    【演出延期】聚橙出品
+                    |百老汇现象级原版音乐剧《来自远方》-深圳站
+                  </p>
+                </div>
+                <p className={style["sponsor-time"]}>2020.06.12 - 06.14</p>
+                <div className={style["sopnsor-prince"]}>
+                  <span>￥280</span>
+                  <span>起</span>
+                </div>
+                <div className={style["sopnsor-service"]}>
+                  <span>电子票</span>
+                  <span>可选座</span>
+                  <span>限时8折起</span>
+                </div>
+              </div>
+            </div>
+            <div className={style["recommend-right"]}>
+              <div className={style["recommend-img"]}>
+                <img src={require("../../assets/img/recommend.jpg")} alt="" />
+                <span className={style["recommend-tip"]}>深圳</span>
+              </div>
+              <div className={style["recommend-title"]}>
+                <div className={style["sponsor"]}>
+                  <img src={require("../../assets/img/i.png")} alt="" />
+                  <p>
+                    【演出延期】聚橙出品
+                    |百老汇现象级原版音乐剧《来自远方》-深圳站
+                  </p>
+                </div>
+                <p className={style["sponsor-time"]}>2020.06.12 - 06.14</p>
+                <div className={style["sopnsor-prince"]}>
+                  <span>￥280</span>
+                  <span>起</span>
+                </div>
+                <div className={style["sopnsor-service"]}>
+                  <span>电子票</span>
+                  <span>可选座</span>
+                  <span>限时8折起</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

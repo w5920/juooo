@@ -1,18 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Myjuooo extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
+  }
 
-    }
-
-    render() {
-        return (
-            <div>
-
-            </div>
-        );
-    }
+  render() {
+    return <div>我的</div>;
+  }
 }
 
 export default Myjuooo;
