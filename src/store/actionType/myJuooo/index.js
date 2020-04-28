@@ -1,0 +1,4 @@
+export default {
+    GET_BASIC_INFO: 'GET_BASIC_INFO',
+    GET_MENUITEM_LIST: 'GET_MENUITEM_LIST'
+}

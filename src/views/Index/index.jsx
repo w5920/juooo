@@ -14,13 +14,13 @@ class index extends Component {
     render() {
         return (
             <div>
+                <MyRouter router={this.props.children}></MyRouter>
                 <nav>
                     <NavLink to={'/'}>首页</NavLink>
                     <NavLink to={'/TheatreList'}>剧院</NavLink>
                     <NavLink to={'/Eticket'}>票夹</NavLink>
                     <NavLink to={'/Myjuooo'}>我的</NavLink>
                 </nav>
-                <MyRouter router={this.props.children}></MyRouter>
             </div>
         );
     }
