@@ -8,6 +8,7 @@
   margin-bottom: 0.15rem;
   background: #fff;
   position: sticky;
+  z-index: 100;
   top: 0;
 }
 .head-address {
@@ -25,13 +26,13 @@
   height: 0.5rem;
 }
 .head-search {
-  width: 7rem;
-  height: 0.86rem;
+  width: 6.5rem;
+  height: 0.8rem;
   background: #f5f5f5;
   border-radius: 0.34rem;
   display: flex;
   align-items: center;
-  line-height: 0.86rem;
+  line-height: 0.8rem;
 }
 .head-search img {
   width: 0.6rem;
@@ -132,7 +133,7 @@
   margin-left: 0.13333rem;
 }
 .vipdiscount-line {
-  width: 9.2rem;
+  width: 8.5rem;
   height: 0.01rem;
   position: absolute;
   bottom: 0;
@@ -411,13 +412,14 @@
 }
 .tour-detaile-location {
   line-height: 0.32rem;
-  width: 4.3rem;
+  /* flex: 1; */
+  /* width: 5rem; */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .tour-detaile-location span {
-  /* width: 1.1rem; */
+  width: 1.1rem;
   display: inline-block;
   line-height: 0.4rem;
   color: #000;
@@ -517,7 +519,7 @@
 }
 .recommend-left,
 .recommend-right {
-  width: 4.92rem;
+  width: 4.55rem;
   border-radius: 0.16rem;
   overflow: hidden;
   background-color: #fefefe;
@@ -602,8 +604,7 @@
   margin-left: 0.1rem;
 }
 .sopnsor-service {
-  /* overflow: hidden;
-  margin-top: 0.13333rem; */
+  margin-top: 0.13333rem;
   line-height: 0.29333rem !important;
 }
 .sopnsor-service > span {

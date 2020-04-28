@@ -1,6 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import style from "../../assets/css/home/home.module.css";
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: ["1", "2", "3"],
+      imgHeight: 176,
+    };
+  }
   render() {
     return (
       <div>
@@ -17,6 +25,7 @@ class Home extends Component {
             <img src={require("../../assets/img/calendar.png")} alt="" />
           </div>
         </div>
+
         <div className={style["adv"]}>
           <img src={require("../../assets/img/adv.jpg")} alt="" />
         </div>
@@ -366,4 +375,10 @@ class Home extends Component {
   }
 }
 
-export default Home;
+function mapStateToProps() {
+  return {};
+}
+function mapDispatchToProps() {
+  return {};
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
