@@ -8,7 +8,6 @@ export function myIndex(states = myIndexInit, { type, payload }) {
         state.menuItemList = payload;
     }
     if (type === myjuoooType.GET_BASIC_INFO) {
-        console.log(payload);
         state.basicInfo = payload.basic_info;
         state.is_login = payload.is_login;
     }

@@ -90,12 +90,17 @@
 .mineInfo_cont {
   width: 25%;
   font-size: 30px;
-  border-right: 2px solid #999;
+  border-right: 2px solid #e7e5e5;
 }
-.mineInfo_contNum {
+.mineInfo_contNumOne {
   line-height: 46px;
   margin-bottom: 15px;
   color: #ff6743;
+}
+.mineInfo_contNumZero{
+  line-height: 46px;
+  margin-bottom: 15px;
+  color: #232323;
 }
 .mineInfo_contLast {
   width: 25%;
@@ -125,6 +130,7 @@
   width: 690px;
   height: 185px;
   margin: auto;
+  background-color: #fff;
   display: flex;
   justify-content: flex-start;
   margin-bottom: 24px;

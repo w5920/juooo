@@ -1,3 +1,4 @@
 export default {
-    myIndexInit: {}
+    myIndexInit: {},
+    banlanceInit: []
 }

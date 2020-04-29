@@ -1,0 +1,53 @@
+
+
+.banlance{
+    width: 100%;
+    text-align: center;
+    padding:170px 0 0  0;
+    background-color: #FF6743;
+}
+.banlanceName{
+    font-size: 70px;
+    color:#fff;
+}
+.banlanceNum{
+    font-size: 30px;
+    color:#fff;
+}
+.banlanceBgImg{
+    width: 100%;
+}
+.banlanceType{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 30px;
+    line-height: 140px;
+}
+
+.activeType{
+    color:#ff6743;
+    border-bottom: 4px solid #ff6743;
+}
+.banlanceList{
+    width: 100%;
+    overflow: hidden;
+}
+.empty{
+    width: 250px;
+    text-align: center;
+    margin: auto;
+    margin-top: 100px;
+}
+.empty img{
+    width: 100%;
+}
+.empty p{
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 45px;
+    color:#999;
+}
+.noEmpty{
+    display: none;
+}

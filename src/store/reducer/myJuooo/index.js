@@ -1,2 +1,8 @@
 import { myIndex } from './myIndex'
-export default myIndex
+import { banlance } from './myBanlance'
+
+const myjuooo = {
+    myIndex,
+    banlance
+}
+export default myjuooo

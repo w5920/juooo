@@ -7,14 +7,11 @@ class Myjuooo extends Component {
   constructor(props) {
     super(props);
   }
-
   componentDidMount() {
     this.props.getBasicInfo();
     this.props.getMenuItemList();
-    console.log(this.props);
   }
   render() {
-    console.log(this.props);
     if (!this.props.menuItemList) {
       return <p>加载中。。。</p>;
     }
@@ -60,25 +57,25 @@ class Myjuooo extends Component {
               <div className={myjuoooCss.mineInfo_conts}>
                 <div className={myjuoooCss.mineInfo_cont}>
                   <a href="/Myjuooo/MyBalance">
-                    <p className={myjuoooCss.mineInfo_contNum}>0</p>
+                    <p className={is_login ? myjuoooCss.mineInfo_contNumOne : myjuoooCss.mineInfo_contNumZero}>0</p>
                     <p className={myjuoooCss.mineInfo_contName}>账户余额</p>
                   </a>
                 </div>
                 <div className={myjuoooCss.mineInfo_cont}>
                   <a href="/Points">
-                    <p className={myjuoooCss.mineInfo_contNum}>0</p>
+                    <p className={is_login ? myjuoooCss.mineInfo_contNumOne : myjuoooCss.mineInfo_contNumZero}>0</p>
                     <p className={myjuoooCss.mineInfo_contName}>积分</p>
                   </a>
                 </div>
                 <div className={myjuoooCss.mineInfo_cont}>
                   <a href="/Myjuooo/Coupon">
-                    <p className={myjuoooCss.mineInfo_contNum}>0</p>
+                    <p className={is_login ? myjuoooCss.mineInfo_contNumOne : myjuoooCss.mineInfo_contNumZero}>0</p>
                     <p className={myjuoooCss.mineInfo_contName}>优惠券</p>
                   </a>
                 </div>
                 <div className={myjuoooCss.mineInfo_contLast}>
                   <a href="/BuyPlus">
-                    <p className={myjuoooCss.mineInfo_contNum}>立即开通</p>
+                    <p className={myjuoooCss.mineInfo_contNumZero}>立即开通</p>
                     <p className={myjuoooCss.mineInfo_contName}>橙PLUS卡</p>
                   </a>
                 </div>
@@ -141,14 +138,6 @@ class Myjuooo extends Component {
             </ul>
           </div>
         </div>
-
-        <div className={myjuoooCss.myjuoooVipBanner}>
-          <a href="">
-            <img src="../../assets/img/adVip.png" alt="" />
-          </a>
-          广告区
-        </div>
-        <div className={myjuoooCss.myjuoooLink}></div>
       </div>
     );
   }
