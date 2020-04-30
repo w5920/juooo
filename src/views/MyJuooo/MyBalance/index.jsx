@@ -5,6 +5,8 @@ import { bindActionCreators } from "redux";
 import myBanlanceAction from '../../../store/actionCreator/myJuooo/myBanlance'
 import mybanlanceCss from '../../../assets/css/myjuooo/myBanlance.module.css'
 
+import PageHeader from '../../../components/common/PageHeader'
+
 class index extends Component {
     constructor(props) {
         super(props);
@@ -26,6 +28,7 @@ class index extends Component {
         console.log(this.props);
         return (
             <div>
+                <PageHeader pageName={'账户余额'}></PageHeader>
                 <div className={mybanlanceCss.banlance}>
                     <p className={mybanlanceCss.banlanceName}>0.00</p>
                     <p className={mybanlanceCss.banlanceNum}>账户余额(元)</p>

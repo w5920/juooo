@@ -13,9 +13,9 @@ export default {
         form.append("type", type);
         form.append("page", page);
         return async (dispatch) => {
-            const { data } = await axios.post('/api/user/account/getUserAccountLogList?version=6.1.1&referer=2', form);
-            dispatch(changeBanlanceList(data.list));
-            console.log(data.list);
+            const data = await axios.post('/user/account/getUserAccountLogList?version=6.1.1&referer=2', form);
+            dispatch(changeBanlanceList(data));
+            console.log(data);
         }
     }
 }
