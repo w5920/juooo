@@ -18,7 +18,7 @@
 .footCommon img {
   width: 0.81rem;
   height: 0.81rem;
-  margin: 0 auto;
+  margin-left: 0.95rem;
 }
 .footCommon > a {
   display: inline-block;

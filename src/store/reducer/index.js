@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import home from "./home";
-import myIndex from "./myJuooo";
-
+import myjuooo from "./myJuooo";
 export default combineReducers({
-  myIndex,
+
+  ...myjuooo,
   home,
 });
