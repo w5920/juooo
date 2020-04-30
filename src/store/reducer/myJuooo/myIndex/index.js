@@ -1,6 +1,6 @@
 
-import myjuoooType from '../../../actionType/myJuooo'
-import myIndexInit from '../../../state/myJuooo'
+import myjuoooType from '../../../actionType/myJuooo';
+import myIndexInit from '../../../state/myJuooo';
 
 export function myIndex(states = myIndexInit, { type, payload }) {
     const state = JSON.parse(JSON.stringify(states));

@@ -1,4 +1,4 @@
-import { Carousel, WingBlank } from 'antd-mobile';
+import { ActivityIndicator, Carousel, WingBlank } from 'antd-mobile';
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -7,9 +7,16 @@ import homeAction from "../../store/actionCreator/home";
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.chooseIndex = null
+    this.pageInde = 1
+    this.rewaterfall = null;
+    this.reLeft = null; //瀑布流左边元素
+    this.reRight = null; //瀑布流右边元素
+    this.switch = true;//防止瀑布流请求过快
     this.state = {
-      vipFlag: false
+      vipFlag: false,
+      vipIndex: 0,
+      waterfallLeft: [],
+      waterfallRight: []
     }
   }
   render() {
@@ -67,13 +74,12 @@ class Home extends Component {
                 infinite
                 dots={false}
                 autoplayInterval={3000}
+                afterChange={index => this.setState({ vipIndex: index })}
               >
                 {
                   this.props.vipDiscount.length > 0 ? this.props.vipDiscount.map(v =>
                     (
-                      <div
-                        // ref={(el) => this.chooseIndex = el}
-                        className={style["viplb"]} key={v.schedular_id} style={{ minHeight: "2.85333rem" }}  >
+                      <div className={style["viplb"]} key={v.schedular_id} style={{ minHeight: "2.85333rem" }}  >
                         <div className={style["viplb-left"]}>
                           <img src={v.pic} alt="" />
                         </div>
@@ -88,7 +94,9 @@ class Home extends Component {
                         </div>
                       </div>
                     )
-                  ) : <div className={style["viplb"]} style={{ minHeight: "2.85333rem" }} >"正在加载..."</div>
+                  ) : <div className={style["viplb"]} style={{ minHeight: "2.85333rem" }} >
+                      <ActivityIndicator size="large" toast text="正在加载" />
+                    </div>
                 }
               </Carousel>
             </WingBlank>
@@ -96,10 +104,11 @@ class Home extends Component {
         </div>
         <div className={style["advbottom"]}>
           <p>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            {
+              this.props.vipDiscount.length > 0 ? this.props.vipDiscount.map((v, i) => (
+                <span key={i} className={this.state.vipIndex === i ? (style["advActive"]) : style["advshow"]}></span>
+              )) : <ActivityIndicator size="large" />
+            }
           </p>
         </div>
 
@@ -121,36 +130,22 @@ class Home extends Component {
           </div>
           <div className={style["hotshowlist"]}>
             <ul>
-              <li>
-                <div>
-                  <img src={require("../../assets/img/hoot.jpg")} />
-                </div>
-                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
-              </li>
-              <li>
-                <div>
-                  <img src={require("../../assets/img/hoot.jpg")} />
-                </div>
-                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
-              </li>
-              <li>
-                <div>
-                  <img src={require("../../assets/img/hoot.jpg")} />
-                </div>
-                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
-              </li>
-              <li>
-                <div>
-                  <img src={require("../../assets/img/hoot.jpg")} />
-                </div>
-                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
-              </li>
-              <li>
-                <div>
-                  <img src={require("../../assets/img/hoot.jpg")} />
-                </div>
-                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
-              </li>
+              {
+                this.props.hotRecommendList.length > 0 ? this.props.hotRecommendList.map((v, i) => {
+                  // console.log(v)
+                  return (
+                    (
+                      <li key={(v.schedular_url).substring(v.schedular_url.length - 6)}>
+                        <div>
+                          <img src={v.pic} />
+                        </div>
+                        <p>{v.show_name}</p>
+                        {/* 根据id获取详情 {(v.schedular_url).substring(v.schedular_url.length - 6)} */}
+                      </li>
+                    )
+                  )
+                }) : <div><ActivityIndicator size="large" /></div>
+              }
             </ul>
           </div>
         </div>
@@ -166,46 +161,45 @@ class Home extends Component {
               </span>
             </p>
           </div>
-          <div className={style["tourintroduce"]}>
-            <div className={style["tourimg"]}>
-              <img src={require("../../assets/img/tour.jpg")} alt="" />
-            </div>
-            <div className={style["tour-schedule"]}>
-              <p className={style["tour-time"]}>2020.08.13 - 10.03</p>
-              <p className={style["tour-title"]}>
-                聚橙制作 | 法语音乐剧《摇滚红与黑》
-              </p>
-              <div className={style["tour-price"]}>
-                <mark>￥</mark>
-                <mark>80</mark>
-                <span>起</span>
-              </div>
-              <div className={style["tour-location"]}>
-                <div className={style["tour-location-num"]}>
-                  <span>6</span>
-                  <span>巡城演</span>
+          {
+            this.props.tuorShowList.length > 0 ? this.props.tuorShowList.map(v => (
+              <div className={style["tourintroduce"]} key={v.id}>
+                <div className={style["tourimg"]}>
+                  <img src={v.mobile_col_img} alt="" />
                 </div>
-                <div className={style["tour-detaile-location"]}>
-                  <span>
-                    上海
-                    <i>|</i>
-                  </span>
-                  <span>
-                    广州
-                    <i>|</i>
-                  </span>
-                  <span>
-                    深圳
-                    <i>|</i>
-                  </span>
-                  <span>
-                    成都
-                    <i>|</i>
-                  </span>
+                <div className={style["tour-schedule"]}>
+                  <p className={style["tour-time"]}>2020.08.13 - 10.03</p>
+                  <p className={style["tour-title"]}>
+                    {v.name}
+                  </p>
+                  <div className={style["tour-price"]}>
+                    <mark>￥</mark>
+                    <mark>{v.min_price}</mark>
+                    <span>起</span>
+                  </div>
+                  <div className={style["tour-location"]}>
+                    <div className={style["tour-location-num"]}>
+                      <span>6</span>
+                      <span>巡城演</span>
+                    </div>
+                    <div className={style["tour-detaile-location"]}>
+                      {
+                        v.citys.map(item => (
+                          <span key={item.id}>
+                            {item.name}
+                            <i>|</i>
+                          </span>
+
+                        ))
+                      }
+                    </div>
+
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            )) : <div><ActivityIndicator size="large" /></div>
+          }
+
         </div>
 
         {/* 舞台剧 */}
@@ -223,7 +217,7 @@ class Home extends Component {
           </div>
           <div className={style["stageitem"]}>
             <div className={`${style["tourimg"]} ${style["tourimg-logo"]}`}>
-              <img src={require("../../assets/img/tour.jpg")} alt="" />
+              <img src={require("../../assets/img/Stage.png")} alt="" />
               <div className={style["juooobookslog"]}></div>
             </div>
             <div className={style["stagetime"]}>
@@ -246,7 +240,9 @@ class Home extends Component {
                   <div className={style["juooobookslog"]}></div>
                   <img src={require("../../assets/img/hoot.jpg")} />
                 </div>
-                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+                <p>
+                  【演出延期】2020第七届城市戏剧节 乌镇戏剧节“最佳戏剧奖”“最佳个人表现奖”团队最新作品《涂红》-深圳站
+              </p>
                 <span className={style["stage-price"]}>
                   <strong>￥99</strong>
                   <span>起</span>
@@ -255,9 +251,11 @@ class Home extends Component {
               <li>
                 <div className={style["tourimg-logo"]}>
                   <div className={style["juooobookslog"]}></div>
-                  <img src={require("../../assets/img/hoot.jpg")} />
+                  <img src={require("../../assets/img/Stage1.jpg")} />
                 </div>
-                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+                <p>
+                  【演出延期】2020第七届城市戏剧节 马修·伯恩经典全男版芭蕾舞剧《天鹅湖》高清影像-深圳站
+              </p>
                 <span className={style["stage-price"]}>
                   <strong>￥99</strong>
                   <span>起</span>
@@ -266,33 +264,26 @@ class Home extends Component {
               <li>
                 <div className={style["tourimg-logo"]}>
                   <div className={style["juooobookslog"]}></div>
-                  <img src={require("../../assets/img/hoot.jpg")} />
+                  <img src={require("../../assets/img/Stage2.jpg")} />
                 </div>
-                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+                <p>
+                  【演出延期】3D科幻舞台剧《三体Ⅱ黑暗森林》-深圳站
+              </p>
                 <span className={style["stage-price"]}>
-                  <strong>￥99</strong>
+                  <strong>￥180</strong>
                   <span>起</span>
                 </span>
               </li>
               <li>
                 <div className={style["tourimg-logo"]}>
                   <div className={style["juooobookslog"]}></div>
-                  <img src={require("../../assets/img/hoot.jpg")} />
+                  <img src={require("../../assets/img/Stage3.jpg")} />
                 </div>
-                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
+                <p>
+                  四川人民艺术剧院-话剧《苏东坡》-石家庄
+              </p>
                 <span className={style["stage-price"]}>
-                  <strong>￥99</strong>
-                  <span>起</span>
-                </span>
-              </li>
-              <li>
-                <div className={style["tourimg-logo"]}>
-                  <div className={style["juooobookslog"]}></div>
-                  <img src={require("../../assets/img/hoot.jpg")} />
-                </div>
-                <p>2020第七届城市戏剧节 《涂红》-石家庄站</p>
-                <span className={style["stage-price"]}>
-                  <strong>￥99</strong>
+                  <strong>￥50</strong>
                   <span>起</span>
                 </span>
               </li>
@@ -307,57 +298,72 @@ class Home extends Component {
               为你推荐
             </p>
           </div>
-          <div className={style["recommend-waterfall"]}>
-            <div className={style["recommend-left"]}>
+          <div className={style["recommend-waterfall"]} ref={el => this.rewaterfall = el}>
+            <div className={style["recommend-left"]} ref={el => this.reLeft = el}>
               {/* 为你推荐 瀑布流 图片 */}
-              <div className={style["recommend-img"]}>
-                <img src={require("../../assets/img/recommend.jpg")} alt="" />
-                <span className={style["recommend-tip"]}>深圳</span>
-              </div>
-              <div className={style["recommend-title"]}>
-                <div className={style["sponsor"]}>
-                  <img src={require("../../assets/img/i.png")} alt="" />
-                  <p>
-                    【演出延期】聚橙出品
-                    |百老汇现象级原版音乐剧《来自远方》-深圳站
-                  </p>
-                </div>
-                <p className={style["sponsor-time"]}>2020.06.12 - 06.14</p>
-                <div className={style["sopnsor-prince"]}>
-                  <span>￥280</span>
-                  <span>起</span>
-                </div>
-                <div className={style["sopnsor-service"]}>
-                  <span>电子票</span>
-                  <span>可选座</span>
-                  <span>限时8折起</span>
-                </div>
-              </div>
+              {
+                this.state.waterfallLeft.length > 0 ? this.state.waterfallLeft.map(v => (
+                  <div className={style["ele-distance"]} key={v.cate_parent_id}>
+                    <div className={style["recommend-img"]}>
+                      <img src={v.pic} alt="" />
+                      <span className={style["recommend-tip"]}>{v.city_name}</span>
+                    </div>
+                    <div className={style["recommend-title"]}>
+                      <div className={style["sponsor"]}>
+                        <img style={{ display: v.method_icon ? "block" : "none" }} src={require("../../assets/img/i.png")} alt="" />
+                        <p>
+                          {v.name}
+                        </p>
+                      </div>
+                      <p className={style["sponsor-time"]}>{v.end_show_time}</p>
+                      <div className={style["sopnsor-prince"]}>
+                        <span>￥{v.min_price}</span>
+                        <span>起</span>
+                      </div>
+                      <div className={style["sopnsor-service"]}>
+                        {
+                          v.support_desc.map(item => (
+                            <span>{item}</span>
+                          ))
+                        }
+                      </div>
+                    </div>
+                  </div>
+                )) : <div><ActivityIndicator size="large" /></div>
+              }
+
             </div>
-            <div className={style["recommend-right"]}>
-              <div className={style["recommend-img"]}>
-                <img src={require("../../assets/img/recommend.jpg")} alt="" />
-                <span className={style["recommend-tip"]}>深圳</span>
-              </div>
-              <div className={style["recommend-title"]}>
-                <div className={style["sponsor"]}>
-                  <img src={require("../../assets/img/i.png")} alt="" />
-                  <p>
-                    【演出延期】聚橙出品
-                    |百老汇现象级原版音乐剧《来自远方》-深圳站
-                  </p>
-                </div>
-                <p className={style["sponsor-time"]}>2020.06.12 - 06.14</p>
-                <div className={style["sopnsor-prince"]}>
-                  <span>￥280</span>
-                  <span>起</span>
-                </div>
-                <div className={style["sopnsor-service"]}>
-                  <span>电子票</span>
-                  <span>可选座</span>
-                  <span>限时8折起</span>
-                </div>
-              </div>
+            <div className={style["recommend-right"]} ref={el => this.reRight = el}>
+              {
+                this.state.waterfallRight.length > 0 ? this.state.waterfallRight.map(v => (
+                  <div className={style["ele-distance"]} key={v.cate_parent_id}>
+                    <div className={style["recommend-img"]}>
+                      <img src={v.pic} alt="" />
+                      <span className={style["recommend-tip"]}>{v.city_name}</span>
+                    </div>
+                    <div className={style["recommend-title"]}>
+                      <div className={style["sponsor"]}>
+                        <img style={{ display: v.method_icon ? "block" : "none" }} src={require("../../assets/img/i.png")} alt="" />
+                        <p>
+                          {v.name}
+                        </p>
+                      </div>
+                      <p className={style["sponsor-time"]}>{v.end_show_time}</p>
+                      <div className={style["sopnsor-prince"]}>
+                        <span>￥{v.min_price}</span>
+                        <span>起</span>
+                      </div>
+                      <div className={style["sopnsor-service"]}>
+                        {
+                          v.support_desc.map(item => (
+                            <span>{item}</span>
+                          ))
+                        }
+                      </div>
+                    </div>
+                  </div>
+                )) : <div><ActivityIndicator size="large" /></div>
+              }
             </div>
           </div>
         </div>
@@ -365,10 +371,34 @@ class Home extends Component {
     );
   }
   componentDidMount() {
-    this.props.gethotRecommendList.bind(this)();
-    this.props.getVipHomeSchedular.bind(this)();
+    this.props.gethotRecommendList();
+    this.props.getVipHomeSchedular();
+    this.props.getHotsRecommendList();
+    this.props.getTourList();
+    this.props.getShowListWaterPall.bind(this)();
+    // console.log(this.waterfall, this.props.waterFallList)
+    window.onscroll = () => {
+      let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight; //body 实际高度
+      let clientHeight = document.documentElement.clientHeight || document.body.clientHeight; //视口高度
+
+      // //假设左边盒子高度最小
+      let minDefaultDiv = this.reLeft
+      let minDefaultHeight = this.reLeft.scrollHeight
+      // waterfallEle.forEach()
+      if (this.reLeft.scrollHeight > this.reRight.scrollHeight) {
+        minDefaultHeight = this.reRight.scrollHeight
+      }
+      // console.log(scrollHeight, clientHeight, this)
+      if (scrollHeight - clientHeight > minDefaultHeight - 400) {
+        console.log(this.switch)
+        // if (this.switch) {
+        // this.props.getShowListWaterPall.bind(this)();
+        // }
+      }
+    }
   }
   componentWillUpdate(nextProps, nextState) {
+    // console.log(this.waterfall, this.props.waterFallList)
     if (this.state.vipFlag) {
       return;
     }
@@ -377,13 +407,20 @@ class Home extends Component {
         vipFlag: true
       })
     }
+    // if (this.props.waterFallList.length > 0) {
+    //   // console.log(this.waterfall, this.props.waterFallList)
+    // }
   }
 }
 
 function mapStateToProps(state) {
   return {
     classifyType: state.home.classifyList,
-    vipDiscount: state.home.vipCount
+    vipDiscount: state.home.vipCount,
+    hotRecommendList: state.home.hotsRecommendList,
+    tuorShowList: state.home.tourShowList,
+    pageIndex: state.home.pageIndex,
+    waterFallList: state.home.waterFallList
   };
 }
 function mapDispatchToProps(dispatch) {

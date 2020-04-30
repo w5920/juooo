@@ -9,9 +9,24 @@ export default function (state = homeInit, { type, payload }) {
       state.classifyList = payload; break;
     case homeActionType.GET_TOUR_LIST:
       state.vipCount = payload; break;
+    case homeActionType.GET_HOTS_RECOMMENDLIST:
+      state.hotsRecommendList = payload; break;
+    case homeActionType.GET_TOUR_SHOWLIST:
+      state.tourShowList = payload; break;
+    case homeActionType.GET_SHOW_LIST:
+      if (state.pageIndex < 2) {
+        state.waterFallList = payload;
+      } else {
+        state.waterFallList = [
+          ...state.waterFallList,
+          ...payload
+        ]
+      } state.pageIndex++; break;
+
     // default:
     //   state; break;
   }
+  // console.log(this, "reducer")
   // if (type === homeActionType.GET_HOTS_RECOMMENDLIST) {
   //   state.hotsRecommendList = payload;
   // }
