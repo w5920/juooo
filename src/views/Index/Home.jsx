@@ -1,17 +1,20 @@
+import { Carousel, WingBlank } from 'antd-mobile';
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import style from "../../assets/css/home/home.module.css";
+import homeAction from "../../store/actionCreator/home";
 class Home extends Component {
   constructor(props) {
     super(props);
+    this.chooseIndex = null
     this.state = {
-      data: ["1", "2", "3"],
-      imgHeight: 176,
-    };
+      vipFlag: false
+    }
   }
   render() {
     return (
-      <div>
+      <div style={{ background: "#fff" }}>
         <div className={style["head"]}>
           <div className={style["head-address"]}>
             <img src={require("../../assets/img/location.png")} alt="" />
@@ -31,46 +34,16 @@ class Home extends Component {
         </div>
         <div className={style["typedetaile"]}>
           <ul>
-            <li>
-              <img src={require("../../assets/img/m.png")} alt="" />
-              <span>演唱会</span>
-            </li>
-            <li>
-              <img src={require("../../assets/img/m.png")} alt="" />
-              <span>演唱会</span>
-            </li>
-            <li>
-              <img src={require("../../assets/img/m.png")} alt="" />
-              <span>演唱会</span>
-            </li>
-            <li>
-              <img src={require("../../assets/img/m.png")} alt="" />
-              <span>演唱会</span>
-            </li>
-            <li>
-              <img src={require("../../assets/img/m.png")} alt="" />
-              <span>演唱会</span>
-            </li>
-            <li>
-              <img src={require("../../assets/img/m.png")} alt="" />
-              <span>演唱会</span>
-            </li>
-            <li>
-              <img src={require("../../assets/img/m.png")} alt="" />
-              <span>演唱会</span>
-            </li>
-            <li>
-              <img src={require("../../assets/img/m.png")} alt="" />
-              <span>演唱会</span>
-            </li>
-            <li>
-              <img src={require("../../assets/img/m.png")} alt="" />
-              <span>演唱会</span>
-            </li>
-            <li>
-              <img src={require("../../assets/img/m.png")} alt="" />
-              <span>演唱会</span>
-            </li>
+            {
+              this.props.classifyType.map(v =>
+                (
+                  <li key={v.id}>
+                    <img src={v.pic} alt="" />
+                    <span>{v.name}</span>
+                  </li>
+                )
+              )
+            }
           </ul>
         </div>
         {/* <!-- vip折扣 --> */}
@@ -87,20 +60,38 @@ class Home extends Component {
               </div>
               <div className={style["vipdiscount-line"]}></div>
             </div>
-            <div className={style["viplb"]}>
-              <div className={style["viplb-left"]}>
-                <img src={require("../../assets/img/books.jpg")} alt="" />
-              </div>
-              <div className={style["viplb-right"]}>
-                <p>浪漫经典童话剧《美女与野兽》</p>
-                <div>
-                  <span className={style["discount"]}>
-                    <mark className={style["markk"]}>5</mark>折起
-                  </span>
-                  <span className={style["panicbuing"]}>立即抢购</span>
-                </div>
-              </div>
-            </div>
+            <WingBlank>
+              <Carousel
+                className={style["viplb"]}
+                autoplay={this.state.vipFlag}
+                infinite
+                dots={false}
+                autoplayInterval={3000}
+              >
+                {
+                  this.props.vipDiscount.length > 0 ? this.props.vipDiscount.map(v =>
+                    (
+                      <div
+                        // ref={(el) => this.chooseIndex = el}
+                        className={style["viplb"]} key={v.schedular_id} style={{ minHeight: "2.85333rem" }}  >
+                        <div className={style["viplb-left"]}>
+                          <img src={v.pic} alt="" />
+                        </div>
+                        <div className={style["viplb-right"]}>
+                          <p>{v.schedular_name}</p>
+                          <div>
+                            <span className={style["discount"]}>
+                              <mark className={style["markk"]}>{v.min_discount}</mark>折起
+                             </span>
+                            <span className={style["panicbuing"]}>立即抢购</span>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  ) : <div className={style["viplb"]} style={{ minHeight: "2.85333rem" }} >"正在加载..."</div>
+                }
+              </Carousel>
+            </WingBlank>
           </div>
         </div>
         <div className={style["advbottom"]}>
@@ -370,15 +361,32 @@ class Home extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     );
+  }
+  componentDidMount() {
+    this.props.gethotRecommendList.bind(this)();
+    this.props.getVipHomeSchedular.bind(this)();
+  }
+  componentWillUpdate(nextProps, nextState) {
+    if (this.state.vipFlag) {
+      return;
+    }
+    if (this.props.vipDiscount.length > 0) {
+      this.setState({
+        vipFlag: true
+      })
+    }
   }
 }
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return {
+    classifyType: state.home.classifyList,
+    vipDiscount: state.home.vipCount
+  };
 }
-function mapDispatchToProps() {
-  return {};
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(homeAction, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

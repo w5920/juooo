@@ -1,0 +1,7 @@
+export default {
+  GET_HOTS_RECOMMENDLIST: "GET_HOTS_RECOMMENDLIST", //首页推荐轮播图
+  GET_CLASSIFY_HOME: "GET_CLASSIFY_HOME", //类型列表
+  GET_TOUR_LIST: "GET_TOUR_LIST", //会员折扣轮播图
+  GET_SHOW_LIST: "GET_SHOW_LIST", //瀑布流所需要的的数据
+  GET_FLOOR_SHOW: "GET_FLOOR_SHOW", //舞台剧 选项列表
+};

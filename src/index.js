@@ -1,3 +1,4 @@
+import axios from "axios";
 import "lib-flexible";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -8,6 +9,15 @@ import "./assets/css/common.css";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import store from "./store";
+
+axios.interceptors.request.use((config) => {
+  config.url = "/api/" + config.url;
+  return config;
+});
+
+axios.interceptors.response.use(({ data }) => {
+  return data;
+});
 
 ReactDOM.render(
   <React.StrictMode>
