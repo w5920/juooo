@@ -27,7 +27,7 @@ export default {
   gethotRecommendList() {
     console.log(this, "gethotRecommendList");
     return async (dispatch) => {
-      const { data } = await axios.get(
+      const data = await axios.get(
         "home/index/getClassifyHome?city_id=0&abbreviation=&version=6.1.1&referer=2"
       );
       dispatch(getClassifyList(homeActionType.GET_CLASSIFY_HOME, data.classify_list));
@@ -35,7 +35,7 @@ export default {
   },
   getVipHomeSchedular() {
     return async (dispatch) => {
-      const { data } = await axios.get(
+      const data = await axios.get(
         "vip/index/getVipHomeSchedular?city_id=0&version=6.1.1&referer=2"
       );
       // console.log(data)
@@ -45,7 +45,7 @@ export default {
   //热门演出
   getHotsRecommendList() {
     return async (dispatch) => {
-      const { data } = await axios.get(
+      const data = await axios.get(
         "home/index/getHotsRecommendList?city_id=0&version=6.1.1&referer=2"
       );
       // console.log(data)
@@ -55,7 +55,7 @@ export default {
   //巡回演出
   getTourList() {
     return async (dispatch) => {
-      const { data } = await axios.get(
+      const data = await axios.get(
         "show/tour/getList?version=6.1.1&referer=2"
       );
       // console.log(data)
@@ -65,7 +65,7 @@ export default {
   //瀑布流
   getShowListWaterPall() {
     return async (dispatch) => {
-      const { data } = await axios.get(
+      const data = await axios.get(
         `Show/Search/getShowList?city_id=0&category=&keywords=&venue_id=&start_time=&page=${this.props.pageIndex}&referer_type=index&version=6.1.1&referer=2`
       );
       this.switch = false;

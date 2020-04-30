@@ -1,4 +1,6 @@
 export default {
     myIndexInit: {},
-    banlanceInit: []
+    banlanceInit: [],
+    userSoreInit: {},
+    schedularInit: [],
 }

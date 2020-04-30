@@ -18,14 +18,14 @@ export function changeMenuItemList(payload) {
 export default {
     getBasicInfo() {
         return async (dispatch) => {
-            const { data } = await axios.get('/api/user/account/basicInfo?version=6.1.1&referer=2');
-            dispatch(changeBasicInfo(data.data));
+            const data = await axios.get('/user/account/basicInfo?version=6.1.1&referer=2');
+            dispatch(changeBasicInfo(DataTransferItemList));
         }
     },
     getMenuItemList() {
         return async (dispatch) => {
-            const { data } = await axios.get('/api/user/account/getMenuItem?version=6.1.1&referer=2');
-            dispatch(changeMenuItemList(data.data));
+            const data = await axios.get('/user/account/getMenuItem?version=6.1.1&referer=2');
+            dispatch(changeMenuItemList(data));
         }
     }
 }

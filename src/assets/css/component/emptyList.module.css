@@ -1,0 +1,19 @@
+.contList{
+    width: 100%;
+    overflow: hidden;
+}
+.emptyCont{
+    width: 250px;
+    text-align: center;
+    margin: auto;
+    margin-top: 200px;
+}
+.emptyCont img{
+    width: 100%;
+}
+.emptyCont P{
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 45px;
+    color:#999;
+}

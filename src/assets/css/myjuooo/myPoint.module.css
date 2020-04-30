@@ -2,15 +2,18 @@
     width: 750px;
     height: 340px;
     background: linear-gradient(50deg, #ff9a34, #ff4d4a);
-    padding: 170px 0 0;
     text-align: center;
     color:#fff;
 }
 .pointNum{
+    margin-top: 100px;
     font-size: 70px;
     position: relative;
 }
-.pointNum span{
+.point >div {
+    background: linear-gradient(50deg, #ff9a34, #ff4d4a) !important;
+}
+.pointNum  a{
     width: 140px;
     height: 60px;
     position: absolute;
