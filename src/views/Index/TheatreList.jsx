@@ -1,4 +1,4 @@
-import { ActivityIndicator, Button } from "antd-mobile";
+import { Button } from "antd-mobile";
 import React, { Component } from "react";
 class TheatreList extends Component {
   state = {
@@ -24,13 +24,13 @@ class TheatreList extends Component {
         <Button type={"primary"} style={{ width: "100px", margin: " 0 auto " }}>
           primary
         </Button>
-        <Button type="warning">warning</Button>
+        {/* <Button type="warning">warning</Button> */}
         {/* <ActivityIndicator /> */}
         {/* <ActivityIndicator color="white" /> */}
-        <ActivityIndicator size="large" />
+        {/* <ActivityIndicator size="large" /> */}
         {/* <ActivityIndicator text="正在加载" /> */}
         {/* <ActivityIndicator toast /> */}
-        <ActivityIndicator size="large" toast text="正在加载" />
+        {/* <ActivityIndicator size="large" toast text="正在加载" /> */}
       </div>
     );
   }

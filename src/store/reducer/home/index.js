@@ -3,8 +3,8 @@ import homeInit from "../../state/home";
 export default function (state = homeInit, { type, payload }) {
   state = JSON.parse(JSON.stringify(state));
   switch (type) {
-    case homeActionType.GET_HOTS_RECOMMENDLIST:
-      state.hotsRecommendList = payload; break;
+    case homeActionType.GET_HOME_LB_LIST:
+      state.homeLbList = payload; break;
     case homeActionType.GET_CLASSIFY_HOME:
       state.classifyList = payload; break;
     case homeActionType.GET_TOUR_LIST:

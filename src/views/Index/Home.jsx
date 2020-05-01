@@ -1,23 +1,26 @@
-import { ActivityIndicator, Carousel, WingBlank } from 'antd-mobile';
+import { ActivityIndicator, Carousel } from "antd-mobile";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import style from "../../assets/css/home/home.module.css";
+import WaterfallEle from "../../components/common/WaterfallEle";
 import homeAction from "../../store/actionCreator/home";
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.pageInde = 1
+    this.pageInde = 1;
     this.rewaterfall = null;
     this.reLeft = null; //瀑布流左边元素
     this.reRight = null; //瀑布流右边元素
-    this.switch = true;//防止瀑布流请求过快
+    this.switch = false; //防止瀑布流请求过快  开始关闭 因为组件加载时会调用一次
     this.state = {
       vipFlag: false,
       vipIndex: 0,
       waterfallLeft: [],
-      waterfallRight: []
-    }
+      waterfallRight: [],
+      homeIndex: 0,
+    };
   }
   render() {
     return (
@@ -27,7 +30,12 @@ class Home extends Component {
             <img src={require("../../assets/img/location.png")} alt="" />
             <span>全国</span>
           </div>
-          <div className={style["head-search"]}>
+          <div
+            className={style["head-search"]}
+            onClick={() => {
+              this.props.history.push("/search");
+            }}
+          >
             <img src={require("../../assets/img/search.png")} alt="" />
             <input type="text" placeholder="搜索热门演出" />
           </div>
@@ -36,21 +44,54 @@ class Home extends Component {
           </div>
         </div>
 
-        <div className={style["adv"]}>
-          <img src={require("../../assets/img/adv.jpg")} alt="" />
+        <div className={style["adv"]} style={{ touchAction: "pan-y" }}>
+          <Carousel
+            autoplay={this.state.vipFlag}
+            infinite
+            dots={false}
+            autoplayInterval={4000}
+            afterChange={(index) => this.setState({ homeIndex: index })}
+          >
+            {this.props.homeLbList.length > 0 ? (
+              this.props.homeLbList.map((v) => (
+                <img
+                  key={v.image_url.substring(v.image_url.length - 7, -4)}
+                  src={v.image_url}
+                  alt=""
+                />
+              ))
+            ) : (
+              <ActivityIndicator size="large" text="loading..." />
+            )}
+          </Carousel>
+          <div className={style["adv-home-lb"]}>
+            {this.props.homeLbList.length > 0 ? (
+              this.props.homeLbList.map((v, i) => (
+                <span
+                  key={Math.random() * (9999 - 1000) + 10}
+                  className={
+                    this.state.homeIndex === i
+                      ? style["adv-home-active"]
+                      : style["adv-home-show"]
+                  }
+                ></span>
+              ))
+            ) : (
+              <ActivityIndicator size="large" text="loading..." />
+            )}
+            {/* <span className={style["adv-home-active"]}></span>
+            <span className={style["adv-home-show"]}></span> */}
+          </div>
         </div>
+
         <div className={style["typedetaile"]}>
           <ul>
-            {
-              this.props.classifyType.map(v =>
-                (
-                  <li key={v.id}>
-                    <img src={v.pic} alt="" />
-                    <span>{v.name}</span>
-                  </li>
-                )
-              )
-            }
+            {this.props.classifyType.map((v) => (
+              <li key={v.id}>
+                <img src={v.pic} alt="" />
+                <span>{v.name}</span>
+              </li>
+            ))}
           </ul>
         </div>
         {/* <!-- vip折扣 --> */}
@@ -67,48 +108,70 @@ class Home extends Component {
               </div>
               <div className={style["vipdiscount-line"]}></div>
             </div>
-            <WingBlank>
-              <Carousel
-                className={style["viplb"]}
-                autoplay={this.state.vipFlag}
-                infinite
-                dots={false}
-                autoplayInterval={3000}
-                afterChange={index => this.setState({ vipIndex: index })}
-              >
-                {
-                  this.props.vipDiscount.length > 0 ? this.props.vipDiscount.map(v =>
-                    (
-                      <div className={style["viplb"]} key={v.schedular_id} style={{ minHeight: "2.85333rem" }}  >
-                        <div className={style["viplb-left"]}>
-                          <img src={v.pic} alt="" />
-                        </div>
-                        <div className={style["viplb-right"]}>
-                          <p>{v.schedular_name}</p>
-                          <div>
-                            <span className={style["discount"]}>
-                              <mark className={style["markk"]}>{v.min_discount}</mark>折起
-                             </span>
-                            <span className={style["panicbuing"]}>立即抢购</span>
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  ) : <div className={style["viplb"]} style={{ minHeight: "2.85333rem" }} >
-                      <ActivityIndicator size="large" toast text="正在加载" />
+
+            <Carousel
+              autoplay={this.state.vipFlag}
+              infinite
+              dots={false}
+              autoplayInterval={3000}
+              afterChange={(index) => this.setState({ vipIndex: index })}
+              style={{ touchAction: "pan-y" }}
+            >
+              {this.props.vipDiscount.length > 0 ? (
+                this.props.vipDiscount.map((v) => (
+                  <div
+                    onClick={() => {
+                      this.props.history.push(
+                        "/ShowDetail/" +
+                          v.schedular_id +
+                          "/" +
+                          v.venue_name +
+                          ".html"
+                      );
+                    }}
+                    className={style["viplb"]}
+                    key={v.schedular_id}
+                    style={{ minHeight: "2.85333rem" }}
+                  >
+                    <div className={style["viplb-left"]}>
+                      <img src={v.pic} alt="" />
                     </div>
-                }
-              </Carousel>
-            </WingBlank>
+                    <div className={style["viplb-right"]}>
+                      <p>{v.schedular_name}</p>
+                      <div>
+                        <span className={style["discount"]}>
+                          <mark className={style["markk"]}>
+                            {v.min_discount}
+                          </mark>
+                          折起
+                        </span>
+                        <span className={style["panicbuing"]}>立即抢购</span>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <ActivityIndicator size="large" text="loading..." />
+              )}
+            </Carousel>
           </div>
         </div>
         <div className={style["advbottom"]}>
           <p>
-            {
-              this.props.vipDiscount.length > 0 ? this.props.vipDiscount.map((v, i) => (
-                <span key={i} className={this.state.vipIndex === i ? (style["advActive"]) : style["advshow"]}></span>
-              )) : <ActivityIndicator size="large" />
-            }
+            {this.props.vipDiscount.length > 0 ? (
+              this.props.vipDiscount.map((v, i) => (
+                <span
+                  key={i}
+                  className={
+                    this.state.vipIndex === i
+                      ? style["advActive"]
+                      : style["advshow"]
+                  }
+                ></span>
+              ))
+            ) : (
+              <ActivityIndicator size="large" text="loading..." />
+            )}
           </p>
         </div>
 
@@ -130,22 +193,37 @@ class Home extends Component {
           </div>
           <div className={style["hotshowlist"]}>
             <ul>
-              {
-                this.props.hotRecommendList.length > 0 ? this.props.hotRecommendList.map((v, i) => {
+              {this.props.hotRecommendList.length > 0 ? (
+                this.props.hotRecommendList.map((v, i) => {
                   // console.log(v)
                   return (
-                    (
-                      <li key={(v.schedular_url).substring(v.schedular_url.length - 6)}>
-                        <div>
-                          <img src={v.pic} />
-                        </div>
-                        <p>{v.show_name}</p>
-                        {/* 根据id获取详情 {(v.schedular_url).substring(v.schedular_url.length - 6)} */}
-                      </li>
-                    )
-                  )
-                }) : <div><ActivityIndicator size="large" /></div>
-              }
+                    <li
+                      key={v.schedular_url.substring(
+                        v.schedular_url.length - 6
+                      )}
+                      onClick={() => {
+                        this.props.history.push(
+                          "/ShowDetail/" +
+                            v.schedular_url.substring(
+                              v.schedular_url.length - 6
+                            ) +
+                            "/" +
+                            v.show_name +
+                            ".html"
+                        );
+                      }}
+                    >
+                      <div>
+                        <img src={v.pic} />
+                      </div>
+                      <p>{v.show_name}</p>
+                      {/* 根据id获取详情 {(v.schedular_url).substring(v.schedular_url.length - 6)} */}
+                    </li>
+                  );
+                })
+              ) : (
+                <ActivityIndicator size="large" />
+              )}
             </ul>
           </div>
         </div>
@@ -161,17 +239,21 @@ class Home extends Component {
               </span>
             </p>
           </div>
-          {
-            this.props.tuorShowList.length > 0 ? this.props.tuorShowList.map(v => (
-              <div className={style["tourintroduce"]} key={v.id}>
+          {this.props.tuorShowList.length > 0 ? (
+            this.props.tuorShowList.map((v) => (
+              <div
+                className={style["tourintroduce"]}
+                key={v.id}
+                onClick={() => {
+                  this.props.history.push("/tourShowInfo/" + v.id + ".html");
+                }}
+              >
                 <div className={style["tourimg"]}>
                   <img src={v.mobile_col_img} alt="" />
                 </div>
                 <div className={style["tour-schedule"]}>
                   <p className={style["tour-time"]}>2020.08.13 - 10.03</p>
-                  <p className={style["tour-title"]}>
-                    {v.name}
-                  </p>
+                  <p className={style["tour-title"]}>{v.name}</p>
                   <div className={style["tour-price"]}>
                     <mark>￥</mark>
                     <mark>{v.min_price}</mark>
@@ -183,23 +265,20 @@ class Home extends Component {
                       <span>巡城演</span>
                     </div>
                     <div className={style["tour-detaile-location"]}>
-                      {
-                        v.citys.map(item => (
-                          <span key={item.id}>
-                            {item.name}
-                            <i>|</i>
-                          </span>
-
-                        ))
-                      }
+                      {v.citys.map((item) => (
+                        <span key={item.id}>
+                          {item.name}
+                          <i>|</i>
+                        </span>
+                      ))}
                     </div>
-
                   </div>
                 </div>
               </div>
-            )) : <div><ActivityIndicator size="large" /></div>
-          }
-
+            ))
+          ) : (
+            <ActivityIndicator size="large" />
+          )}
         </div>
 
         {/* 舞台剧 */}
@@ -215,7 +294,14 @@ class Home extends Component {
               </span>
             </p>
           </div>
-          <div className={style["stageitem"]}>
+          <div
+            className={style["stageitem"]}
+            onClick={() => {
+              this.props.history.push(
+                "/ShowDetail/112293" + "/南山文体中心剧院小剧院" + ".html"
+              );
+            }}
+          >
             <div className={`${style["tourimg"]} ${style["tourimg-logo"]}`}>
               <img src={require("../../assets/img/Stage.png")} alt="" />
               <div className={style["juooobookslog"]}></div>
@@ -235,53 +321,75 @@ class Home extends Component {
           </div>
           <div className={`${style["hotshowlist"]} ${style["stagelist"]}`}>
             <ul>
-              <li>
+              <li
+                onClick={() => {
+                  this.props.history.push(
+                    "/ShowDetail/112259" + "/南山文体中心剧院大剧院" + ".html"
+                  );
+                }}
+              >
                 <div className={style["tourimg-logo"]}>
                   <div className={style["juooobookslog"]}></div>
                   <img src={require("../../assets/img/hoot.jpg")} />
                 </div>
                 <p>
-                  【演出延期】2020第七届城市戏剧节 乌镇戏剧节“最佳戏剧奖”“最佳个人表现奖”团队最新作品《涂红》-深圳站
-              </p>
+                  【演出延期】2020第七届城市戏剧节
+                  乌镇戏剧节“最佳戏剧奖”“最佳个人表现奖”团队最新作品《涂红》-深圳站
+                </p>
                 <span className={style["stage-price"]}>
                   <strong>￥99</strong>
                   <span>起</span>
                 </span>
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  this.props.history.push(
+                    "/ShowDetail/110514" + "/南山文体中心剧院大剧院" + ".html"
+                  );
+                }}
+              >
                 <div className={style["tourimg-logo"]}>
                   <div className={style["juooobookslog"]}></div>
                   <img src={require("../../assets/img/Stage1.jpg")} />
                 </div>
                 <p>
-                  【演出延期】2020第七届城市戏剧节 马修·伯恩经典全男版芭蕾舞剧《天鹅湖》高清影像-深圳站
-              </p>
+                  【演出延期】2020第七届城市戏剧节
+                  马修·伯恩经典全男版芭蕾舞剧《天鹅湖》高清影像-深圳站
+                </p>
                 <span className={style["stage-price"]}>
                   <strong>￥99</strong>
                   <span>起</span>
                 </span>
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  this.props.history.push(
+                    "/ShowDetail/110036" + "/刘慈欣" + ".html"
+                  );
+                }}
+              >
                 <div className={style["tourimg-logo"]}>
                   <div className={style["juooobookslog"]}></div>
                   <img src={require("../../assets/img/Stage2.jpg")} />
                 </div>
-                <p>
-                  【演出延期】3D科幻舞台剧《三体Ⅱ黑暗森林》-深圳站
-              </p>
+                <p>【演出延期】3D科幻舞台剧《三体Ⅱ黑暗森林》-深圳站</p>
                 <span className={style["stage-price"]}>
                   <strong>￥180</strong>
                   <span>起</span>
                 </span>
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  this.props.history.push(
+                    "/ShowDetail/109024" + "/石家庄" + ".html"
+                  );
+                }}
+              >
                 <div className={style["tourimg-logo"]}>
                   <div className={style["juooobookslog"]}></div>
                   <img src={require("../../assets/img/Stage3.jpg")} />
                 </div>
-                <p>
-                  四川人民艺术剧院-话剧《苏东坡》-石家庄
-              </p>
+                <p>四川人民艺术剧院-话剧《苏东坡》-石家庄</p>
                 <span className={style["stage-price"]}>
                   <strong>￥50</strong>
                   <span>起</span>
@@ -298,76 +406,38 @@ class Home extends Component {
               为你推荐
             </p>
           </div>
-          <div className={style["recommend-waterfall"]} ref={el => this.rewaterfall = el}>
-            <div className={style["recommend-left"]} ref={el => this.reLeft = el}>
+          <div
+            className={style["recommend-waterfall"]}
+            ref={(el) => (this.rewaterfall = el)}
+          >
+            <div
+              className={style["recommend-left"]}
+              ref={(el) => (this.reLeft = el)}
+            >
               {/* 为你推荐 瀑布流 图片 */}
-              {
-                this.state.waterfallLeft.length > 0 ? this.state.waterfallLeft.map(v => (
-                  <div className={style["ele-distance"]} key={v.cate_parent_id}>
-                    <div className={style["recommend-img"]}>
-                      <img src={v.pic} alt="" />
-                      <span className={style["recommend-tip"]}>{v.city_name}</span>
-                    </div>
-                    <div className={style["recommend-title"]}>
-                      <div className={style["sponsor"]}>
-                        <img style={{ display: v.method_icon ? "block" : "none" }} src={require("../../assets/img/i.png")} alt="" />
-                        <p>
-                          {v.name}
-                        </p>
-                      </div>
-                      <p className={style["sponsor-time"]}>{v.end_show_time}</p>
-                      <div className={style["sopnsor-prince"]}>
-                        <span>￥{v.min_price}</span>
-                        <span>起</span>
-                      </div>
-                      <div className={style["sopnsor-service"]}>
-                        {
-                          v.support_desc.map(item => (
-                            <span>{item}</span>
-                          ))
-                        }
-                      </div>
-                    </div>
-                  </div>
-                )) : <div><ActivityIndicator size="large" /></div>
-              }
-
+              {this.state.waterfallLeft.length > 0 ? (
+                this.state.waterfallLeft.map((v) => (
+                  <WaterfallEle {...v} key={v.schedular_id}></WaterfallEle>
+                ))
+              ) : (
+                <ActivityIndicator size="large" />
+              )}
             </div>
-            <div className={style["recommend-right"]} ref={el => this.reRight = el}>
-              {
-                this.state.waterfallRight.length > 0 ? this.state.waterfallRight.map(v => (
-                  <div className={style["ele-distance"]} key={v.cate_parent_id}>
-                    <div className={style["recommend-img"]}>
-                      <img src={v.pic} alt="" />
-                      <span className={style["recommend-tip"]}>{v.city_name}</span>
-                    </div>
-                    <div className={style["recommend-title"]}>
-                      <div className={style["sponsor"]}>
-                        <img style={{ display: v.method_icon ? "block" : "none" }} src={require("../../assets/img/i.png")} alt="" />
-                        <p>
-                          {v.name}
-                        </p>
-                      </div>
-                      <p className={style["sponsor-time"]}>{v.end_show_time}</p>
-                      <div className={style["sopnsor-prince"]}>
-                        <span>￥{v.min_price}</span>
-                        <span>起</span>
-                      </div>
-                      <div className={style["sopnsor-service"]}>
-                        {
-                          v.support_desc.map(item => (
-                            <span>{item}</span>
-                          ))
-                        }
-                      </div>
-                    </div>
-                  </div>
-                )) : <div><ActivityIndicator size="large" /></div>
-              }
+            <div
+              className={style["recommend-right"]}
+              ref={(el) => (this.reRight = el)}
+            >
+              {this.state.waterfallRight.length > 0 ? (
+                this.state.waterfallRight.map((v) => (
+                  <WaterfallEle {...v} key={v.schedular_id}></WaterfallEle>
+                ))
+              ) : (
+                <ActivityIndicator size="large" />
+              )}
             </div>
           </div>
         </div>
-      </div >
+      </div>
     );
   }
   componentDidMount() {
@@ -378,24 +448,28 @@ class Home extends Component {
     this.props.getShowListWaterPall.bind(this)();
     // console.log(this.waterfall, this.props.waterFallList)
     window.onscroll = () => {
-      let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight; //body 实际高度
-      let clientHeight = document.documentElement.clientHeight || document.body.clientHeight; //视口高度
+      let maxScrollHeight =
+        document.documentElement.scrollTop || document.body.scrollTop; //body 实际高度
+      let clientHeight =
+        document.documentElement.clientHeight || document.body.clientHeight; //视口高度
 
       // //假设左边盒子高度最小
-      let minDefaultDiv = this.reLeft
-      let minDefaultHeight = this.reLeft.scrollHeight
-      // waterfallEle.forEach()
-      if (this.reLeft.scrollHeight > this.reRight.scrollHeight) {
-        minDefaultHeight = this.reRight.scrollHeight
+      let minDefaultDiv = this.reLeft;
+
+      if (minDefaultDiv) {
+        let minDefaultHeight = this.reLeft.scrollHeight;
+        // waterfallEle.forEach()
+        if (this.reLeft.scrollHeight > this.reRight.scrollHeight) {
+          minDefaultHeight = this.reRight.scrollHeight;
+        }
+        if (maxScrollHeight > minDefaultHeight - clientHeight) {
+          if (this.switch) {
+            this.switch = false; //满足条件时 先关闭开关  获取数据异步程序
+            this.props.getShowListWaterPall.bind(this)();
+          }
+        }
       }
-      // console.log(scrollHeight, clientHeight, this)
-      if (scrollHeight - clientHeight > minDefaultHeight - 400) {
-        console.log(this.switch)
-        // if (this.switch) {
-        // this.props.getShowListWaterPall.bind(this)();
-        // }
-      }
-    }
+    };
   }
   componentWillUpdate(nextProps, nextState) {
     // console.log(this.waterfall, this.props.waterFallList)
@@ -404,8 +478,8 @@ class Home extends Component {
     }
     if (this.props.vipDiscount.length > 0) {
       this.setState({
-        vipFlag: true
-      })
+        vipFlag: true,
+      });
     }
     // if (this.props.waterFallList.length > 0) {
     //   // console.log(this.waterfall, this.props.waterFallList)
@@ -415,15 +489,16 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
+    homeLbList: state.home.homeLbList,
     classifyType: state.home.classifyList,
     vipDiscount: state.home.vipCount,
     hotRecommendList: state.home.hotsRecommendList,
     tuorShowList: state.home.tourShowList,
     pageIndex: state.home.pageIndex,
-    waterFallList: state.home.waterFallList
+    waterFallList: state.home.waterFallList,
   };
 }
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(homeAction, dispatch);
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Home));

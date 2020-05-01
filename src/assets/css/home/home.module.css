@@ -58,11 +58,47 @@
 .adv {
   height: 4.04rem;
   padding: 0 0.4rem;
+  position: relative;
 }
 .adv img {
   width: 100%;
   height: 4.04rem;
   border-radius: 0.12rem;
+}
+.adv-home-lb{
+  width: 2.5rem;
+  /* background:red; */
+  position: absolute;
+  left: 50%;
+  bottom:0.25rem;
+  transform:translate(-50%,0);
+  -webkit-transform:translate(-50%,0);
+  -moz-transform:translate(-50%,0);
+  -ms-transform:translate(-50%,0);
+  -o-transform:translate(-50%,0);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+}
+.adv-home-show{
+  width: 0.14rem;
+  height: 0.14rem;
+  background:#000;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  opacity: 0.3;
+}
+.adv-home-active{
+  width: 0.28rem;
+  background:#fff;
+  border-radius: 0.14rem;
+  -webkit-border-radius: 0.14rem;
+  -moz-border-radius: 0.14rem;
+  -ms-border-radius: 0.14rem;
+  -o-border-radius: 0.14rem;
 }
 /* 演出类型 */
 .typedetaile {
@@ -527,24 +563,28 @@
 .recommend-waterfall {
   padding: 0 0.4rem;
   overflow: hidden;
+ /* background-color: #f5f5f5; */
 }
 .recommend-left,
 .recommend-right {
   float: left;
   width: 4.55rem;
   overflow: hidden;
-  background-color: #fefefe;
 }
 .recommend-left{
   margin-right:0.1rem;
 }
 .ele-distance{
-  margin-bottom: 0.2rem;
-  border: 1px solid #ebebeb;
-  border-radius: 0.2rem;
+    width: 4.55rem;
+    margin-bottom: 0.2rem;
+    border: 1px solid #ebebeb;
+    border-radius: 0.2rem;
+    background-color: #fefefe;
+    overflow: hidden;
 }
 .recommend-img {
   position: relative;
+  border-radius: 0.2rem;
   width: 100%;
   height: 6.8rem;
 }
@@ -621,12 +661,12 @@
   margin-left: 0.1rem;
 }
 .sopnsor-service {
-  margin-top: 0.13333rem;
+  margin-top: 0.2rem;
   line-height: 0.29333rem !important;
 }
 .sopnsor-service > span {
   display: inline-block;
-  padding: 0.01rem 0.13333rem;
+  padding: 0.03rem 0.13333rem;
   background-color: #fff1ef;
   border-radius: 0.22667rem;
   color: #ff6743;

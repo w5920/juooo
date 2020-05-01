@@ -19,7 +19,6 @@ axios.interceptors.response.use(({ data }) => {
   return data.data;
 });
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

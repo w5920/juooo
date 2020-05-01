@@ -1,4 +1,5 @@
 export default {
+  homeLbList: [],//首页轮播图
   classifyList: [],  //类型
   vipCount: [],  //vip轮播图
   hotsRecommendList: [],//热门演出

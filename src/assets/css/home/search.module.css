@@ -1,0 +1,173 @@
+.head{
+    height: 1.17333rem;
+    width: 100%;
+    padding: 0 0.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+.search-ipt{
+    width: 8.05333rem;
+    height: 0.85rem;
+    background-color: #f5f5f5;
+    border-radius: 0.4rem;
+    padding: 0 0.22667rem 0 0.37333rem;
+    border: solid 1px #ebebeb;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+}
+.search-ipt>input{
+    height: 0.53333rem;
+    line-height: 0.53333rem;
+    width: 6.26667rem;
+    font-size: 0.34667rem;
+   border: 0;
+   background: #f5f5f5;
+}
+.search-left{
+   width: 0.53333rem;
+    height: 0.53333rem; 
+}
+.head>Span{
+   font-family: 'PingFang-SC-Medium';
+    font-size: 0.37333rem;
+    color: #666;
+}
+.hots-search{
+    padding: 0.69333rem 0.4rem 0;
+}
+.hots-search>p{
+    font-size: 0.34667rem;
+    color: #666;
+    display: block;
+    height: 0.53333rem;
+    line-height: 0.53333rem;
+}
+.hots-search>ul{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.53333rem;   
+}
+.hots-search>ul>li{
+    font-family: 'PingFang-SC-Medium';
+    padding: 0 0.66667rem;
+    height: 0.93333rem;
+    line-height: 0.93333rem;
+    font-size: 0.37333rem;
+    color: #232323;
+    background-color: #f5f5f5;
+    border-radius: 0.08rem;
+    margin-right: 0.34667rem;
+    margin-bottom: 0.34667rem;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+/* 搜索的数据 */
+.ele-distance{
+    margin-bottom: 0.2rem;
+    border: 1px solid #ebebeb;
+    border-radius: 0.2rem;
+    background-color: #fefefe;
+    -webkit-border-radius: 0.2rem;
+    -moz-border-radius: 0.2rem;
+    -ms-border-radius: 0.2rem;
+    -o-border-radius: 0.2rem;
+}
+.recommend-img {
+  position: relative;
+  border-radius: 0.2rem;
+  width: 100%;
+  height: 6.8rem;
+}
+.recommend-tip {
+  position: absolute;
+  right: 0.2rem;
+  top: 0.2rem;
+  height: 0.48rem;
+  padding: 0 0.12rem;
+  background: linear-gradient(
+    -45deg,
+    rgba(38, 38, 38, 0.8),
+    rgba(70, 68, 65, 0.8)
+  );
+  border-radius: 0.02667rem;
+  color: #fefefe;
+  font-size: 0.32rem;
+}
+.recommend-img img {
+  border: none;
+  border-color: transparent;
+  vertical-align: middle;
+  border-radius: 0.2rem;
+  width: 100%;
+  height: 100%;
+}
+.recommend-title {
+  padding: 0.21333rem 0.29333rem 0.29333rem;
+  overflow: hidden;
+}
+.sponsor {
+  position: relative;
+}
+.sponsor > img {
+  position: absolute;
+  left: 0;
+  top: 0px;
+  display: block;
+  width: 0.89333rem;
+  height: 0.45333rem;
+}
+.sponsor > p {
+  text-indent: 1rem;
+  color: #232323;
+  font-weight: normal;
+  font-size: 0.37333rem;
+  line-height: 0.53333rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.sponsor-time {
+  margin-top: 0.10667rem;
+  font-size: 0.34667rem;
+  color: #666;
+  line-height: 0.53333rem;
+}
+.sopnsor-prince {
+  margin-top: 0.10667rem;
+  display: flex;
+  overflow: hidden;
+}
+.sopnsor-prince span:nth-of-type(1) {
+  color: #ff6743;
+  font-size: 0.42667rem;
+}
+.sopnsor-prince span:nth-of-type(2) {
+  margin-top: 0.2rem;
+  color: #999;
+  font-size: 0.29333rem;
+  line-height: 0.29333rem;
+  margin-left: 0.1rem;
+}
+.sopnsor-service {
+  margin-top: 0.2rem;
+  line-height: 0.29333rem !important;
+}
+.sopnsor-service > span {
+  display: inline-block;
+  padding: 0.03rem 0.13333rem;
+  background-color: #fff1ef;
+  border-radius: 0.22667rem;
+  color: #ff6743;
+  font-size: 0.29333rem;
+  margin-right: 0.13333rem;
+  margin-bottom: 0.13333rem;
+}
