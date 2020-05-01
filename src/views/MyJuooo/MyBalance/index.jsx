@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import myBanlanceAction from '../../../store/actionCreator/myJuooo/myBanlance'
+import myjuoooAction from '../../../store/actionCreator/myJuooo'
 import mybanlanceCss from '../../../assets/css/myjuooo/myBanlance.module.css'
 
-import PageHeader from '../../../components/common/PageHeader'
-
+import PageHeaderYel from '../../../components/common/PageHeaderYel'
+import EmptyList from '../../../components/common/EmptyList'
 class index extends Component {
     constructor(props) {
         super(props);
@@ -25,10 +25,13 @@ class index extends Component {
         this.props.getBanlanceList(num);
     }
     render() {
-        console.log(this.props);
+        console.log(this.props.banlanceList);
+        if (!this.props.banlanceList) {
+            return <p>加载中。。。</p>
+        }
         return (
             <div>
-                <PageHeader pageName={'账户余额'}></PageHeader>
+                <PageHeaderYel pageName={'账户余额'}></PageHeaderYel>
                 <div className={mybanlanceCss.banlance}>
                     <p className={mybanlanceCss.banlanceName}>0.00</p>
                     <p className={mybanlanceCss.banlanceNum}>账户余额(元)</p>
@@ -38,12 +41,12 @@ class index extends Component {
                     <li className={this.state.banlanceType == 1 ? mybanlanceCss.activeType : ""} onClick={this.handleType.bind(this, 1)}>余额收入</li>
                     <li className={this.state.banlanceType == 2 ? mybanlanceCss.activeType : ""} onClick={this.handleType.bind(this, 2)}>余额支出</li>
                 </ul>
-                <div className={mybanlanceCss.banlanceList}>
-                    <div className={this.props.banlanceList ? mybanlanceCss.empty : mybanlanceCss.noEmpty}>
-                        <img src={require('../../../assets/img/balance_empty.png')} alt="" />
-                        <p>暂无交易记录</p>
-                    </div>
-                </div>
+
+                {
+                    this.props.banlanceList.length === 0 ?
+                        <EmptyList emptyMsg={{ img: 'balance_empty', msg: '暂无交易记录' }}></EmptyList>
+                        : <div></div>
+                }
             </div>
         );
     }
@@ -51,11 +54,11 @@ class index extends Component {
 
 function mapStateToProps(state) {
     return {
-        banlanceList: state.banlance.banlanceList
+        banlanceList: state.myjuooo.banlanceList
     }
 }
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(myBanlanceAction, dispatch)
+    return bindActionCreators(myjuoooAction, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(index);

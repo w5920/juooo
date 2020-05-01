@@ -3,6 +3,6 @@ import home from "./home";
 import myjuooo from "./myJuooo";
 export default combineReducers({
 
-  ...myjuooo,
+  myjuooo,
   home,
 });

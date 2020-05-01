@@ -3,4 +3,7 @@ export default {
     banlanceInit: [],
     userSoreInit: {},
     schedularInit: [],
+    couponInit: [],
+    plusInfoInit: {},
+    plusEquityInit: []
 }

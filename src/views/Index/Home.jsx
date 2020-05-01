@@ -303,7 +303,7 @@ class Home extends Component {
               {/* 为你推荐 瀑布流 图片 */}
               {
                 this.state.waterfallLeft.length > 0 ? this.state.waterfallLeft.map(v => (
-                  <div className={style["ele-distance"]} key={v.cate_parent_id}>
+                  <div className={style["ele-distance"]} key={v.schedular_id}>
                     <div className={style["recommend-img"]}>
                       <img src={v.pic} alt="" />
                       <span className={style["recommend-tip"]}>{v.city_name}</span>
@@ -322,8 +322,8 @@ class Home extends Component {
                       </div>
                       <div className={style["sopnsor-service"]}>
                         {
-                          v.support_desc.map(item => (
-                            <span>{item}</span>
+                          v.support_desc.map((item, index) => (
+                            <span key={'left' + index}>{item}</span>
                           ))
                         }
                       </div>
@@ -336,7 +336,7 @@ class Home extends Component {
             <div className={style["recommend-right"]} ref={el => this.reRight = el}>
               {
                 this.state.waterfallRight.length > 0 ? this.state.waterfallRight.map(v => (
-                  <div className={style["ele-distance"]} key={v.cate_parent_id}>
+                  <div className={style["ele-distance"]} key={v.schedular_id}>
                     <div className={style["recommend-img"]}>
                       <img src={v.pic} alt="" />
                       <span className={style["recommend-tip"]}>{v.city_name}</span>
@@ -355,8 +355,8 @@ class Home extends Component {
                       </div>
                       <div className={style["sopnsor-service"]}>
                         {
-                          v.support_desc.map(item => (
-                            <span>{item}</span>
+                          v.support_desc.map((item, index) => (
+                            <span key={'right' + index}>{item}</span>
                           ))
                         }
                       </div>
