@@ -1,0 +1,30 @@
+.sheetCoponText{
+    width: 100%;
+    height: 863px;
+    overflow-y: auto;
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 0 30px;
+    border-radius: 20px 20px 0 0;
+}
+::-webkit-scrollbar{width:0;}
+.sheetCoponTitle{
+        text-align: left;
+        padding: 50px 0;
+        font-size: 38px;
+        font-weight: 700;
+}
+
+.sheetCoponTitle span{
+    float: right;
+   font-weight: 400;
+}
+.sheetCoponTitle span img{
+    width: 38px;
+}
+.sheetCoponItem{
+    font-size: 32px;
+    margin-bottom: 20px;
+}

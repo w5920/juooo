@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import myjuoooCss from "../../assets/css/myjuooo/myjuooo.module.css";
-import myjuoooIndexAction from "../../store/actionCreator/myJuooo/myIndex";
+import myjuoooAction from "../../store/actionCreator/myJuooo";
 class Myjuooo extends Component {
   constructor(props) {
     super(props);
@@ -149,14 +149,13 @@ class Myjuooo extends Component {
 }
 function mapStateToProps(state) {
   return {
-    is_login: state.myIndex.is_login,
-    basicInfo: state.myIndex.basicInfo,
-    // menuItemList: state.myIndex.menuItemList,
+    is_login: state.myjuooo.is_login,
+    basicInfo: state.myjuooo.basicInfo,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(myjuoooIndexAction, dispatch);
+  return bindActionCreators(myjuoooAction, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Myjuooo);

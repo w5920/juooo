@@ -1,0 +1,57 @@
+.couponType{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    font-size: 30px;
+    line-height: 86px;
+    justify-content: space-around;
+}
+.couponTypeCont{
+    width: 230px;
+    height:88px;
+    padding: 0 10px;
+
+}
+.couponTypeCont p span{
+    width: 120px;
+    height:6px;
+    margin: auto;
+}
+.activeCont {
+    width: 230px;
+    height:88px;
+    padding: 0 10px;
+    color: rgb(255, 103, 67)
+}
+.activeCont p span{
+    width: 120px;
+    height:6px;
+    margin: auto;
+    background-color:  rgb(255, 103, 67);
+}
+.exChange{
+    width: 690px;
+    margin: 60px auto 0;
+    display: flex;
+}
+.exChangeInt{
+    width: 570px;
+    border: 2px solid #E6E6E6;
+    border-radius: 34px 0 0 34px;
+}
+.exChangeInt input{
+    line-height: 68px;
+    border: none;
+    font-size: 48px;
+    margin-left: 30px;
+    line-height:68px;
+    background-color: #f5f5f9;
+}
+.exChangeBtn{
+    width: 120px;
+    height: 68px;
+    text-align: center;
+    line-height: 68px;
+    background-color: #ccc;
+    border-radius: 0 34px 34px 0;
+}

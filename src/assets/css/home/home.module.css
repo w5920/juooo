@@ -65,25 +65,25 @@
   height: 4.04rem;
   border-radius: 0.12rem;
 }
-.adv-home-lb{
+.adv-home-lb {
   width: 2.5rem;
   /* background:red; */
   position: absolute;
   left: 50%;
-  bottom:0.25rem;
-  transform:translate(-50%,0);
-  -webkit-transform:translate(-50%,0);
-  -moz-transform:translate(-50%,0);
-  -ms-transform:translate(-50%,0);
-  -o-transform:translate(-50%,0);
+  bottom: 0.25rem;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
   z-index: 100;
   display: flex;
   justify-content: space-between;
 }
-.adv-home-show{
+.adv-home-show {
   width: 0.14rem;
   height: 0.14rem;
-  background:#000;
+  background: #000;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -91,9 +91,9 @@
   -o-border-radius: 50%;
   opacity: 0.3;
 }
-.adv-home-active{
+.adv-home-active {
   width: 0.28rem;
-  background:#fff;
+  background: #fff;
   border-radius: 0.14rem;
   -webkit-border-radius: 0.14rem;
   -moz-border-radius: 0.14rem;
@@ -177,8 +177,8 @@
   background: #f7eada;
 }
 .viplb {
-   height: 2.85333rem;
-  padding: 0.4rem 0.4rem 0 0.4rem; 
+  height: 2.85333rem;
+  padding: 0.4rem 0.4rem 0 0.4rem;
   display: flex;
   justify-content: space-between;
 }
@@ -241,7 +241,7 @@
   height: 0.8rem;
   padding-top: 0.3rem;
 }
-.advbottom p {
+.advbottom > div {
   width: 1rem;
   height: 0.14rem;
   margin: 0 auto;
@@ -255,7 +255,7 @@
   background: #ffd9d0;
   border-radius: 50%;
 }
- .advbottom  .advActive{
+.advbottom .advActive {
   width: 0.3rem;
   height: 0.14rem;
   background: #ff6743;
@@ -563,7 +563,7 @@
 .recommend-waterfall {
   padding: 0 0.4rem;
   overflow: hidden;
- /* background-color: #f5f5f5; */
+  /* background-color: #f5f5f5; */
 }
 .recommend-left,
 .recommend-right {
@@ -571,16 +571,16 @@
   width: 4.55rem;
   overflow: hidden;
 }
-.recommend-left{
-  margin-right:0.1rem;
+.recommend-left {
+  margin-right: 0.1rem;
 }
-.ele-distance{
-    width: 4.55rem;
-    margin-bottom: 0.2rem;
-    border: 1px solid #ebebeb;
-    border-radius: 0.2rem;
-    background-color: #fefefe;
-    overflow: hidden;
+.ele-distance {
+  width: 4.55rem;
+  margin-bottom: 0.2rem;
+  border: 1px solid #ebebeb;
+  border-radius: 0.2rem;
+  background-color: #fefefe;
+  overflow: hidden;
 }
 .recommend-img {
   position: relative;

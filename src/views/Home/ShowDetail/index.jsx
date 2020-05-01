@@ -73,13 +73,13 @@ export default class index extends Component {
           <div className={style["show-benefit-vip"]}>
             <span className={style["vip_one"]}>VIP+</span>
             <span className={style["vip_two"]}>:</span>
-            <p className={style["vip_there"]}>
+            <div className={style["vip_there"]}>
               <span>V+会员享</span>
               <span>国内免邮 + 双倍积分</span>
               <div className={style["plus-img"]}>
                 <img src={require("../../../assets/img/arrow.png")} alt="" />
               </div>
-            </p>
+            </div>
           </div>
           <div className={style["show-benefit-admission"]}>
             <div className={style["show-benefit-vip"]}>

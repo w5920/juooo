@@ -157,7 +157,7 @@ class Home extends Component {
           </div>
         </div>
         <div className={style["advbottom"]}>
-          <p>
+          <div>
             {this.props.vipDiscount.length > 0 ? (
               this.props.vipDiscount.map((v, i) => (
                 <span
@@ -172,7 +172,7 @@ class Home extends Component {
             ) : (
               <ActivityIndicator size="large" text="loading..." />
             )}
-          </p>
+          </div>
         </div>
 
         {/* <!-- vip广告 --> */}
