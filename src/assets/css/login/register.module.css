@@ -1,0 +1,97 @@
+.container{
+    width: 622px;
+    margin: 100px auto 0;
+}
+.register_logo{
+    width: 320px;
+    height: 101px;
+    margin:0 auto 68px;
+}
+.register_logo img{
+    width: 320px;
+    height: 101px;
+}
+.container p{
+    height: 110px;
+    line-height: 110px;
+    margin: auto;
+    font-size: 40px;
+    border-bottom: 2px solid #999999;
+}
+.phoneNumber span {
+    display: inline;
+    color:#ff6743;
+    margin-right: 15px;
+}
+.phoneNumber input {
+    display: inline;
+    color:#232323;
+    border: 0;
+}
+.regCode input {
+    display: inline;
+    color:#232323;
+    margin-right: 15px;
+    border: 0;
+}
+.regCode i {
+    display: inline;
+    color:#232323;
+    font-size: 30px;
+}
+.container h6{
+    font-size: 30px;
+    color: #999;
+    margin-top: 30px;
+}
+.container button{
+    width: 100%;
+    height: 100px;
+    border-radius: 50px;
+    background: linear-gradient(50deg, #ff9a34, #ff4d4a);
+    border: 0;
+    margin: 40px 0 ;
+    opacity: 0.5;
+}
+.regWay {
+    border: 0;
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.regWay span{
+    display: inline;
+    font-size: 30px;
+    color:#666;
+}
+.register_foot{
+    width: 470px;
+    height: 140px;
+    border-top: 2px solid #999;
+    margin: auto;
+    position: relative;
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.register_foot span{
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: #fff;
+    color:#666;
+    font-size: 30px;
+    position: absolute;
+    left:50%;
+    top:-25px;
+    margin-left: -100px;
+}
+
+.register_foot img{
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+}

@@ -1,0 +1,152 @@
+.sheetContainer{
+    height: 800px;
+    padding: 50px;
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+.sheetCoponTitle{
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 32px;
+}
+.sheetCoponTitle span{
+    float: right;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+.sheetCoponTitle span img{
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+}
+.msgInt{
+    width: 650px;
+    height: 120px;
+    line-height: 120px;
+    font-size: 40px;
+}
+.msgInt input{
+    width: 400px;
+    height: 80px;
+    display: inline-block;
+    border: 0;
+}
+.msgSubmit{
+    font-size: 32px;
+    color:#fff;
+    width: 650px;
+    height: 80px;
+    margin: auto;
+    border: 0;
+    background-color: #FF6743;
+    border-radius: 40px;
+    position: absolute;
+    bottom: 20px;
+}
+/* 购买新卡 */
+.walletTop{
+    width: 750px;
+    height: 468px;
+    background: url('../../img/card_market_top_bg.png') no-repeat;
+    background-size: 100%;
+    background-position-y: -88px;
+    overflow: hidden;
+}
+.vipWalletImg{
+   margin-top: 30px;
+}
+.vipWalletImg img{
+    width: 690px;
+    height: 360px;
+    margin:0 auto 30px;
+}
+.vipRewardConts{
+    width: 750px;
+}
+.walletVipInfo{
+    background-color: #fff;
+    margin-bottom: 40px;
+}
+.walletVipTitle{
+    height: 80px;
+    font-size: 38px;
+    color:#232323;
+    font-weight: 700;
+    line-height: 80px;
+    margin-left: 35px;
+}
+.walletVipTitle span{
+    display: inline-block;
+    width: 510px;
+    font-size: 30px;
+    color:#666666;
+    margin-left: 20px;
+    height: 80px;
+    margin-right: 40px;
+}
+.walletVipTitle i{
+    width: 40px;
+    text-align: center;
+    display: inline-block;
+    color:#666666;
+    height: 80px;
+}
+.cardVipInfo{
+    width: 750px;
+    padding: 44px 30px;
+    background-color: #fff;
+    margin-bottom: 40px;
+}
+.cardTypeInfo{
+    width: 690px;
+    height: 54px;
+    line-height: 54px;
+    color:#232323;
+    font-size: 38px;
+}
+.cardTypeInfo span{
+    height: 54px;
+    display: inline-block;
+    font-size: 30px;
+    color:#666666;
+    margin-left: 20px;
+}
+.cardInfoCont{
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.cardInfoCont img{
+    width: 320px;
+    height: 200px;
+}
+.cardInfoContMsg{
+    width: 320px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.cardInfoContMsg h3{
+    font-size: 34px;
+    color:#232323;
+    font-weight: 700;
+}
+.cardInfoContMsg h4{
+    font-size: 30px;
+    color:#999;
+}
+.cardInfoContMsg h5{
+    font-size: 30px;
+    color:#FF6743;
+}
+.cardInfoContMsg h5 span{
+    display: inline-block;
+    font-size: 30px;
+    color:#FF6743;
+}
