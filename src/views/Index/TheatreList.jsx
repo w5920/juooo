@@ -1,36 +1,38 @@
-import { Button } from "antd-mobile";
 import React, { Component } from "react";
+import Reminder from "../../components/common/Reminder";
 class TheatreList extends Component {
-  state = {
-    data: ["1", "2", "3"],
-    imgHeight: 176,
-  };
-  componentDidMount() {
-    // simulate img loading
-    setTimeout(() => {
-      this.setState({
-        data: [
-          "AiyWuByWklrrUDlFignR",
-          "TekJlZRVCjLFexlOCuWn",
-          "IJOtIlfsYdTyaDTRVrLI",
-        ],
-      });
-    }, 100);
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: "none",
+      bottom: 0,
+    };
+  }
+  actionFn() {
+    console.log(12222);
+    this.setState({
+      show: "none",
+      bottom: "-12.24rem",
+    });
   }
   render() {
     return (
       <div>
-        剧院列表
-        <Button type={"primary"} style={{ width: "100px", margin: " 0 auto " }}>
-          primary
-        </Button>
-        {/* <Button type="warning">warning</Button> */}
-        {/* <ActivityIndicator /> */}
-        {/* <ActivityIndicator color="white" /> */}
-        {/* <ActivityIndicator size="large" /> */}
-        {/* <ActivityIndicator text="正在加载" /> */}
-        {/* <ActivityIndicator toast /> */}
-        {/* <ActivityIndicator size="large" toast text="正在加载" /> */}
+        <Reminder
+          {...this.state}
+          actionFn={this.actionFn.bind(this)}
+        ></Reminder>
+        <button
+          onClick={() => {
+            // console.log(this);
+            this.setState({
+              show: "block",
+              bottom: 0,
+            });
+          }}
+        >
+          点击
+        </button>
       </div>
     );
   }

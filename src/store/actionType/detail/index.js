@@ -1,0 +1,5 @@
+export default {
+  DETAILE_DEFAULT: "DETAILE_DEFAULT", //演出详情
+  DETAILE_RELEVANT: "DETAILE_RELEVANT", //演出相关
+  DETAILE_TIME: "DETAILE_TIME", //选座日期
+};

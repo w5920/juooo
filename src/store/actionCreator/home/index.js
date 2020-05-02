@@ -14,7 +14,7 @@ export default {
       const data = await axios.get(
         "home/index/getClassifyHome?city_id=0&abbreviation=&version=6.1.1&referer=2"
       );
-      // console.log(data.slide_list)
+      // console.log(data);
       dispatch(
         getClassifyList(homeActionType.GET_HOME_LB_LIST, data.slide_list)
       ); //首页轮播图
@@ -23,6 +23,7 @@ export default {
       ); //首页类型
     };
   },
+  //首页vip轮播图
   getVipHomeSchedular() {
     return async (dispatch) => {
       const data = await axios.get(
@@ -69,7 +70,6 @@ export default {
       let waterfallRight = []; //右边瀑布流盒子
       this.props.waterFallList.forEach((v, i) => {
         if (i % 2 === 0) {
-          // console.log(i)
           waterfallLeft.push(v);
         } else {
           waterfallRight.push(v);
@@ -84,9 +84,6 @@ export default {
           this.switch = true;
         }
       );
-      // console.log(waterfallLeft, 11111, waterfallRight)
-      //当pageIndex为1时增加滚动条事件
-      //组件销毁时 去除
     };
   },
 };

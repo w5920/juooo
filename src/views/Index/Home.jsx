@@ -122,11 +122,7 @@ class Home extends Component {
                   <div
                     onClick={() => {
                       this.props.history.push(
-                        "/ShowDetail/" +
-                          v.schedular_id +
-                          "/" +
-                          v.venue_name +
-                          ".html"
+                        "/ShowDetail/" + v.schedular_id + ".html"
                       );
                     }}
                     className={style["viplb"]}
@@ -207,8 +203,6 @@ class Home extends Component {
                             v.schedular_url.substring(
                               v.schedular_url.length - 6
                             ) +
-                            "/" +
-                            v.show_name +
                             ".html"
                         );
                       }}
@@ -297,9 +291,7 @@ class Home extends Component {
           <div
             className={style["stageitem"]}
             onClick={() => {
-              this.props.history.push(
-                "/ShowDetail/112293" + "/南山文体中心剧院小剧院" + ".html"
-              );
+              this.props.history.push("/ShowDetail/112293" + ".html");
             }}
           >
             <div className={`${style["tourimg"]} ${style["tourimg-logo"]}`}>
@@ -323,9 +315,7 @@ class Home extends Component {
             <ul>
               <li
                 onClick={() => {
-                  this.props.history.push(
-                    "/ShowDetail/112259" + "/南山文体中心剧院大剧院" + ".html"
-                  );
+                  this.props.history.push("/ShowDetail/112259" + ".html");
                 }}
               >
                 <div className={style["tourimg-logo"]}>
@@ -343,9 +333,7 @@ class Home extends Component {
               </li>
               <li
                 onClick={() => {
-                  this.props.history.push(
-                    "/ShowDetail/110514" + "/南山文体中心剧院大剧院" + ".html"
-                  );
+                  this.props.history.push("/ShowDetail/110514" + ".html");
                 }}
               >
                 <div className={style["tourimg-logo"]}>
@@ -363,9 +351,7 @@ class Home extends Component {
               </li>
               <li
                 onClick={() => {
-                  this.props.history.push(
-                    "/ShowDetail/110036" + "/刘慈欣" + ".html"
-                  );
+                  this.props.history.push("/ShowDetail/110036" + ".html");
                 }}
               >
                 <div className={style["tourimg-logo"]}>
@@ -380,9 +366,7 @@ class Home extends Component {
               </li>
               <li
                 onClick={() => {
-                  this.props.history.push(
-                    "/ShowDetail/109024" + "/石家庄" + ".html"
-                  );
+                  this.props.history.push("/ShowDetail/109024" + ".html");
                 }}
               >
                 <div className={style["tourimg-logo"]}>

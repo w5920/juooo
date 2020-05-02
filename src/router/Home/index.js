@@ -3,6 +3,7 @@ import Calendar from "../../views/Home/Calendar";
 import Cardproduct from "../../views/Home/Cardproduct";
 import Integral from "../../views/Home/Integral";
 import Plus from "../../views/Home/Plus";
+import Reset from "../../views/Home/Reset";
 import Search from "../../views/Home/Search";
 import SelectCity from "../../views/Home/SelectCity";
 import ShowDetail from "../../views/Home/ShowDetail";
@@ -38,7 +39,7 @@ export default [
     component: Vip,
   },
   {
-    path: "/ShowDetail/:id/:keyword.html",
+    path: "/ShowDetail/:id.html",
     component: ShowDetail,
   },
   {
@@ -48,5 +49,9 @@ export default [
   {
     path: "/tourShowInfo/:tourId.html",
     component: TourShowInfo,
+  },
+  {
+    path: "/Reset/:id.html",
+    component: Reset,
   },
 ];

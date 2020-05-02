@@ -1,0 +1,79 @@
+.reminder-dialog {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+}
+.tips {
+  position: absolute;
+  bottom: -12.24rem;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  width: 100%;
+  background-color: #fefefe;
+  border-radius: 0.13333rem 0.13333rem 0px 0px;
+  transition: all 0.3s ease-out;
+}
+.tips-explain {
+  height: 12.24rem;
+  overflow-y: scroll;
+  overflow: hidden;
+  position: relative;
+}
+.explain-title {
+  font-size: 0.53333rem;
+  margin: 0.65333rem 0.4rem 0 0.4rem;
+  height: 0.53333rem;
+  line-height: 0.53333rem;
+  font-weight: bold;
+  color: #232323;
+  line-height: 0.53333rem;
+}
+.explain-x {
+  position: absolute;
+  right: 0.3rem;
+  top: 0.6rem;
+  width: 0.37333rem;
+  height: 0.37333rem;
+  padding: 0.26667rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.37333rem 0.37333rem;
+  background-image: url("../../img/explianX.png");
+}
+.explain {
+  overflow: hidden;
+}
+.explain span {
+  display: inline-block;
+}
+.explain-spot {
+  display: inline-block;
+  width: 0.10667rem;
+  height: 0.10667rem;
+  margin-left: 0.4rem;
+  background: #999;
+  border-radius: 50%;
+  margin-bottom: 0.1rem;
+}
+.explain-delivery {
+  margin-left: 0.32rem;
+  font-size: 0.37333rem;
+  height: 0.37333rem;
+  line-height: 0.37333rem;
+}
+.explain-rule {
+  margin-top: 0.53333rem;
+}
+.specific-description {
+  margin-top: 0.28rem;
+  font-size: 0.32rem;
+  margin-left: 0.8rem;
+  margin-right: 0.4rem;
+  color: #666666;
+  line-height: 0.42rem;
+}

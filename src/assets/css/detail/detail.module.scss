@@ -105,10 +105,10 @@
     }
   }
 }
-.detail-service > div:nth-of-type(2) {
-  margin-left: 0.4rem;
-  margin-right: 0.15rem;
+.detail-service > div {
+  margin-right: 0.2rem;
 }
+
 .detail-tips {
   width: 0.28rem;
   height: 0.28rem;
@@ -118,7 +118,7 @@
   font-size: 0.1rem;
   color: #666666;
   text-align: center;
-  line-height: 0.26667rem;
+  line-height: 0.28rem;
 }
 .detail-service::after {
   content: "";
@@ -129,7 +129,6 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  //   box-sizing: border-box;
 }
 // / {
 //   /*详情信息*/
@@ -180,6 +179,12 @@
   color: #232323;
   margin-top: 0.4rem;
   margin-right: 0.66667rem;
+}
+.venue {
+  font-size: 0.32rem;
+  margin-top: 0.2rem;
+  margin-right: 0.66667rem;
+  color: #666;
 }
 // 橙vip 广告
 .detaile-adv {
@@ -239,6 +244,7 @@
   display: flex;
   padding: 0.30667rem 0.4rem;
   background: #fff;
+  position: relative;
   .vip_one {
     width: 1.2rem;
     font-size: 0.37333rem;
@@ -261,7 +267,16 @@
     align-items: center;
     justify-content: space-between;
   }
+  .show-vip-line {
+    position: absolute;
+    margin: 0 0.4rem;
+    height: 0.01rem;
+    background: #ebebeb;
+    left: 0;
+    bottom: 0;
+  }
 }
+
 .vip_there span:nth-of-type(2) {
   color: #ff6743;
   padding-left: 0.16rem;
@@ -281,12 +296,28 @@
   overflow: hidden;
   background-color: #fefefe;
   margin-bottom: 0.4rem;
+  position: relative;
   h3 {
     font-size: 0.48rem;
     font-weight: bold;
     color: #232323;
     margin-top: 0.44rem;
   }
+}
+.detail-showAll-btn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.33333rem;
+  bottom: 0;
+  background-color: white;
+  color: #ff6743;
+  font-size: 0.37333rem;
+  line-height: 0.37333rem;
+  text-align: center;
+  padding-top: 0.29333rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .detail-introduction {
   margin-top: 0.29333rem;
@@ -297,6 +328,9 @@
     line-height: 0.66667rem;
     color: #232323;
   }
+}
+.detail-showAll {
+  display: none;
 }
 .detail-introduction-img {
   width: 100%;

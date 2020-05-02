@@ -1,0 +1,46 @@
+.detail-head {
+  width: 100%;
+  text-align: center;
+  font-size: 0.48rem;
+  font-weight: bold;
+  color: #fefefe;
+  height: 1.18667rem;
+  line-height: 1.18667rem;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.detail-head > div {
+  height: 0.5rem;
+  width: 0.5rem;
+  position: absolute;
+  text-align: center;
+  line-height: 1.18667rem;
+  font-size: 0.48rem;
+  color: white;
+  top: 0.3rem;
+}
+.detail-head .detail-retrun {
+  left: 0.3rem;
+}
+.detail-head .detail-share {
+  right: 1.2rem;
+}
+.detail-head .detail-home {
+  right: 0.3rem;
+}
+.detail-head .detail-retrun img {
+  width: 0.35rem;
+  height: 0.5rem;
+}
+.detail-head .detail-share img {
+  width: 0.45rem;
+  height: 0.45rem;
+}
+.detail-head .detail-home img {
+  width: 0.45rem;
+  height: 0.45rem;
+}

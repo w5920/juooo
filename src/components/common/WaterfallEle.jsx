@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import style from "../../assets/css/home/home.module.css";
+import style from "../../assets/css/component/waterfalEle.module.css";
 class WaterfallEle extends Component {
   render() {
     return (
@@ -9,11 +9,7 @@ class WaterfallEle extends Component {
           className={style["ele-distance"]}
           onClick={() => {
             this.props.history.push(
-              "/ShowDetail/" +
-                this.props.schedular_id +
-                "/" +
-                this.props.venue_name +
-                ".html"
+              "/ShowDetail/" + this.props.schedular_id + ".html"
             );
           }}
         >
