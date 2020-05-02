@@ -11,7 +11,11 @@ import * as serviceWorker from "./serviceWorker";
 import store from "./store";
 
 axios.interceptors.request.use((config) => {
-  config.url = "/api/" + config.url;
+  const reg = RegExp(/userLogin/);
+  if (!config.url.match(reg)) {
+    config.url = "/api/" + config.url;
+  }
+
   return config;
 });
 

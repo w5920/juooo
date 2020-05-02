@@ -1,4 +1,5 @@
 .am{
+    width: 750px;
     background-color: #fff;
     color:#232323;
     font-size: 36px;
@@ -17,4 +18,23 @@
     color:#232323 !important;
     font-size: 36px;
     line-height: 88px;
+}
+
+.popoverItem{
+    width: 280px;
+    height: 88px;
+    font-size: 30px !important;
+    line-height: 88px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+.popoverItem :nth-child(2){
+    margin: auto;
+}
+.itemImg{
+    position: absolute;
+    top: -3px;
+    margin: 19px 0;
+    width: 50px;
 }

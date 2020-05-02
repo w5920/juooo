@@ -1,0 +1,58 @@
+.rewardContainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+}
+.rewardContainer li {
+    width: 120px;
+    height:152px;
+    flex-shrink: 0;
+    margin-right: 40px;
+}
+.rewardBgimg{
+    width: 96px;
+    height: 96px;
+    margin: auto;
+    background: url('../../img/vip_plus_bg.png');
+    background-size:  5.89333rem 4.42667rem;
+}
+.rewardName{
+    font-size: 30px;
+    margin-top: 18px;
+    text-align: center;
+}
+.rewardContainer :nth-child(1) div{
+    background-position:-0.12rem -3.06667rem ;
+}
+.rewardContainer :nth-child(2) div{
+    background-position:-3.05333rem -3.06667rem;   
+}
+.rewardContainer :nth-child(3) div{
+    background-position:-4.52rem -1.6rem;   
+}
+.rewardContainer :nth-child(4) div{
+    background-position:-4.52rem -0.12rem;   
+}
+.rewardContainer :nth-child(5) div{
+    background-position:-1.58667rem -1.6rem;   
+}
+.rewardContainer :nth-child(6) div{
+    background-position:-3.05333rem -1.6rem;   
+}
+.rewardContainer :nth-child(7) div{
+    background-position:-1.58667rem -3.06667rem;;   
+}
+.rewardContainer :nth-child(8) div{
+    background-position:-0.12rem -1.6rem;   
+}
+.rewardContainer :nth-child(9) div{
+    background-position:-1.58667rem -0.12rem;   
+}
+.rewardContainer :nth-child(10) div{
+    background-position:-3.05333rem -0.12rem;   
+}
+.rewardContainer :nth-child(11) div{
+    background-position:-0.12rem -0.12rem;   
+}

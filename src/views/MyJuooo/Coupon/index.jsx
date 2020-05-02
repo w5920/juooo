@@ -20,7 +20,7 @@ class index extends Component {
     changeSheetShow() {
         this.setState({
             sheetShow: !this.state.sheetShow
-        })
+        });
     }
     changeCouponType(num) {
         this.setState({
