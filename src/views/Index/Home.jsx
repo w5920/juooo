@@ -86,8 +86,17 @@ class Home extends Component {
 
         <div className={style["typedetaile"]}>
           <ul>
-            {this.props.classifyType.map((v) => (
-              <li key={v.id}>
+            {this.props.classifyType.map((v, i) => (
+              <li
+                key={v.id}
+                onClick={() => {
+                  if (i <= 4) {
+                    this.props.history.push(
+                      "/showlibrary/" + v.category_id + ".html"
+                    );
+                  }
+                }}
+              >
                 <img src={v.pic} alt="" />
                 <span>{v.name}</span>
               </li>

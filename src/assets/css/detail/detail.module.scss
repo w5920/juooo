@@ -61,10 +61,15 @@
     justify-content: space-between;
     p {
       font-size: 0.42667rem;
-      line-height: 0.53333rem;
+      line-height: 0.66667rem;
       color: #fefefe;
       min-height: 1.06667rem;
       word-break: break-all;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
     span {
       font-size: 0.50667rem;

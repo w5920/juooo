@@ -6,10 +6,12 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import "./assets/css/common.css";
+import { filTime, randomKey } from "./filters";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import store from "./store";
-
+React.Component.prototype.$randomKey = randomKey; //随机key
+React.Component.prototype.$filTime = filTime; //过滤时间
 axios.interceptors.request.use((config) => {
   const reg = RegExp(/userLogin/);
   if (!config.url.match(reg)) {
