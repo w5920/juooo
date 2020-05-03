@@ -366,6 +366,7 @@ class index extends Component {
             )}
           </div>
         </div>
+
         {/* 底部购买 */}
         <div className={style["detailFooter"]}>
           <div
@@ -387,6 +388,10 @@ class index extends Component {
           >
             选座购买
           </div>
+          <Reminder
+            {...{ show: this.state.show, bottom: this.state.ReminderBottom }}
+            actionFn={this.actionTipsFn.bind(this)}
+          ></Reminder>
           {this.props.detailTime.length > 0 ? (
             <ActionPanel
               bottom={this.state.bottom}
@@ -396,10 +401,6 @@ class index extends Component {
           ) : (
             <ActivityIndicator size="large" />
           )}
-          <Reminder
-            {...{ show: this.state.show, bottom: this.state.ReminderBottom }}
-            actionFn={this.actionTipsFn.bind(this)}
-          ></Reminder>
         </div>
       </div>
     );

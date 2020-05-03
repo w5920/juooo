@@ -7,6 +7,7 @@ import Reset from "../../views/Home/Reset";
 import Search from "../../views/Home/Search";
 import SelectCity from "../../views/Home/SelectCity";
 import ShowDetail from "../../views/Home/ShowDetail";
+import ShowLibrary from "../../views/Home/ShowLibrary";
 import TourShowInfo from "../../views/Home/TourShowInfo";
 import Vip from "../../views/Home/Vip";
 export default [
@@ -53,5 +54,9 @@ export default [
   {
     path: "/Reset/:id.html",
     component: Reset,
+  },
+  {
+    path: "/ShowLibrary/:category_id.html",
+    component: ShowLibrary,
   },
 ];

@@ -26,20 +26,6 @@ export default function (state = homeInit, { type, payload }) {
       }
       state.pageIndex++;
       break;
-
-    // default:
-    //   state; break;
   }
-  // console.log(this, "reducer")
-  // if (type === homeActionType.GET_HOTS_RECOMMENDLIST) {
-  //   state.hotsRecommendList = payload;
-  // }
-  // if (type === homeActionType.GET_CLASSIFY_HOME) {
-  //   state.classifyList = payload;
-  // }
-  // if (type === homeActionType.GET_TOUR_LIST) {
-  //   state.vipCount = payload;
-  //   console.log("state.vipCount", state.vipCount)
-  // }
   return state;
 }

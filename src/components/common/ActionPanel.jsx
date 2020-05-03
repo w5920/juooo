@@ -35,9 +35,9 @@ export default class ActionPanel extends Component {
                   <span
                     key={v.id + 124}
                     className={`${
-                      this.state.timeIndex === i ? style["active"] : ""
+                      this.state.timeIndex / 1 === i ? style["active"] : ""
                     }`}
-                    onClick={(i) => {
+                    onClick={() => {
                       this.setState({
                         timeIndex: i,
                       });
@@ -55,7 +55,7 @@ export default class ActionPanel extends Component {
                   <span
                     key={v.id + 11124}
                     className={`${
-                      this.state.selectIndex === i ? style["active"] : ""
+                      this.state.selectIndex / 1 === i ? style["active"] : ""
                     }`}
                     onClick={() => {
                       this.setState({
@@ -74,7 +74,7 @@ export default class ActionPanel extends Component {
                 {this.state.selectPrice.map((v, i) => (
                   <span
                     className={`${style["action-price"]} ${
-                      this.state.priceIndex === i ? style["active"] : ""
+                      this.state.priceIndex / 1 === i ? style["active"] : ""
                     }`}
                     key={v.ticket_id}
                     onClick={() => {

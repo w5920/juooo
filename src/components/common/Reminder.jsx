@@ -72,6 +72,6 @@ export default class Reminder extends Component {
     );
   }
   componentDidMount() {
-    console.log(this.props);
+    // console.log(this.props);
   }
 }
