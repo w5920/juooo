@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import { Toast, WhiteSpace, WingBlank, Button } from 'antd-mobile';
+
 import axios from 'axios'
 import PageHeaderWhite from '../../components/common/PageHeaderWhite';
 import registerCss from '../../assets/css/login/register.module.css'
+
 
 class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
             phoneNumber: '',
-            passWord: '',
             code: '',
         }
     }
@@ -18,19 +20,34 @@ class Register extends Component {
         })
     }
     async getMsgCode() {
-        const phoneNumber = this.phoneNumber.value;
-        const data = await axios.post('/userLogin/userGetCaptcha', { phoneNumber });
-        console.log(data);
+        const phoneNumber = this.state.phoneNumber;
+        if (phoneNumber) {
+            const data = await axios.post('/userLogin/userGetCaptcha', { phoneNumber });
+            if (data.ok === 1) {
+                this.setState({
+                    code: data.captcha
+                })
+            } else {
+                alert(data.msg)
+            }
+        }
     }
     async register() {
-        const { phoneNumber, passWord, code } = this.state;
-        const data = await axios.post('/userLogin/userLoginto', { phoneNumber, passWord, code });
-        console.log(data);
+        const { phoneNumber, code } = this.state;
+        const data = await axios.post('/userLogin/userLoginto', { phoneNumber, code });
+        if (data.ok === 1) {
+            localStorage.is_login = 1;
+            localStorage.phoneNumber = phoneNumber;
+            this.props.history.go(-1);
+        } else {
+            alert(data.msg)
+        }
     }
     render() {
+        console.log(this.props);
         return (
             <div>
-                <PageHeaderWhite pageName={'注册'} rightShow={false}></PageHeaderWhite>
+                <PageHeaderWhite pageName={'登录/注册'} rightShow={false}></PageHeaderWhite>
                 <div className={registerCss.container}>
                     <div className={registerCss.register_logo}>
                         <img src={require('../../assets/img/login_logo.png')} />
@@ -43,20 +60,14 @@ class Register extends Component {
                             name='phoneNumber'
                             type="tel" />
                     </p>
-                    <p className={registerCss.phoneNumber}>
-                        <input ref={phoneNumber => this.phoneNumber = phoneNumber}
-                            placeholder={'请输入密码'}
-                            onChange={this.handleChange.bind(this)}
-                            type="password" />
-                    </p>
                     <p className={registerCss.regCode}>
                         <input ref={regCode => this.regCode = regCode}
                             placeholder={'请输入验证码'}
                             type="text" />
-                        <i ref={code => this.code = code} onClick={this.getMsgCode.bind(this)}> 获取验证码</i>
+                        <i ref={code => this.code = code}>{this.state.code}</i>
                     </p>
                     <h6>未注册的手机号将自动创建会员账号</h6>
-                    <button onClick={this.register.bind(this)}>立即注册</button>
+                    <button onClick={this.state.code ? this.register.bind(this) : this.getMsgCode.bind(this)}>{this.state.code ? '立即注册' : '获取验证码'}</button>
                     <h5 className={registerCss.regWay}><span>邮箱注册</span><span>密码登录</span></h5>
                 </div>
                 <div className={registerCss.register_foot}>

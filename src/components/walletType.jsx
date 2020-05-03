@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom'
 import EmptyList from './common/EmptyList'
 import VipReward from './VipReward'
 import walletTypeCss from '../assets/css/component/walletType.module.css'
-import { changeUrl } from '../filters'
 class WalletType extends Component {
     render() {
         if (this.props.state.walletType === 3) {

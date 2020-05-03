@@ -1,6 +1,7 @@
 .container{
     width: 622px;
     margin: 100px auto 0;
+    background-color: #fff;
 }
 .register_logo{
     width: 320px;
@@ -27,12 +28,14 @@
     display: inline;
     color:#232323;
     border: 0;
+    /* background-color: rgb(245, 245, 245); */
 }
 .regCode input {
     display: inline;
     color:#232323;
     margin-right: 15px;
     border: 0;
+    /* background-color: rgb(245, 245, 245); */
 }
 .regCode i {
     display: inline;

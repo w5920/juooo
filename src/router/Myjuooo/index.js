@@ -1,4 +1,4 @@
-import BuyPlus from '../../views/MyJuooo/BuyPlus'
+import Plus from '../../views/MyJuooo/BuyPlus'
 import Feedback from '../../views/MyJuooo/Feedback'
 import MyOrderList from '../../views/MyJuooo/MyOrderList'
 import MyWallet from '../../views/MyJuooo/MyWallet'
@@ -13,8 +13,8 @@ import MyAccountSafefrom from '../../views/MyJuooo/Mysecurity/myAccountSafe'
 
 export default [
     {
-        path: '/BuyPlus',
-        component: BuyPlus
+        path: '/Plus',
+        component: Plus
     },
     {
         path: '/Feedback',

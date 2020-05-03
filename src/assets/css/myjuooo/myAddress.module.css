@@ -1,0 +1,21 @@
+.myAddressInfo{
+    width: 750px;
+    padding: 0 30px;
+    border-top: 2px solid #c5c5c5;
+}
+.infoItem{
+    height: 120px;
+    line-height: 120px;
+    font-size: 32px;
+    color:#232323;
+    border-bottom: 2px solid #c5c5c5;
+}
+.infoItem span {
+    width: 184px;
+    display: inline-block;
+}
+.infoItem input{
+    display: inline-block;
+    border: 0;
+}
+

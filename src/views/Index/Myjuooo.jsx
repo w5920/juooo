@@ -28,8 +28,10 @@ class Myjuooo extends Component {
           </a>
           <div className={myjuoooCss.topMain}>
             <div className={myjuoooCss.mineInfo}>
-              <div className={myjuoooCss.mineInfo_pic}>userPic</div>
-              <div className={myjuoooCss.mineInfo_msg}>
+              <div className={myjuoooCss.mineInfo_pic}>
+                <img src={require('../../assets/img/logo-user.png')} />
+              </div>
+              <div className={myjuoooCss.mineInfo_msg} onClick={is_login ? '' : () => this.props.history.push('/Register')} >
                 <p
                   className={
                     is_login
@@ -51,7 +53,7 @@ class Myjuooo extends Component {
               </div>
             </div>
             <div className={myjuoooCss.mineInfo_labal}>
-              <a href="">
+              <a href="/Plus">
                 <p className={myjuoooCss.mineInfo_labalName}>开通会员</p>
               </a>
             </div>
@@ -75,7 +77,7 @@ class Myjuooo extends Component {
                 </a>
               </div>
               <div className={myjuoooCss.mineInfo_contLast}>
-                <a href="/BuyPlus">
+                <a href="/Plus">
                   <p className={myjuoooCss.mineInfo_contNumZero}>立即开通</p>
                   <p className={myjuoooCss.mineInfo_contName}>橙PLUS卡</p>
                 </a>

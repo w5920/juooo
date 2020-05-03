@@ -44,6 +44,9 @@
   margin-left: -520px;
   font-size: 30x;
 }
+.mineInfo_pic img{
+  width: 100%;
+}
 .mineInfo_msg {
   width: 162px;
   height: 102px;
