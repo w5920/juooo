@@ -26,9 +26,18 @@ class Home extends Component {
     return (
       <div style={{ background: "#fff" }}>
         <div className={style["head"]}>
-          <div className={style["head-address"]}>
+          <div
+            className={style["head-address"]}
+            onClick={() => {
+              this.props.history.push("/selectCity");
+            }}
+          >
             <img src={require("../../assets/img/location.png")} alt="" />
-            <span>全国</span>
+            <span>
+              {localStorage.getItem("CITY_INFO")
+                ? JSON.parse(localStorage.getItem("CITY_INFO")).cityName
+                : "全国"}
+            </span>
           </div>
           <div
             className={style["head-search"]}
@@ -39,34 +48,46 @@ class Home extends Component {
             <img src={require("../../assets/img/search.png")} alt="" />
             <input type="text" placeholder="搜索热门演出" />
           </div>
-          <div className={style["head-calendar"]}>
+          <div
+            className={style["head-calendar"]}
+            onClick={() => {
+              this.props.history.push("/Calendar");
+            }}
+          >
             <img src={require("../../assets/img/calendar.png")} alt="" />
           </div>
         </div>
 
-        <div className={style["adv"]} style={{ touchAction: "pan-y" }}>
-          <Carousel
-            autoplay={this.state.vipFlag}
-            infinite
-            dots={false}
-            autoplayInterval={4000}
-            afterChange={(index) => this.setState({ homeIndex: index })}
-          >
-            {this.props.homeLbList.length > 0 ? (
-              this.props.homeLbList.map((v) => (
+        <div
+          className={style["adv"]}
+          style={{
+            touchAction: "pan-y",
+            display: this.props.homeLbList.length > 0 ? "block" : "none",
+          }}
+        >
+          {this.props.homeLbList.length > 0 ? (
+            <Carousel
+              autoplay={this.state.vipFlag}
+              infinite
+              dots={false}
+              autoplayInterval={4000}
+              afterChange={(index) => this.setState({ homeIndex: index })}
+            >
+              {this.props.homeLbList.map((v) => (
                 <img
                   key={v.image_url.substring(v.image_url.length - 7, -4)}
                   src={v.image_url}
                   alt=""
                 />
-              ))
-            ) : (
-              <ActivityIndicator size="large" text="loading..." />
-            )}
-          </Carousel>
-          <div className={style["adv-home-lb"]}>
-            {this.props.homeLbList.length > 0 ? (
-              this.props.homeLbList.map((v, i) => (
+              ))}
+            </Carousel>
+          ) : (
+            <div></div>
+          )}
+
+          {this.props.homeLbList.length > 0 ? (
+            <div className={style["adv-home-lb"]}>
+              {this.props.homeLbList.map((v, i) => (
                 <span
                   key={Math.random() * (9999 - 1000) + 10}
                   className={
@@ -75,15 +96,13 @@ class Home extends Component {
                       : style["adv-home-show"]
                   }
                 ></span>
-              ))
-            ) : (
-              <ActivityIndicator size="large" text="loading..." />
-            )}
-            {/* <span className={style["adv-home-active"]}></span>
-            <span className={style["adv-home-show"]}></span> */}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
-
+        {/* 演出 音乐剧... */}
         <div className={style["typedetaile"]}>
           <ul>
             {this.props.classifyType.map((v, i) => (
@@ -94,6 +113,8 @@ class Home extends Component {
                     this.props.history.push(
                       "/showlibrary/" + v.category_id + ".html"
                     );
+                  } else if (i / 1 === 9) {
+                    this.props.history.push("/activity");
                   }
                 }}
               >
@@ -106,7 +127,12 @@ class Home extends Component {
         {/* <!-- vip折扣 --> */}
         <div className={style["vipscript"]}>
           <div className={style["vipadv"]}>
-            <div className={style["vipadv-head"]}>
+            <div
+              className={style["vipadv-head"]}
+              onClick={() => {
+                this.props.history.push("/Vip");
+              }}
+            >
               <div className={style["vip-left"]}>
                 <img src={require("../../assets/img/vipicon.png")} alt="" />
                 <span>会员专属折扣</span>
@@ -118,16 +144,16 @@ class Home extends Component {
               <div className={style["vipdiscount-line"]}></div>
             </div>
 
-            <Carousel
-              autoplay={this.state.vipFlag}
-              infinite
-              dots={false}
-              autoplayInterval={3000}
-              afterChange={(index) => this.setState({ vipIndex: index })}
-              style={{ touchAction: "pan-y" }}
-            >
-              {this.props.vipDiscount.length > 0 ? (
-                this.props.vipDiscount.map((v) => (
+            {this.props.vipDiscount.length > 0 ? (
+              <Carousel
+                autoplay={this.state.vipFlag}
+                infinite
+                dots={false}
+                autoplayInterval={3000}
+                afterChange={(index) => this.setState({ vipIndex: index })}
+                style={{ touchAction: "pan-y" }}
+              >
+                {this.props.vipDiscount.map((v) => (
                   <div
                     onClick={() => {
                       this.props.history.push(
@@ -154,11 +180,11 @@ class Home extends Component {
                       </div>
                     </div>
                   </div>
-                ))
-              ) : (
-                <ActivityIndicator size="large" text="loading..." />
-              )}
-            </Carousel>
+                ))}
+              </Carousel>
+            ) : (
+              <div></div>
+            )}
           </div>
         </div>
         <div className={style["advbottom"]}>
@@ -175,7 +201,7 @@ class Home extends Component {
                 ></span>
               ))
             ) : (
-              <ActivityIndicator size="large" text="loading..." />
+              <div></div>
             )}
           </div>
         </div>
@@ -186,20 +212,25 @@ class Home extends Component {
         </div>
 
         {/* <!-- 热门演出 --> */}
-        <div className={style["hotshow"]}>
-          <div className={style["hotshowTitle"]}>
-            <p className={style["hot"]}>热门演出</p>
-            <p className={style["hotAll"]}>
-              <span>全部</span>
-              <span className={style["hotlink"]}>
-                <img src={require("../../assets/img/arrow.png")} alt="" />
-              </span>
-            </p>
-          </div>
-          <div className={style["hotshowlist"]}>
-            <ul>
-              {this.props.hotRecommendList.length > 0 ? (
-                this.props.hotRecommendList.map((v, i) => {
+        {this.props.hotRecommendList.length > 0 ? (
+          <div className={style["hotshow"]}>
+            <div className={style["hotshowTitle"]}>
+              <p className={style["hot"]}>热门演出</p>
+              <p
+                className={style["hotAll"]}
+                onClick={() => {
+                  this.props.history.push("/showlibrary/" + 0 + ".html");
+                }}
+              >
+                <span>全部</span>
+                <span className={style["hotlink"]}>
+                  <img src={require("../../assets/img/arrow.png")} alt="" />
+                </span>
+              </p>
+            </div>
+            <div className={style["hotshowlist"]}>
+              <ul>
+                {this.props.hotRecommendList.map((v, i) => {
                   // console.log(v)
                   return (
                     <li
@@ -223,27 +254,40 @@ class Home extends Component {
                       {/* 根据id获取详情 {(v.schedular_url).substring(v.schedular_url.length - 6)} */}
                     </li>
                   );
-                })
-              ) : (
-                <ActivityIndicator size="large" />
-              )}
-            </ul>
+                })}
+              </ul>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div></div>
+        )}
 
         {/* 循回演出 */}
-        <div className={style["tourshow"]}>
-          <div className={style["hotshowTitle"]}>
-            <p className={style["hot"]}>巡回演出</p>
-            <p className={style["hotAll"]}>
-              <span>全部</span>
-              <span className={style["hotlink"]}>
-                <img src={require("../../assets/img/arrow.png")} alt="" />
-              </span>
-            </p>
-          </div>
-          {this.props.tuorShowList.length > 0 ? (
-            this.props.tuorShowList.map((v) => (
+        {this.props.tuorShowList.length > 0 ? (
+          <div
+            className={style["tourshow"]}
+            style={{
+              display:
+                JSON.parse(localStorage.getItem("CITY_INFO")).cityId / 1 === 0
+                  ? "block"
+                  : "none",
+            }}
+          >
+            <div className={style["hotshowTitle"]}>
+              <p className={style["hot"]}>巡回演出</p>
+              <p
+                className={style["hotAll"]}
+                onClick={() => {
+                  this.props.history.push(`/touring/2.html`);
+                }}
+              >
+                <span>全部</span>
+                <span className={style["hotlink"]}>
+                  <img src={require("../../assets/img/arrow.png")} alt="" />
+                </span>
+              </p>
+            </div>
+            {this.props.tuorShowList.map((v) => (
               <div
                 className={style["tourintroduce"]}
                 key={v.id}
@@ -278,19 +322,32 @@ class Home extends Component {
                   </div>
                 </div>
               </div>
-            ))
-          ) : (
-            <ActivityIndicator size="large" />
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div></div>
+        )}
 
         {/* 舞台剧 */}
-        <div className={style["stageplay"]}>
+        <div
+          className={style["stageplay"]}
+          style={{
+            display:
+              JSON.parse(localStorage.getItem("CITY_INFO")).cityId / 1 === 0
+                ? "block"
+                : "none",
+          }}
+        >
           <div className={style["hotshowTitle"]}>
             <p className={style["hot"]} style={{ marginLeft: "0.4rem" }}>
               舞台剧
             </p>
-            <p className={style["hotAll"]}>
+            <p
+              className={style["hotAll"]}
+              onClick={() => {
+                this.props.history.push("/showlibrary/37.html");
+              }}
+            >
               <span>全部</span>
               <span className={style["hotlink"]}>
                 <img src={require("../../assets/img/arrow.png")} alt="" />
@@ -433,6 +490,18 @@ class Home extends Component {
       </div>
     );
   }
+  componentWillMount() {
+    if (!Boolean(JSON.parse(localStorage.getItem("CITY_INFO")))) {
+      localStorage.setItem(
+        "CITY_INFO",
+        JSON.stringify({
+          cityId: 0,
+          cityName: "全国",
+          Abbreviation: "",
+        })
+      );
+    }
+  }
   componentDidMount() {
     this.props.gethotRecommendList();
     this.props.getVipHomeSchedular();
@@ -465,18 +534,14 @@ class Home extends Component {
     };
   }
   componentWillUpdate(nextProps, nextState) {
-    // console.log(this.waterfall, this.props.waterFallList)
     if (this.state.vipFlag) {
       return;
     }
-    if (this.props.vipDiscount.length > 0) {
+    if (this.props.vipDiscount.length > 0 || this.props.homeLbList.length > 0) {
       this.setState({
         vipFlag: true,
       });
     }
-    // if (this.props.waterFallList.length > 0) {
-    //   // console.log(this.waterfall, this.props.waterFallList)
-    // }
   }
 }
 

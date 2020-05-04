@@ -1,0 +1,6 @@
+export default {
+  NAV_LIST: "NAV_LIST",
+  MAP_LIST: "MAP_LIST",
+  CALENDER_LIST: "CALENDER_LIST",
+  SHOW_LIST: "SHOW_LIST",
+};

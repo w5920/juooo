@@ -12,7 +12,7 @@
   top: 0;
 }
 .head-address {
-  width: 1.45rem;
+  max-width: 2.53333rem;
   height: 0.86rem;
   padding: 0.16rem 0;
   font-size: 0.43rem;
@@ -20,19 +20,24 @@
   font-weight: 600;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .head-address img {
   width: 0.47rem;
   height: 0.5rem;
 }
 .head-search {
-  width: 6.5rem;
+  /* width: 6.5rem; */
   height: 0.8rem;
   background: #f5f5f5;
   border-radius: 0.34rem;
   display: flex;
+  flex: 1;
   align-items: center;
   line-height: 0.8rem;
+  margin-left: 0.33333rem;
+  margin-right: 0.4rem;
+  border: 0.01rem solid #ebebeb;
 }
 .head-search img {
   width: 0.6rem;
@@ -76,7 +81,7 @@
   -moz-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
   -o-transform: translate(-50%, 0);
-  z-index: 100;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
 }

@@ -33,6 +33,10 @@ class index extends Component {
       </div>
     );
   }
+
+  componentDidMount() {
+    console.log(this.props);
+  }
 }
 
 export default index;

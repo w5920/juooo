@@ -12,9 +12,13 @@ export default {
     // console.log(this, "gethotRecommendList");
     return async (dispatch) => {
       const data = await axios.get(
-        "home/index/getClassifyHome?city_id=0&abbreviation=&version=6.1.1&referer=2"
+        `home/index/getClassifyHome?city_id=${
+          JSON.parse(localStorage.getItem("CITY_INFO")).cityId
+        }&abbreviation=${
+          JSON.parse(localStorage.getItem("CITY_INFO")).abbreviation
+        }&version=6.1.1&referer=2`
       );
-      console.log(data);
+      // console.log(data.slide_list);
       dispatch(
         getClassifyList(homeActionType.GET_HOME_LB_LIST, data.slide_list)
       ); //首页轮播图
@@ -27,7 +31,9 @@ export default {
   getVipHomeSchedular() {
     return async (dispatch) => {
       const data = await axios.get(
-        "vip/index/getVipHomeSchedular?city_id=0&version=6.1.1&referer=2"
+        `vip/index/getVipHomeSchedular?city_id=${
+          JSON.parse(localStorage.getItem("CITY_INFO")).cityId
+        }&version=6.1.1&referer=2`
       );
       // console.log(data);
       dispatch(
@@ -39,7 +45,9 @@ export default {
   getHotsRecommendList() {
     return async (dispatch) => {
       const data = await axios.get(
-        "home/index/getHotsRecommendList?city_id=0&version=6.1.1&referer=2"
+        `home/index/getHotsRecommendList?city_id=${
+          JSON.parse(localStorage.getItem("CITY_INFO")).cityId
+        }&version=6.1.1&referer=2`
       );
       // console.log(data);
       dispatch(
@@ -62,7 +70,11 @@ export default {
   getShowListWaterPall() {
     return async (dispatch) => {
       const data = await axios.get(
-        `Show/Search/getShowList?city_id=0&category=&keywords=&venue_id=&start_time=&page=${this.props.pageIndex}&referer_type=index&version=6.1.1&referer=2`
+        `Show/Search/getShowList?city_id=${
+          JSON.parse(localStorage.getItem("CITY_INFO")).cityId
+        }&category=&keywords=&venue_id=&start_time=&page=${
+          this.props.pageIndex
+        }&referer_type=index&version=6.1.1&referer=2`
       );
       dispatch(getClassifyList(homeActionType.GET_SHOW_LIST, data.list));
       // console.log(data.list);

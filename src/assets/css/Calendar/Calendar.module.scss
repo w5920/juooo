@@ -1,0 +1,181 @@
+.library-nav {
+  padding: 0.26667rem 0 0.26667rem 0.4rem;
+  background-color: #fefefe;
+  display: flex;
+  width: 100%;
+  border-top: 1px solid #ebebeb;
+}
+.nav {
+  width: 7.33333rem;
+  margin-right: 0.13333rem;
+  flex: 1;
+  overflow: hidden;
+}
+.nav > ul {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav > ul > li {
+  flex-shrink: 0;
+  font-size: 0.4rem;
+  color: #232323;
+  padding: 0 0.13333rem;
+  border-bottom: 0.04rem solid transparent;
+  border-radius: 0.02667rem;
+  height: 0.64rem;
+  line-height: 0.64rem;
+  margin-right: 0.4rem;
+}
+.liAvtive {
+  color: #ff6743 !important;
+  border-color: #ff6743 !important;
+}
+.nav-map {
+  width: 2rem;
+  border-left: 0.02667rem solid #e0e0e0;
+  font-size: 0.4rem;
+  color: #666;
+  height: 0.37333rem;
+  line-height: 0.37333rem;
+  margin-top: 0.13333rem;
+  text-align: center;
+}
+.nav-map span {
+  display: inline-block;
+}
+.map-icon {
+  width: 0.26rem;
+  height: 0.34rem;
+  margin-left: 0.15rem;
+}
+.map-icon img {
+  width: 100%;
+  height: 100%;
+}
+.calendar-bg {
+  box-shadow: 0.1rem 0.03rem 0.1rem 0.1rem #f5f5f5;
+}
+.current-month {
+  display: flex;
+}
+.current-pre {
+  cursor: pointer;
+  display: flex;
+  color: #fff;
+  font-size: 0.37333rem;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 1.2rem;
+  .pre {
+    border-left: 1px solid #232323 !important;
+    transform: rotate(-45deg);
+  }
+  .next {
+    border-right: 1px solid#232323 !important;
+    transform: rotate(45deg);
+  }
+}
+.current-pre div {
+  width: 0.21333rem !important;
+  height: 0.21333rem !important;
+  border-top: 1px solid #232323 !important;
+}
+.current-data {
+  cursor: auto;
+  flex: 2.5;
+  color: #242424;
+  font-size: 0.37333rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.2rem;
+}
+.week {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 3%;
+  width: 100%;
+  background-color: #f5f5f5 !important;
+  .content {
+    font-size: 0.37333rem;
+    width: 14%;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    height: 1rem;
+    .content-day {
+      width: 1rem;
+      height: 1rem;
+      line-height: 1rem;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #242424;
+    }
+    .activeCalender {
+      color: #ff6743;
+    }
+  }
+}
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 3%;
+  width: 100%;
+  padding-top: 0.42667rem;
+  .calendar-item {
+    height: 1.33333rem !important;
+    font-size: 0.37333rem;
+    width: 14%;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    .calendar-ele {
+      width: 0.77333rem !important;
+      height: 0.77333rem !important;
+      line-height: 0.77333rem;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      //   background: skyblue;
+      color: #242424;
+    }
+  }
+}
+.isCurrentMonth {
+  color: #bfbfbf !important;
+}
+.calendarActive {
+  background-color: rgba(253, 181, 146, 0.5) !important;
+  color: #ff6743 !important;
+}
+.calendar-item .today::after {
+  content: "今日";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem;
+  right: 0;
+  font-size: 0.26667rem;
+  color: #ff6743;
+}
+
+.clickActive {
+  background-color: rgba(253, 181, 146, 0.5) !important;
+  color: #242424 !important;
+}
+.calenderDataList {
+  padding: 0.8rem 0.4rem 0.26667rem 0.4rem;
+  font-size: 0.32rem;
+  color: #666;
+  text-align: center;
+  height: 0.53333rem;
+  line-height: 0.53333rem;
+}

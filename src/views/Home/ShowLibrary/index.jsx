@@ -17,6 +17,7 @@ class index extends Component {
     this.reLeft = null; //瀑布流左边盒子
     this.reRight = null; //瀑布流右边边盒子
     this.navActive = 0;
+    this.currentCity = "全国";
     this.state = {
       libraryLeft: [],
       libraryRight: [],
@@ -30,8 +31,14 @@ class index extends Component {
       right: "-7.84rem",
     });
   }
-  async getMapIdToData(cityId) {
-    this.city = cityId;
+  async getMapIdToData({ cityId, currentCity, abbreviation }) {
+    const cityReset = JSON.parse(localStorage.getItem("CITY_INFO"));
+    cityReset.cityId = cityId;
+    cityReset.cityName = currentCity;
+    cityReset.abbreviation = abbreviation;
+    await localStorage.setItem("CITY_INFO", JSON.stringify(cityReset));
+    // this.city = cityId;
+    // this.currentCity = currentCity;
     await this.props.defaultPageIndex.call(this); //重置为第一页
     await this.props.getShowListWaterPall.call(this); //获取数据
   }
@@ -55,7 +62,9 @@ class index extends Component {
                 <div className={style["nav"]}>
                   <ul>
                     <li
-                      className={this.category === 0 ? style["liAvtive"] : ""}
+                      className={
+                        this.category / 1 === 0 ? style["liAvtive"] : ""
+                      }
                       onClick={async () => {
                         // this.navActive = 0;
                         this.category = 0;
@@ -90,7 +99,9 @@ class index extends Component {
                     this.setState({ mask: "block", right: 0 });
                   }}
                 >
-                  <span>全国</span>
+                  <span>
+                    {JSON.parse(localStorage.getItem("CITY_INFO")).cityName}
+                  </span>
                   <span className={style["map-icon"]}>
                     <img
                       src={require("../../../assets/img/libraryMap.png")}
@@ -138,7 +149,7 @@ class index extends Component {
   async componentDidMount() {
     if (this.props.match.params.category_id) {
       this.category = this.props.match.params.category_id;
-      console.log(this.category);
+      // console.log(this.category);
     }
     await this.props.getLibraryNav();
     await this.props.getLibraryMap();

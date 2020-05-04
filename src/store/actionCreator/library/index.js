@@ -25,7 +25,7 @@ export default {
       const { city_list } = await axios.get(
         "city/city/getCityList?version=6.1.1&referer=2"
       );
-      //   console.log(city_list);
+      // console.log(city_list);
       dispatch(librartType(libraryActionType.GET_LIBRARY_MAP, city_list));
     };
   },
@@ -45,7 +45,11 @@ export default {
     console.log(this.category);
     return async (dispatch) => {
       const data = await axios.get(
-        `Show/Search/getShowList?city_id=${this.city}&category=${this.category}&keywords=&venue_id=&start_time=&page=${this.props.pageIndex}&referer_type=index&version=6.1.1&referer=2`
+        `Show/Search/getShowList?city_id=${
+          JSON.parse(localStorage.getItem("CITY_INFO")).cityId
+        }&category=${this.category}&keywords=&venue_id=&start_time=&page=${
+          this.props.pageIndex
+        }&referer_type=index&version=6.1.1&referer=2`
       );
       dispatch(librartType(libraryActionType.GET_LIBRARYINIT, data.list));
       //   console.log(data.list, this.city, this.category);

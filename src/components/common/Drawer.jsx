@@ -7,11 +7,13 @@ export default class Drawer extends Component {
     this.state = {
       avtiveIndex: 0,
       cityId: 0,
+      currentCity: "全国",
+      abbreviation: "",
     };
   }
 
   //1.遮罩层显示mask  抽屉出现动画right   2.关闭组件函数   3数据drawerData
-  //由于父级要根据子组件数据获取数据 所以额外添加一个函数
+  //由于父级要根据子组件数据获取数据 所以额外添加一个函数4 函数getMapIdToData
 
   render() {
     const timer = setTimeout(() => {
@@ -44,7 +46,7 @@ export default class Drawer extends Component {
                   display: this.props.drawerData ? "block" : "none",
                 }}
               >
-                全国
+                {this.state.currentCity}
               </li>
               {this.props.drawerData.length > 0 ? (
                 this.props.drawerData.map((v, i) => (
@@ -57,6 +59,8 @@ export default class Drawer extends Component {
                       this.setState({
                         avtiveIndex: i + 1,
                         cityId: v.id,
+                        currentCity: v.name,
+                        abbreviation: v.Abbreviation,
                       });
                     }}
                   >
@@ -74,6 +78,8 @@ export default class Drawer extends Component {
                 this.setState({
                   avtiveIndex: 0,
                   cityId: 0,
+                  currentCity: "全国",
+                  abbreviation: "",
                 });
               }}
             >
@@ -81,7 +87,11 @@ export default class Drawer extends Component {
             </span>
             <span
               onClick={(e) => {
-                this.props.getMapIdToData(this.state.cityId);
+                this.props.getMapIdToData({
+                  cityId: this.state.cityId,
+                  currentCity: this.state.currentCity,
+                  abbreviation: this.state.abbreviation,
+                });
                 e.stopPropagation();
                 this.props.showFn();
               }}

@@ -10,7 +10,6 @@ export default class index extends Component {
     };
   }
   render() {
-    console.log(this.state.tourList);
     return (
       <React.Fragment>
         {this.state.tourList.length > 0 ? (
@@ -42,8 +41,16 @@ export default class index extends Component {
                   <div className={style["tour-item"]}>
                     <div className={style["tour-time"]}>
                       <p className={style["tour-data"]}>
-                        <strong> 10/</strong>
-                        <span> 02-03 </span>
+                        <strong>
+                          {this.$getNowTime(v.start_time, v.end_time)
+                            .split("")
+                            .slice(0, 3)}
+                        </strong>
+                        <span>
+                          {this.$getNowTime(v.start_time, v.end_time)
+                            .split("")
+                            .slice(3)}
+                        </span>
                       </p>
                     </div>
                     <div
@@ -61,10 +68,6 @@ export default class index extends Component {
                           ¥{v.min_price}
                         </span>
                         <span className={style["tour-span"]}>起</span>
-                        {/* <span>
-                          {this.$filTime(v.start_time).split("").slice(5, 7)}
-                          {this.$filTime(v.end_time).split("").slice(8, 10)}
-                        </span> */}
                       </p>
                     </div>
                   </div>
@@ -92,7 +95,7 @@ export default class index extends Component {
           list: arr[0].list.reverse(),
         },
         () => {
-          console.log(this.state.tourList, this.state.list);
+          // console.log(this.state.tourList, this.state.list);
         }
       );
     }

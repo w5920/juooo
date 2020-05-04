@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import calender from "./calender";
 import detail from "./detail";
 import home from "./home";
 import library from "./library";
@@ -10,4 +11,5 @@ export default combineReducers({
   search,
   detail,
   library,
+  calender,
 });

@@ -11,10 +11,6 @@ class GuardRouter extends Component {
     //每次进入页面时 回到顶部
     if (this.props.history.action === "PUSH") {
       document.documentElement.scrollTop = document.body.scrollTop = 0;
-      //   const scrollTop =
-      //     document.documentElement.scrollTop || document.body.scrollTop;
-      //   console.log(scrollTop);
-    } else {
     }
   }
 }

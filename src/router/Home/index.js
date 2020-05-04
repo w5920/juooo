@@ -1,4 +1,6 @@
 import Activity from "../../views/Home/Activity";
+import Group from "../../views/Home/Activity/Group";
+import MyGroup from "../../views/Home/Activity/MyGroup";
 import Calendar from "../../views/Home/Calendar";
 import Cardproduct from "../../views/Home/Cardproduct";
 import Integral from "../../views/Home/Integral";
@@ -9,11 +11,23 @@ import SelectCity from "../../views/Home/SelectCity";
 import ShowDetail from "../../views/Home/ShowDetail";
 import ShowLibrary from "../../views/Home/ShowLibrary";
 import TourShowInfo from "../../views/Home/TourShowInfo";
+import Touring from "../../views/Home/Ttouring";
 import Vip from "../../views/Home/Vip";
 export default [
   {
     path: "/Activity",
     component: Activity,
+    children: [
+      {
+        path: "/activity",
+        component: Group,
+        exact: true,
+      },
+      {
+        path: "/activity/myGroup",
+        component: MyGroup,
+      },
+    ],
   },
   {
     path: "/Calendar",
@@ -58,5 +72,9 @@ export default [
   {
     path: "/ShowLibrary/:category_id.html",
     component: ShowLibrary,
+  },
+  {
+    path: "/touring/:touring_id.html",
+    component: Touring,
   },
 ];
