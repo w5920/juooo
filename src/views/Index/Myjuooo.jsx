@@ -6,16 +6,20 @@ import myjuoooAction from "../../store/actionCreator/myJuooo";
 class Myjuooo extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      helpShow: false
+    }
   }
   componentDidMount() {
     document.body.style.backgroundColor = '#f5f5f5';
     this.props.getBasicInfo();
     this.props.getMenuItemList();
   }
-  render() {
-    if (!this.props.menuItemList) {
-      return <p>加载中。。。</p>;
-    }
+  //客服帮助
+  callHelp() {
+    this.setState({
+      helpShow: !this.state.helpShow
+    })
   }
   render() {
 
@@ -53,7 +57,7 @@ class Myjuooo extends Component {
               </div>
             </div>
             <div className={myjuoooCss.mineInfo_labal}>
-              <a href="/Plus">
+              <a href="/BuyPlus">
                 <p className={myjuoooCss.mineInfo_labalName}>开通会员</p>
               </a>
             </div>
@@ -77,7 +81,7 @@ class Myjuooo extends Component {
                 </a>
               </div>
               <div className={myjuoooCss.mineInfo_contLast}>
-                <a href="/Plus">
+                <a href="/BuyPlus">
                   <p className={myjuoooCss.mineInfo_contNumZero}>立即开通</p>
                   <p className={myjuoooCss.mineInfo_contName}>橙PLUS卡</p>
                 </a>
@@ -86,7 +90,7 @@ class Myjuooo extends Component {
           </div>
         </div>
         <div className={myjuoooCss.myjuoooVipBanner}>
-          <a href="">
+          <a href="/VIP">
             <img
               className={myjuoooCss.addVipImg}
               src={require("../../assets/img/adVip.png")}
@@ -146,7 +150,7 @@ class Myjuooo extends Component {
                 <p>意见反馈</p>
               </a>
             </li>
-            <li className={myjuoooCss.myjuoooLink_cont}>
+            <li className={myjuoooCss.myjuoooLink_cont} onClick={this.callHelp.bind(this)}>
               <span className={myjuoooCss.myjuoooLink_bgImg}>
                 <img src={require('../../assets/img/myHelp_bg.png')} />
               </span>
@@ -154,6 +158,23 @@ class Myjuooo extends Component {
             </li>
           </ul>
         </div>
+        {
+          this.state.helpShow ?
+            <div className={myjuoooCss.callHelpWay} onClick={() => this.setState({ helpShow: false })}>
+              <div className={myjuoooCss.helpWayItem}>
+                <div>
+                  <img src={require('../../assets/img/helpOnline.png')} alt="" />
+                </div>
+                <p>在线咨询</p>
+              </div>
+              <div className={myjuoooCss.helpWayItem}>
+                <div>
+                  <img src={require('../../assets/img/helpPhone.png')} alt="" />
+                </div>
+                <p>电话咨询</p>
+              </div>
+            </div> : ''
+        }
       </div>
     );
   }

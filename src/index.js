@@ -27,13 +27,14 @@ axios.interceptors.response.use(({ data }) => {
 });
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
-    </Provider>
-  </React.StrictMode>,
+  //<React.StrictMode>
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>
+  //</React.StrictMode>
+  ,
   document.getElementById("root")
 );
 

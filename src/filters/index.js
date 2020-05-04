@@ -15,3 +15,14 @@ export function getNowTime(startTime, endTime) {
     (startDay + distanceStartDay).toString().padStart(2, 0)
   );
 }
+
+export function changeUrl(str) {
+  return str.replace(/^https:\/\/[^/]+/, "img");
+}
+
+export function filTime(nS) {
+  return new Date(parseInt(nS) * 1000)
+    .toLocaleString()
+    .replace(/年|月/g, "-")
+    .replace(/日/g, " ");
+}

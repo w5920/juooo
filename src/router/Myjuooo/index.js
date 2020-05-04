@@ -1,7 +1,8 @@
-import Plus from '../../views/MyJuooo/BuyPlus'
+import BuyPlus from '../../views/MyJuooo/BuyPlus'
 import Feedback from '../../views/MyJuooo/Feedback'
 import MyOrderList from '../../views/MyJuooo/MyOrderList'
 import MyWallet from '../../views/MyJuooo/MyWallet'
+import VIP from '../../views/MyJuooo/VIP'
 import Points from '../../views/MyJuooo/Points'
 import Certification from '../../views/MyJuooo/Certification'
 import Coupon from '../../views/MyJuooo/Coupon'
@@ -13,8 +14,12 @@ import MyAccountSafefrom from '../../views/MyJuooo/Mysecurity/myAccountSafe'
 
 export default [
     {
-        path: '/Plus',
-        component: Plus
+        path: '/BuyPlus',
+        component: BuyPlus
+    },
+    {
+        path: '/VIP',
+        component: VIP
     },
     {
         path: '/Feedback',

@@ -46,9 +46,6 @@ class index extends Component {
             this.getCertification()
         }
     }
-    componentDidMount() {
-        // this.getCertification();
-    }
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value

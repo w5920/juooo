@@ -154,3 +154,40 @@
 .myjuoooLink_bgImg img{
   width: 100%;
 }
+.callHelpWay{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left:0;
+  background-color:#fff;
+  opacity: 0.8;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.helpWayItem{
+  width: 262px;
+  height: 226px;
+}
+.helpWayItem div{
+  width: 126px;
+  height: 126px;
+  border-radius: 50%;
+  background-color: #e0b78e;
+  margin: auto;
+  text-align: center;
+  line-height: 126px;
+}
+.helpWayItem div img{
+  display: inline-block;
+  vertical-align: middle;
+  width: 71px;
+  height: 66px;
+}
+.helpWayItem p{
+  padding: 30px 0;
+  text-align: center;
+  color:#000;
+  font-weight: 600;
+}
