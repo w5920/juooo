@@ -1,0 +1,173 @@
+.container{
+    width: 100%px;
+    height: 610px;
+    background:url('../../img//vip_bg.png') ;
+    padding: 40px 30px 50px;
+    background-size: 100% 6.98667rem;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+.vipInfo{
+    height: 520px;
+    width: 690px;
+    padding: 45px;
+    background-color: #fffcf5;
+}
+.vipInfo p{
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 50px;
+}
+.vipInfoSub{
+    width: 610px;
+    height: 102px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding: 0 40px;
+    font-size: 36px;
+    overflow: hidden;
+    background-color: #fff0de;
+    border-radius: 0.13333rem;
+    border: solid 1px #d5a370;
+}
+.vipInfoSub p{
+    height: 102px;
+    line-height: 102px;
+    margin-bottom:0;
+    color:#896039
+}
+.vipInfoSub span{
+    display: inline;
+    background-color: #bd8c5a;
+}
+.vipInfoSub b{
+    color:#896039
+}
+.vipInfo h5{
+    text-align: right;
+    padding: 15px 60px 0;
+    color:#666;
+}
+.payContainer{
+    width: 750px;
+    padding: 0 30px;
+    background-color: #fff;
+    margin-bottom: 60px;
+}
+.cityState{
+    height: 110px;
+    background-color: #fff;
+    line-height: 110px;
+    text-align: right;
+    padding: 0 30px;
+    margin-bottom: 45px;
+}
+.cityState :nth-child(1){
+    float: left;
+    color: #232323;;
+}
+.cityState span {
+    display:inline;
+    color:#ff6743;
+}
+
+.cityState b{
+    display: inline;
+}
+
+.payItem{
+    height:140px;
+    line-height: 140px;
+    overflow: hidden;
+}
+.payItem img{
+    vertical-align: middle;
+    display: inline-block;
+    width: 60px;
+    margin-right: 20px;
+}
+.payItem span {
+    display: inline-block;
+    font-size: 32px;
+    line-height: 140px;
+}
+.payItem input{
+    margin-top: 50px;
+    width: 40px;
+    height: 40px;
+    float: right;
+}
+
+.leCardPay{
+    width: 690px;
+    height: 292px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.leCardPayItem{
+    width: 336px;
+    height: 126px;
+    background-color: #F8F8F8;
+    border: 1px solid #E5E5E7;
+    border-radius: 0.10667rem;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.leCardPayItem h4{
+    color: #232323;
+    margin-top: 30px;
+}
+.leCardPayItem h5{
+    color: #999999;
+}
+.totalPay{
+    width: 750px;
+    font-size: 30px;
+    color: #999;
+    line-height: 48px;
+    background-color: #fff;
+}
+.buyVipTips{
+    padding: 0 30px;
+    font-size: 30px;
+    color: #999;
+    text-align: left;
+    background-color: #fff;
+    margin-bottom: 100px;
+}
+.buyVipTips p{
+    line-height: 40px;
+}
+.buyVipTips p span{
+    display: inline;
+    color:#ff6743;
+}
+
+.buyVipFoot{
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    line-height: 100px;
+    font-size: 34px;
+    text-align: center;
+}
+.buyVipFoot div{
+    width: 50%;
+    background-color: #fff;
+}
+.buyVipFoot div span{
+    display: inline;
+    color:#ff6743
+}
+.buyVipFoot :nth-child(2){
+    color: #fefefe;
+    background-image: linear-gradient(-50deg, #ff4d4a 0%, #ff9a34 100%),linear-gradient(#ebebeb, #ebebeb);
+}

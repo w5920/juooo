@@ -6,6 +6,7 @@ class ButtonFoot extends Component {
         return (
             <>
                 <button
+                    onClick={() => this.props.buttonFootFn()}
                     style={{
                         width: '345px',
                         height: '47px',
