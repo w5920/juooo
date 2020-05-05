@@ -10,59 +10,73 @@ import MyAddress from '../../views/MyJuooo/MyAddress'
 import MyBalance from '../../views/MyJuooo/MyBalance'
 import Mysecurity from '../../views/MyJuooo/Mysecurity'
 import AboutUs from '../../views/MyJuooo/Mysecurity/AboutUs'
-import MyAccountSafefrom from '../../views/MyJuooo/Mysecurity/myAccountSafe'
-
+import MyAccountSafe from '../../views/MyJuooo/Mysecurity/myAccountSafe'
+import UserProtocol from '../../views/MyJuooo/Mysecurity/UserProtocol'
 export default [
     {
         path: '/BuyPlus',
-        component: BuyPlus
+        component: BuyPlus,
     },
     {
         path: '/VIP',
-        component: VIP
+        component: VIP,
     },
     {
         path: '/Feedback',
-        component: Feedback
+        component: Feedback,
     },
     {
         path: '/MyOrderList',
-        component: MyOrderList
+        component: MyOrderList,
+        meta: { isAuthorization: true }
     },
     {
         path: '/MyWallet',
-        component: MyWallet
+        component: MyWallet,
+        meta: { isAuthorization: true }
     },
     {
         path: '/Points',
-        component: Points
+        component: Points,
     },
     {
         path: '/Myjuooo/Coupon',
-        component: Coupon
+        component: Coupon,
+        meta: { isAuthorization: true }
     },
     {
         path: '/Myjuooo/MyBalance',
-        component: MyBalance
+        component: MyBalance,
+        meta: { isAuthorization: true }
     },
     {
         path: '/Myjuooo/MyAddress',
-        component: MyAddress
+        component: MyAddress,
+        meta: { isAuthorization: true }
     },
     {
         path: '/Myjuooo/Mysecurity',
-        component: Mysecurity
+        component: Mysecurity,
+        meta: { isAuthorization: true }
     },
     {
         path: '/Myjuooo/Certification',
-        component: Certification
+        component: Certification,
+        meta: { isAuthorization: true }
     },
     {
         path: '/Myjuooo/AboutUs',
-        component: AboutUs
+        component: AboutUs,
+        meta: { isAuthorization: true }
     },
     {
-        path: '/Myjuooo/MyAccountSafefrom',
-        component: MyAccountSafefrom
+        path: '/Myjuooo/MyAccountSafe',
+        component: MyAccountSafe,
+        meta: { isAuthorization: true }
+    },
+    {
+        path: '/Myjuooo/UserProtocol',
+        component: UserProtocol,
+        meta: { isAuthorization: true }
     },
 ]

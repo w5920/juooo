@@ -4,15 +4,18 @@ import axios from 'axios'
 import PageHeaderHref from '../../../components/common/PageHeaderHref'
 import EmptyList from '../../../components/common/EmptyList'
 import certificationCss from '../../../assets/css/myjuooo/certification.module.css'
+import ButtonFoot from '../../../components/common/ButtonFoot'
 
+import { filStr } from '../../../filters/index'
 class index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id_name: '',
-            id_number: '',
+            id_name: null,
+            id_number: null,
             buttonValue: '+添加购票人',
-            emptyListShow: false
+            emptyListShow: false,
+            buttonShow: true,
         }
     }
     //获取购票人
@@ -22,13 +25,14 @@ class index extends Component {
         });
         if (data.ok === 1) {
             this.setState({
-                id_name: data.id_name,
-                id_number: data.id_number,
-                emptyListShow: false
+                id_name: filStr(data.result.id_name, 0, 1),
+                id_number: filStr(data.result.id_number, 3, 14),
+                emptyListShow: true,
+                buttonShow: false
             })
         } else {
             this.setState({
-                emptyListShow: true
+                emptyListShow: false
             })
         }
     }
@@ -46,9 +50,17 @@ class index extends Component {
             this.getCertification()
         }
     }
+    componentDidMount() {
+        this.getCertification();
+    }
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
+        })
+    }
+    changeEmptyShow() {
+        this.setState({
+            emptyListShow: !this.state.emptyListShow
         })
     }
     render() {
@@ -57,46 +69,34 @@ class index extends Component {
                 <PageHeaderHref pageName={'添加购票人'} ></PageHeaderHref>
                 {
                     !this.state.emptyListShow ?
-                        <EmptyList emptyMsg={{ img: 'real_name_empty', msg: '暂无购票人' }}></EmptyList>
-                        : <div className={certificationCss.certificationInfo}>
-                            <p className={certificationCss.infoItem}>
-                                <span>姓名:</span>
-                                <input name='id_name'
-                                    placeholder='请填写购票人姓名'
-                                    value={this.state.id_name}
-                                    onChange={this.handleChange.bind(this)}
-                                    type="text" />
-                            </p>
-                            <p className={certificationCss.infoItem}>
-                                <span>身份证号:</span>
-                                <input name='id_number'
-                                    placeholder='请填写购票人身份证号'
-                                    value={this.state.id_number}
-                                    onChange={this.handleChange.bind(this)}
-                                    type="text" />
-                            </p>
-                        </div>
+                        <>
+                            <EmptyList emptyMsg={{ img: 'real_name_empty', msg: '暂无购票人' }}></EmptyList>
+                            <ButtonFoot buttonValue={'+添加购票人'} buttonFootFn={this.changeEmptyShow.bind(this)}></ButtonFoot>
+                        </>
+                        :
+                        <>
+                            <div className={certificationCss.certificationInfo}>
+                                <p className={certificationCss.infoItem}>
+                                    <span>姓名:</span>
+                                    <input name='id_name'
+                                        placeholder='请填写购票人姓名'
+                                        value={this.state.id_name}
+                                        onChange={this.handleChange.bind(this)}
+                                        type="text" />
+                                </p>
+                                <p className={certificationCss.infoItem}>
+                                    <span>身份证号:</span>
+                                    <input name='id_number'
+                                        placeholder='请填写购票人身份证号'
+                                        value={this.state.id_number}
+                                        onChange={this.handleChange.bind(this)}
+                                        type="text" />
+                                </p>
+                            </div>
+                            {this.state.buttonShow ?
+                                <ButtonFoot buttonValue={'保存'} buttonFootFn={this.addCertification.bind(this)}></ButtonFoot> : ''}
+                        </>
                 }
-                <button
-                    onClick={this.emptyListShow ? () => {
-                        this.setState({
-                            buttonValue: '保存'
-                        })
-                    } : this.addCertification.bind(this)}
-                    style={{
-                        width: '345px',
-                        height: '47px',
-                        backgroundColor: '#FF6743',
-                        position: 'fixed',
-                        bottom: '15px',
-                        left: '15px',
-                        borderRadius: '23px',
-                        border: '0',
-                        fontSize: '16px',
-                        lineHeight: '47px',
-                        color: '#fff'
-                    }}
-                >{this.state.buttonValue}</button>
             </div >
         );
     }

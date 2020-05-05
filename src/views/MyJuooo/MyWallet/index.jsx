@@ -11,7 +11,7 @@ class index extends Component {
         super(props);
         this.state = {
             cardList: [],
-            walletType: 3,
+            walletType: 1,
             store_card: [],
             cate_card: [],
             once_card: []
@@ -38,6 +38,11 @@ class index extends Component {
     }
 
     async componentDidMount() {
+        if (this.props.location.search) {
+            this.setState({
+                walletType: this.props.location.search.slice(4, 5) / 1
+            })
+        }
         document.body.style.backgroundColor = '#f5f5f5';
         this.getCardList();
         this.getCardGroupList();
