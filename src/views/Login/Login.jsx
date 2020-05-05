@@ -50,7 +50,10 @@ class Register extends Component {
                             type="password" />
                     </p>
                     <button onClick={this.register.bind(this)}>立即登录</button>
-                    <h5 className={registerCss.regWay}><span>邮箱注册</span><span>快速注册</span></h5>
+                    <h5 className={registerCss.regWay}>
+                        <span>邮箱注册</span>
+                        <a href="/Register"><span>快速注册</span></a>
+                    </h5>
                 </div>
                 <div className={registerCss.register_foot}>
                     <span>其他登录方式</span>

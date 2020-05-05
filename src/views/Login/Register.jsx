@@ -38,6 +38,7 @@ class Register extends Component {
         if (data.ok === 1) {
             localStorage.is_login = 1;
             localStorage.phoneNumber = phoneNumber;
+            localStorage._id = data.userInfo._id.slice(-1, -7);
             this.props.history.go(-1);
         } else {
             alert(data.msg)
@@ -68,7 +69,10 @@ class Register extends Component {
                     </p>
                     <h6>未注册的手机号将自动创建会员账号</h6>
                     <button onClick={this.state.code ? this.register.bind(this) : this.getMsgCode.bind(this)}>{this.state.code ? '立即注册' : '获取验证码'}</button>
-                    <h5 className={registerCss.regWay}><span>邮箱注册</span><span>密码登录</span></h5>
+                    <h5 className={registerCss.regWay}>
+                        <a href=""><span>邮箱注册</span></a>
+                        <a href="/Login"><span>密码登录</span></a>
+                    </h5>
                 </div>
                 <div className={registerCss.register_foot}>
                     <span>其他登录方式</span>

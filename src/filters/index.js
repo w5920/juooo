@@ -26,3 +26,14 @@ export function filTime(nS) {
     .replace(/年|月/g, "-")
     .replace(/日/g, " ");
 }
+
+//将指定位数字符串替换成***
+export function filStr(str, start, end) {
+  let arr = str.split('');
+  for (let i = start; i < end; i++) {
+    arr[i] = '*'
+  }
+  return arr.join('')
+}
+
+filStr('abcd', 1, 3)

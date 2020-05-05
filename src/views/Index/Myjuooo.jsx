@@ -23,7 +23,7 @@ class Myjuooo extends Component {
   }
   render() {
 
-    const { is_login, basic_info } = this.props;
+    const is_login = localStorage.is_login;
     return (
       <div className={myjuoooCss.myjuooo}>
         <div className={myjuoooCss.myjuoooTop}>
@@ -35,7 +35,7 @@ class Myjuooo extends Component {
               <div className={myjuoooCss.mineInfo_pic}>
                 <img src={require('../../assets/img/logo-user.png')} />
               </div>
-              <div className={myjuoooCss.mineInfo_msg} onClick={is_login ? '' : () => this.props.history.push('/Register')} >
+              <div className={myjuoooCss.mineInfo_msg} onClick={is_login ? null : () => this.props.history.push('/Register')} >
                 <p
                   className={
                     is_login
@@ -43,7 +43,7 @@ class Myjuooo extends Component {
                       : myjuoooCss.mineInfo_userNameZero
                   }
                 >
-                  {is_login ? basic_info.nick_name : "登录/注册"}
+                  {is_login ? localStorage.phoneNumber : "登录/注册"}
                 </p>
                 <p
                   className={
@@ -51,8 +51,8 @@ class Myjuooo extends Component {
                       ? myjuoooCss.mineInfo_userIdOne
                       : myjuoooCss.mineInfo_userIdZero
                   }
-                >
-                  {is_login ? basic_info.uid : "点击登录>"}
+                >用户ID:
+                  {is_login ? localStorage._id : "点击登录>"}
                 </p>
               </div>
             </div>
@@ -117,7 +117,7 @@ class Myjuooo extends Component {
               </a>
             </li>
             <li className={myjuoooCss.myjuoooLink_cont}>
-              <a href="/MyWallet">
+              <a href="/MyWallet?id=3">
                 <span className={myjuoooCss.myjuoooLink_bgImg}>
                   <img src={require('../../assets/img/myCard_bg.png')} />
                 </span>
@@ -175,7 +175,7 @@ class Myjuooo extends Component {
               </div>
             </div> : ''
         }
-      </div>
+      </div >
     );
   }
 }

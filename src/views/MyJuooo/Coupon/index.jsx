@@ -8,7 +8,7 @@ import myCouponCss from '../../../assets/css/myjuooo/myCoupon.module.css'
 import PageHeaderWhite from '../../../components/common/PageHeaderWhite'
 import EmptyList from '../../../components/common/EmptyList'
 import ActionSheetText from '../../../components/ActionSheet'
-
+import Loadding from "../../../components/common/Loadding";
 class index extends Component {
     constructor(props) {
         super(props);
@@ -34,7 +34,7 @@ class index extends Component {
     render() {
         const couponTypeMsg = ['未使用', '已使用', '已过期'];
         if (!this.props.couponList) {
-            return <p>加载中。。。</p>
+            return <Loadding></Loadding>
         }
         return (
             < div >

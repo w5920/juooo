@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 
 import myjuoooAction from '../../../store/actionCreator/myJuooo'
 import mybanlanceCss from '../../../assets/css/myjuooo/myBanlance.module.css'
-
+import Loadding from "../../../components/common/Loadding";
 import PageHeaderYel from '../../../components/common/PageHeaderYel'
 import EmptyList from '../../../components/common/EmptyList'
 class index extends Component {
@@ -27,7 +27,7 @@ class index extends Component {
     render() {
         console.log(this.props.banlanceList);
         if (!this.props.banlanceList) {
-            return <p>加载中。。。</p>
+            return <Loadding></Loadding>
         }
         return (
             <div>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import myjuooAction from '../../../store/actionCreator/myJuooo'
-
+import Loadding from "../../../components/common/Loadding";
 import PageHeaderWhite from '../../../components/common/PageHeaderWhite'
 import myPlusCss from '../../../assets/css/myjuooo/myPlus.module.css'
 
@@ -19,7 +19,7 @@ class index extends Component {
     }
     render() {
         if (!this.props.equityList || !this.props.plusInfo) {
-            return <p>加载中。。。</p>
+            return <Loadding></Loadding>
         }
         return (
             <div>

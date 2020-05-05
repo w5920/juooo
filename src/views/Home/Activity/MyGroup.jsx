@@ -9,6 +9,7 @@ export default class MyGroup extends Component {
         <EmptyList
           emptyMsg={{ img: "ticket_empty", msg: "暂无拼团记录" }}
         ></EmptyList>
+        {/* <Loadding></Loadding> */}
       </div>
     );
   }
