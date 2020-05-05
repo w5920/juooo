@@ -42,7 +42,7 @@ export default {
   },
   //  瀑布流
   getShowListWaterPall() {
-    console.log(this.category);
+    // console.log(this.category);
     return async (dispatch) => {
       const data = await axios.get(
         `Show/Search/getShowList?city_id=${

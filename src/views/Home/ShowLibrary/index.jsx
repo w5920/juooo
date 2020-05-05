@@ -1,9 +1,9 @@
-import { ActivityIndicator } from "antd-mobile";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import style from "../../../assets/css/library/library.module.css";
 import Drawer from "../../../components/common/Drawer";
+import Loadding from "../../../components/common/Loadding";
 import PageHeaderHref from "../../../components/common/PageHeaderHref";
 import WaterfallEle from "../../../components/common/WaterfallEle";
 import libraryAction from "../../../store/actionCreator/library";
@@ -46,7 +46,7 @@ class index extends Component {
     return (
       <React.Fragment>
         <div className={style["library-content"]}>
-          {true ? (
+          {this.state.libraryLeft.length > 0 ? (
             <div>
               <PageHeaderHref
                 pageName={"演出"}
@@ -140,7 +140,7 @@ class index extends Component {
               )}
             </div>
           ) : (
-            <ActivityIndicator size="large" />
+            <Loadding></Loadding>
           )}
         </div>
       </React.Fragment>

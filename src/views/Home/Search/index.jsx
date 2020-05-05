@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import style from "../../../assets/css/home/search.module.css";
+import Loadding from "../../../components/common/Loadding";
 import WaterfallEle from "../../../components/common/WaterfallEle";
 import searchActionType from "../../../store/actionCreator/search";
 class index extends Component {
@@ -18,7 +19,7 @@ class index extends Component {
     };
   }
   render() {
-    return (
+    return this.props.hortSearch.length > 0 ? (
       <div className={style["index-search"]}>
         <div className={style["head"]}>
           <div className={style["search-ipt"]}>
@@ -142,6 +143,8 @@ class index extends Component {
           )}
         </div>
       </div>
+    ) : (
+      <Loadding></Loadding>
     );
   }
   componentWillMount() {

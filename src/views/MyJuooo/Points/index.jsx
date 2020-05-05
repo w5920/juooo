@@ -6,6 +6,7 @@ import myjuoooAction from '../../../store/actionCreator/myJuooo'
 import myPointCss from '../../../assets/css/myjuooo/myPoint.module.css'
 import PageHeaderYel from '../../../components/common/PageHeaderYel'
 import EmptyList from '../../../components/common/EmptyList'
+import Loadding from "../../../components/common/Loadding";
 class index extends Component {
     constructor(props) {
         super(props);
@@ -17,7 +18,7 @@ class index extends Component {
     render() {
 
         if (!this.props.userScore) {
-            return <p>加载中。。。</p>
+            return <Loadding></Loadding>
         }
         console.log(!this.props.schedular);
         return (

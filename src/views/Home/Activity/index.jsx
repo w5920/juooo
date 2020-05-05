@@ -8,13 +8,23 @@ export default class index extends Component {
       <div>
         <MyRouter router={this.props.children}></MyRouter>
         <nav className={style["active-nav"]}>
-          <NavLink to={"/activity"}>拼团</NavLink>
-          <NavLink to={"/activity/myGroup"}>我的拼团</NavLink>
+          <NavLink
+            exact
+            className={"App-link"}
+            activeClassName={"App-active"}
+            to={"/activity"}
+          >
+            拼团
+          </NavLink>
+          <NavLink
+            className={"App-link"}
+            activeClassName={"App-active"}
+            to={"/activity/myGroup"}
+          >
+            我的拼团
+          </NavLink>
         </nav>
       </div>
     );
-  }
-  componentDidMount() {
-    console.log(this.props);
   }
 }

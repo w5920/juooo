@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import style from "../../../assets/css/TourShowInfo/tourShowInfo.module.scss";
 import DetailPageHead from "../../../components/common/DetailPageHead";
+import Loadding from "../../../components/common/Loadding";
 export default class index extends Component {
   constructor(props) {
     super(props);
@@ -76,7 +77,7 @@ export default class index extends Component {
             </div>
           </div>
         ) : (
-          <div>数据正在奔跑中</div>
+          <Loadding></Loadding>
         )}
       </React.Fragment>
     );

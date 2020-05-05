@@ -1,6 +1,5 @@
 import Activity from "../../views/Home/Activity";
-import Group from "../../views/Home/Activity/Group";
-import MyGroup from "../../views/Home/Activity/MyGroup";
+import GroupDetail from "../../views/Home/Activity/GroupDetail";
 import Calendar from "../../views/Home/Calendar";
 import Cardproduct from "../../views/Home/Cardproduct";
 import Integral from "../../views/Home/Integral";
@@ -11,22 +10,16 @@ import ShowDetail from "../../views/Home/ShowDetail";
 import ShowLibrary from "../../views/Home/ShowLibrary";
 import TourShowInfo from "../../views/Home/TourShowInfo";
 import Touring from "../../views/Home/Ttouring";
-
+import ActivetyChildren from "../ActivetyChildren";
 export default [
   {
     path: "/Activity",
     component: Activity,
-    children: [
-      {
-        path: "/activity",
-        component: Group,
-        exact: true,
-      },
-      {
-        path: "/activity/myGroup",
-        component: MyGroup,
-      },
-    ],
+    children: [...ActivetyChildren],
+  },
+  {
+    path: "/GroupDetail/:id",
+    component: GroupDetail,
   },
   {
     path: "/Calendar",

@@ -6,6 +6,7 @@ import { bindActionCreators } from "redux";
 import style from "../../../assets/css/detail/detail.module.scss";
 import ActionPanel from "../../../components/common/ActionPanel";
 import DetailPageHead from "../../../components/common/DetailPageHead";
+import Loadding from "../../../components/common/Loadding";
 import Reminder from "../../../components/common/Reminder";
 import detailAction from "../../../store/actionCreator/detail";
 class index extends Component {
@@ -123,7 +124,12 @@ class index extends Component {
 
         {/* 橙vip 广告 */}
         <div className={style["detaile-adv"]}>
-          <div className={style["detaile-plus-adv"]}>
+          <div
+            className={style["detaile-plus-adv"]}
+            onClick={() => {
+              this.props.history.push("/BuyPlus");
+            }}
+          >
             <div className={style["plus-card"]}>橙PLUS卡</div>
             {this.props.detailData.length > 0 ? (
               this.props.detailData.map((v) => (
@@ -136,12 +142,7 @@ class index extends Component {
               )}
 
             <p className={style["immediately-card"]}>立即开卡</p>
-            <p
-              className={style["plus-img"]}
-              onClick={() => {
-                this.props.history.push("/Plus");
-              }}
-            >
+            <p className={style["plus-img"]}>
               <img src={require("../../../assets/img/arrow.png")} alt="" />
             </p>
           </div>
@@ -404,7 +405,7 @@ class index extends Component {
             )}
         </div>
       </div>
-    ) : '';
+    ) : <Loadding></Loadding>;
   }
   componentDidMount() {
     this.props.getDetailData.call(this);
