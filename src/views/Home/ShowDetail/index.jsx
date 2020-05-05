@@ -12,6 +12,7 @@ class index extends Component {
   constructor(props) {
     super(props);
     this.showP = null;
+    this.switch = false;
     this.state = {
       bottom: "-12.24rem",
       show: "none",
@@ -31,7 +32,7 @@ class index extends Component {
     });
   }
   render() {
-    return (
+    return this.switch ? (
       <div className={style["detail"]}>
         <div className={style["head-detail"]}>
           <DetailPageHead detaileHead={"演出详情"}></DetailPageHead>
@@ -58,8 +59,8 @@ class index extends Component {
               );
             })
           ) : (
-            <ActivityIndicator size="large" />
-          )}
+              <ActivityIndicator size="large" />
+            )}
         </div>
         {/* //详情服务 */}
         <div style={{ background: "#FFF" }}>
@@ -80,8 +81,8 @@ class index extends Component {
               </div>
             ))
           ) : (
-            <ActivityIndicator size="large" />
-          )}
+              <ActivityIndicator size="large" />
+            )}
         </div>
         {/*详情信息*/}
         {this.props.detailData.length > 0 ? (
@@ -117,8 +118,8 @@ class index extends Component {
             </div>
           ))
         ) : (
-          <ActivityIndicator size="large" />
-        )}
+            <ActivityIndicator size="large" />
+          )}
 
         {/* 橙vip 广告 */}
         <div className={style["detaile-adv"]}>
@@ -131,8 +132,8 @@ class index extends Component {
                 </p>
               ))
             ) : (
-              <ActivityIndicator size="large" />
-            )}
+                <ActivityIndicator size="large" />
+              )}
 
             <p className={style["immediately-card"]}>立即开卡</p>
             <p
@@ -181,8 +182,8 @@ class index extends Component {
             </div>
           ))
         ) : (
-          <ActivityIndicator size="large" />
-        )}
+            <ActivityIndicator size="large" />
+          )}
 
         {/* 演出介绍 */}
         <div className={style["Performance-introduction"]}>
@@ -362,8 +363,8 @@ class index extends Component {
                 </div>
               ))
             ) : (
-              <ActivityIndicator size="large" />
-            )}
+                <ActivityIndicator size="large" />
+              )}
           </div>
         </div>
 
@@ -399,11 +400,11 @@ class index extends Component {
               ActionData={this.props.detailTime}
             ></ActionPanel>
           ) : (
-            <ActivityIndicator size="large" />
-          )}
+              <ActivityIndicator size="large" />
+            )}
         </div>
       </div>
-    );
+    ) : '';
   }
   componentDidMount() {
     this.props.getDetailData.call(this);
