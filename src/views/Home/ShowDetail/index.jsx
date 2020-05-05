@@ -13,6 +13,7 @@ class index extends Component {
   constructor(props) {
     super(props);
     this.showP = null;
+    this.switch = false;
     this.state = {
       bottom: "-12.24rem",
       show: "none",
@@ -32,7 +33,7 @@ class index extends Component {
     });
   }
   render() {
-    return this.props.detailTime.length > 0 ? (
+    return this.switch ? (
       <div className={style["detail"]}>
         <div className={style["head-detail"]}>
           <DetailPageHead detaileHead={"演出详情"}></DetailPageHead>
@@ -410,6 +411,12 @@ class index extends Component {
   }
   componentDidMount() {
     this.props.getDetailData.call(this);
+  }
+  componentWillUnmount() {
+    // this.props.detailData = {};
+    // this.props.detailRelevant = {};
+    // this.props.detailTime = {};
+    // console.log(this.props);
   }
 }
 const mapStateToProps = (state) => {
