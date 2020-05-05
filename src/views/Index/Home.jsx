@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import style from "../../assets/css/home/home.module.css";
+import Loadding from "../../components/common/Loadding";
 import WaterfallEle from "../../components/common/WaterfallEle";
 import homeAction from "../../store/actionCreator/home";
 class Home extends Component {
@@ -23,7 +24,7 @@ class Home extends Component {
     };
   }
   render() {
-    return (
+    return this.state.waterfallLeft.length > 0 ? (
       <div style={{ background: "#fff" }}>
         <div className={style["head"]}>
           <div
@@ -113,6 +114,14 @@ class Home extends Component {
                     this.props.history.push(
                       "/showlibrary/" + v.category_id + ".html"
                     );
+                  } else if (i / 1 === 5) {
+                    this.props.history.push("/MyWallet");
+                  } else if (i / 1 === 6) {
+                    this.props.history.push("/BuyPlus");
+                  } else if (i / 1 === 7) {
+                    this.props.history.push("/vip/index/1");
+                  } else if (i / 1 === 8) {
+                    this.props.history.push("/Points");
                   } else if (i / 1 === 9) {
                     this.props.history.push("/activity");
                   }
@@ -207,7 +216,12 @@ class Home extends Component {
         </div>
 
         {/* <!-- vip广告 --> */}
-        <div className={style["vipmsg"]}>
+        <div
+          className={style["vipmsg"]}
+          onClick={() => {
+            this.props.history.push("/BuyPlus");
+          }}
+        >
           <img src={require("../../assets/img/vipmsg.png")} alt="" />
         </div>
 
@@ -488,6 +502,8 @@ class Home extends Component {
           </div>
         </div>
       </div>
+    ) : (
+      <Loadding></Loadding>
     );
   }
   componentWillMount() {

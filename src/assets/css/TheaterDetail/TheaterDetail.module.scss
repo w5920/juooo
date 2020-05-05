@@ -1,0 +1,115 @@
+.head {
+  height: 4.26667rem;
+  width: 100%;
+  background: url("../../img/TheaterDetailBg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  .head-title {
+    height: 1.17333rem;
+    width: 100%;
+    position: relative;
+    left: 0;
+    top: 0;
+    p {
+      padding: 0.29333rem 0.53333rem 0.29333rem 0.3rem;
+      font-size: 0.48rem;
+      position: absolute;
+      color: white;
+      left: 0;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      top: 50%;
+      img {
+        width: 0.4rem;
+        height: 0.6rem;
+      }
+    }
+  }
+  .head-detaile {
+    height: 3.70667rem;
+    width: 100%;
+    position: relative;
+  }
+  .detaile-map {
+    position: absolute;
+    bottom: 0.4rem;
+    right: 0px;
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 1.76rem;
+    p {
+      border-radius: 0.77333rem;
+      width: 0.77333rem;
+      height: 0.77333rem;
+      background-image: url("../../img//location.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 0.4rem 0.48rem;
+      background-color: #ededed;
+      margin-bottom: 0.05333rem;
+    }
+  }
+}
+.detaile-content {
+  position: absolute;
+  bottom: 1rem;
+  left: 0.4rem;
+
+  .detaile-information {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    .information-img {
+      height: 1.2rem;
+      width: 1.2rem;
+      border-radius: 50%;
+      display: inline-block;
+      overflow: hidden;
+      flex-shrink: 0;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .information-location {
+      flex: 1;
+      margin-left: 0.29333rem;
+      p {
+        color: white;
+        font-size: 0.48rem;
+        font-weight: bold;
+        margin-bottom: 0.1rem;
+      }
+      span {
+        color: white;
+        font-size: 0.34667rem;
+      }
+    }
+  }
+}
+.detaile-location {
+  margin-top: 0.52rem;
+  color: white;
+  font-size: 0.32rem;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 1.52rem;
+}

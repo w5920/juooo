@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import style from "../../../assets/css/SelectCity/SelectCity.module.scss";
+import Loadding from "../../../components/common/Loadding";
 import PageHeaderWhite from "../../../components/common/PageHeaderWhite";
 export default class index extends Component {
   constructor(props) {
@@ -180,7 +181,7 @@ export default class index extends Component {
             </div>
           </div>
         ) : (
-          <div>数据正在奔跑中</div>
+          <Loadding></Loadding>
         )}
       </React.Fragment>
     );
@@ -196,7 +197,7 @@ export default class index extends Component {
     for (let i = 0; i < this.letter.length - 1; i++) {
       arr.push(data[this.letter[i]]);
     }
-    console.log(hot_city_List, arr);
+    // console.log(hot_city_List, arr);
     this.setState({
       hotCity: hot_city_List,
       SortedCityList: arr,

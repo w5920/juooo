@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import style from "../../../assets/css/Ttouring/Ttouring.module.scss";
+import Loadding from "../../../components/common/Loadding";
 import PageHeaderWhite from "../../../components/common/PageHeaderWhite";
 export default class index extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export default class index extends Component {
     };
   }
   render() {
-    return (
+    return this.state.touringTime.length > 0 ? (
       <div>
         <PageHeaderWhite pageName={"巡回演出"}></PageHeaderWhite>
         <div className={style["touring"]}>
@@ -52,6 +53,8 @@ export default class index extends Component {
         </div>
         <div className={style["touring-tips"]}></div>
       </div>
+    ) : (
+      <Loadding></Loadding>
     );
   }
   async componentDidMount() {
