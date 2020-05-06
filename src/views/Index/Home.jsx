@@ -513,7 +513,7 @@ class Home extends Component {
         JSON.stringify({
           cityId: 0,
           cityName: "全国",
-          Abbreviation: "",
+          abbreviation: "",
         })
       );
     }

@@ -11,6 +11,7 @@ export default {
         return async (dispatch) => {
             const data = await axios.post('/user/account/getUserAccountLogList?version=6.1.1&referer=2', form);
             if (!data.list) {
+                console.log(1111);
                 dispatch({ type: myjuoooType.GET_BANLANCE_LIST, payload: [] });
             } else {
                 dispatch({ type: myjuoooType.GET_BANLANCE_LIST, payload: data.list });

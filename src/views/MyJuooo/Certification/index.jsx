@@ -22,20 +22,49 @@ class index extends Component {
     const data = await axios.post("/userLogin/spectatorMsg", {
       phoneNumber: localStorage.phoneNumber,
     });
-    console.log(data);
     if (data.ok === 1) {
-      this.setState({
-        id_name: filStr(data.result.id_name, 0, 1),
-        id_number: filStr(data.result.id_number, 3, 14),
-        emptyListShow: true,
-        buttonShow: false,
-      });
+      if (data.result.id_name) {
+        this.setState({
+          id_name: filStr(data.result.id_name, 0, 1),
+          id_number: filStr(data.result.id_number, 3, 14),
+          emptyListShow: true,
+          buttonShow: false,
+        });
+      }
     } else {
       this.setState({
         emptyListShow: false,
       });
     }
   }
+  //添加购票人
+  async addCertification() {
+    this.setState({
+      emptyListShow: true,
+    });
+    const data = await axios.post("/userLogin/userMsg", {
+      id_name: this.state.id_name,
+      id_number: this.state.id_number,
+      phoneNumber: localStorage.phoneNumber,
+    });
+    if (data.ok === 1) {
+      this.getCertification();
+    }
+  }
+  componentDidMount() {
+    this.getCertification();
+  }
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  }
+  changeEmptyShow() {
+    this.setState({
+      emptyListShow: !this.state.emptyListShow,
+    });
+  }
+
   //添加购票人
   async addCertification() {
     this.setState({

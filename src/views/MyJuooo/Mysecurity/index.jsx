@@ -21,7 +21,7 @@ class index extends Component {
                 <img src={require("../../../assets/img/logo-user.png")} />
                 <div>
                   <p>{localStorage.userName || localStorage.phoneNumber}</p>
-                  <p>用户ID:{localStorage.userId || "aaa"}</p>
+                  <p>用户ID:{localStorage._id || ""}</p>
                 </div>
               </div>
               <img src={require("../../../assets/img/arrow.png")} alt="" />

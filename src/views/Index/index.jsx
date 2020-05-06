@@ -13,20 +13,28 @@ class index extends Component {
         <div className={style.foot}>
           <nav className={style.navfoot}>
             <div className={style.footCommon}>
-              <img src={require("../../assets/img/home.png")} alt="" />
-              <NavLink to={"/"}>首页</NavLink>
+              <NavLink to={"/"}>
+                <img src={require("../../assets/img/home.png")} alt="" />
+                首页
+              </NavLink>
             </div>
             <div className={style.footCommon}>
-              <img src={require("../../assets/img/eticket.png")} alt="" />
-              <NavLink to={"/TheatreList"}>剧院</NavLink>
+              <NavLink to={"/TheatreList"}>
+                <img src={require("../../assets/img/eticket.png")} alt="" />
+                剧院
+              </NavLink>
             </div>
             <div className={style.footCommon}>
-              <img src={require("../../assets/img/eticket.png")} alt="" />
-              <NavLink to={"/Eticket"}>票夹</NavLink>
+              <NavLink to={"/Eticket"}>
+                <img src={require("../../assets/img/eticket.png")} alt="" />
+                票夹
+              </NavLink>
             </div>
             <div className={style.footCommon}>
-              <img src={require("../../assets/img/my.png")} alt="" />
-              <NavLink to={"/Myjuooo"}>我的</NavLink>
+              <NavLink to={"/Myjuooo"}>
+                <img src={require("../../assets/img/my.png")} alt="" />
+                我的
+              </NavLink>
             </div>
           </nav>
         </div>

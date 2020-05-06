@@ -5,7 +5,6 @@ import myjuoooInit from "../../state/myJuooo";
 
 export default function myjuooo(states = myjuoooInit, { type, payload }) {
   const state = JSON.parse(JSON.stringify(states));
-  //   console.log("reducer", payload);
   //积分商城列表
   if (type === myjuoooType.GET_SCHEDULAR_LIST) {
     state.userScore = payload;
@@ -27,7 +26,7 @@ export default function myjuooo(states = myjuoooInit, { type, payload }) {
     state.couponList = payload;
   }
   //余额
-  if (type === myjuoooType.GET_BANLANCELIST) {
+  if (type === myjuoooType.GET_BANLANCE_LIST) {
     state.banlanceList = payload;
   }
   //Plus 会员

@@ -11,7 +11,8 @@ class index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            banlanceType: 1
+            banlanceType: 1,
+
         }
     }
 
@@ -25,7 +26,6 @@ class index extends Component {
         this.props.getBanlanceList(num);
     }
     render() {
-        console.log(this.props.banlanceList);
         if (!this.props.banlanceList) {
             return <Loadding></Loadding>
         }

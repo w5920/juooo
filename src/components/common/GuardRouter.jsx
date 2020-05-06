@@ -7,14 +7,17 @@ class GuardRouter extends Component {
   render() {
     return <this.props.component {...this.props} />;
   }
-  componentDidMount() {
+
+  componentWillMount() {
     if (this.props.meta) {
       if (this.props.meta.isAuthorization) {
         if (!localStorage.is_login) {
-          this.props.history.push('/Register')
+          this.props.history.push("/Register");
         }
       }
     }
+  }
+  componentDidMount() {
     //每次进入页面时 回到顶部
     if (this.props.history.action === "PUSH") {
       document.documentElement.scrollTop = document.body.scrollTop = 0;
