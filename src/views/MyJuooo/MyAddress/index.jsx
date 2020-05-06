@@ -64,9 +64,11 @@ class index extends Component {
             street,
             is_default
         })
-        console.log(data);
         if (data.ok === 1) {
-
+            this.setState({
+                addFromShow: !this.state.addFromShow
+            })
+            this.getShippingAddress();
         }
     }
     //获取收货地址
@@ -85,7 +87,6 @@ class index extends Component {
                 shippingAddressList.splice(index, 1);
                 shippingAddressList.unshift(item);
             }
-            console.log(2222, shippingAddressList);
             this.setState({
                 addressList: shippingAddressList
             })
