@@ -24,12 +24,14 @@ class index extends Component {
             phoneNumber: localStorage.phoneNumber
         });
         if (data.ok === 1) {
-            this.setState({
-                id_name: filStr(data.result.id_name, 0, 1),
-                id_number: filStr(data.result.id_number, 3, 14),
-                emptyListShow: true,
-                buttonShow: false
-            })
+            if (data.result.id_name) {
+                this.setState({
+                    id_name: filStr(data.result.id_name, 0, 1),
+                    id_number: filStr(data.result.id_number, 3, 14),
+                    emptyListShow: true,
+                    buttonShow: false
+                })
+            }
         } else {
             this.setState({
                 emptyListShow: false

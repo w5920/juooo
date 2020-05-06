@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 class ButtonFoot extends Component {
     render() {
-        console.log(this.props);
         return (
             <>
                 <button
