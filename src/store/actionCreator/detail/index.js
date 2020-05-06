@@ -19,7 +19,7 @@ export default {
         `Show/Search/getShowList?category=${static_data.cate_parent_id}&city_id=${static_data.city.city_id}&version=6.1.1&referer=2`
       );
       this.switch = true;
-      // console.log(static_data, list);
+      // console.log(this.switch);
       dispatch(detailAction(detailType.DETAILE_DEFAULT, static_data)); //详情数据
       dispatch(detailAction(detailType.DETAILE_RELEVANT, list)); //详情相关
       dispatch(detailAction(detailType.DETAILE_TIME, item_list)); //选座日期

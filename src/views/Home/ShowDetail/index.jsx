@@ -410,6 +410,12 @@ class index extends Component {
   componentDidMount() {
     this.props.getDetailData.call(this);
   }
+  componentWillUnmount() {
+    // this.props.detailData = {};
+    // this.props.detailRelevant = {};
+    // this.props.detailTime = {};
+    // console.log(this.props);
+  }
 }
 const mapStateToProps = (state) => {
   return {

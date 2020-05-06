@@ -162,7 +162,7 @@ export default class ActionPanel extends Component {
     //选择日期去重
     const arr = this.uniq(this.props.ActionData); //日期
     const brr = this.uniqTime(this.props.ActionData); //场次
-    console.log(list, arr, brr); //价格
+    // console.log(list, arr, brr); //价格
     this.setState({
       selectDate: arr,
       selectLocation: brr,
