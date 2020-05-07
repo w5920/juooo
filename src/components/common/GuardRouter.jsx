@@ -7,7 +7,7 @@ class GuardRouter extends Component {
   render() {
     return <this.props.component {...this.props} />;
   }
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.meta) {
       if (this.props.meta.isAuthorization) {
         if (!localStorage.is_login) {
