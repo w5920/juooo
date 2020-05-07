@@ -31,7 +31,9 @@ class index extends Component {
               </NavLink>
             </div>
             <div className={style.footCommon}>
-              <NavLink to={"/Myjuooo"}>
+              <NavLink
+                to={{ pathname: "/Myjuooo", state: { path: "/Eticket" } }}
+              >
                 <img src={require("../../assets/img/my.png")} alt="" />
                 我的
               </NavLink>

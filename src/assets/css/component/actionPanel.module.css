@@ -1,6 +1,6 @@
 .actionPanel {
-  height: 12.24rem;
-  overflow-y: scroll;
+  min-height: 12.24rem;
+  overflow-y: auto;
   width: 100%;
   position: absolute;
   left: 0;
@@ -8,6 +8,7 @@
   z-index: 100000;
   transition: all 0.3s linear;
   background: #fff;
+  padding-bottom: 1.46667rem;
 }
 .action-time {
   padding: 0.58667rem 0 0 0.4rem;

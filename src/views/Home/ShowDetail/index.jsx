@@ -22,11 +22,13 @@ class index extends Component {
   }
 
   actionFn() {
+    document.body.style.overflow = "";
     this.setState({
       bottom: "-12.24rem",
     });
   }
   actionTipsFn() {
+    document.body.style.overflow = "";
     this.setState({
       show: "none",
       ReminderBottom: "-12.24rem",
@@ -60,8 +62,8 @@ class index extends Component {
               );
             })
           ) : (
-              <ActivityIndicator size="large" />
-            )}
+            <ActivityIndicator size="large" />
+          )}
         </div>
         {/* //详情服务 */}
         <div style={{ background: "#FFF" }}>
@@ -82,8 +84,8 @@ class index extends Component {
               </div>
             ))
           ) : (
-              <ActivityIndicator size="large" />
-            )}
+            <ActivityIndicator size="large" />
+          )}
         </div>
         {/*详情信息*/}
         {this.props.detailData.length > 0 ? (
@@ -119,8 +121,8 @@ class index extends Component {
             </div>
           ))
         ) : (
-            <ActivityIndicator size="large" />
-          )}
+          <ActivityIndicator size="large" />
+        )}
 
         {/* 橙vip 广告 */}
         <div className={style["detaile-adv"]}>
@@ -138,8 +140,8 @@ class index extends Component {
                 </p>
               ))
             ) : (
-                <ActivityIndicator size="large" />
-              )}
+              <ActivityIndicator size="large" />
+            )}
 
             <p className={style["immediately-card"]}>立即开卡</p>
             <p className={style["plus-img"]}>
@@ -183,8 +185,8 @@ class index extends Component {
             </div>
           ))
         ) : (
-            <ActivityIndicator size="large" />
-          )}
+          <ActivityIndicator size="large" />
+        )}
 
         {/* 演出介绍 */}
         <div className={style["Performance-introduction"]}>
@@ -291,6 +293,7 @@ class index extends Component {
         <div
           className={style["remind"]}
           onClick={() => {
+            document.body.style.overflow = "hidden";
             this.setState({
               show: "block",
               ReminderBottom: 0,
@@ -364,8 +367,8 @@ class index extends Component {
                 </div>
               ))
             ) : (
-                <ActivityIndicator size="large" />
-              )}
+              <ActivityIndicator size="large" />
+            )}
           </div>
         </div>
 
@@ -386,6 +389,7 @@ class index extends Component {
               this.setState({
                 bottom: "0",
               });
+              document.body.style.overflow = "hidden";
             }}
           >
             选座购买
@@ -401,11 +405,13 @@ class index extends Component {
               ActionData={this.props.detailTime}
             ></ActionPanel>
           ) : (
-              <ActivityIndicator size="large" />
-            )}
+            <ActivityIndicator size="large" />
+          )}
         </div>
       </div>
-    ) : <Loadding></Loadding>;
+    ) : (
+      <Loadding></Loadding>
+    );
   }
   componentDidMount() {
     this.props.getDetailData.call(this);

@@ -155,6 +155,9 @@ export default class ActionPanel extends Component {
     }
     return arr;
   }
+  // componentWillMount() {
+  //   document.body.style.overflow = "hidden";
+  // }
   async componentDidMount() {
     const { list } = await axios.get(
       `Schedule/Schedule/getScheduleTicket?schedular_id=${this.props.ActionData[0].id}&version=6.1.1&referer=2`
