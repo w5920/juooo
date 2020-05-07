@@ -9,10 +9,12 @@ export default class Reminder extends Component {
 
   render() {
     //遮罩层显示 提示信息显示太快  没有动画效果 加一个延时器
-    const timer = setTimeout(() => {
-      this.tip.style.bottom = this.props.bottom;
-      clearTimeout(timer);
-    }, 10);
+    if (this.tip) {
+      const timer = setTimeout(() => {
+        this.tip.style.bottom = this.props.bottom;
+        clearTimeout(timer);
+      }, 10);
+    }
     return (
       <React.Fragment>
         <div
@@ -25,7 +27,7 @@ export default class Reminder extends Component {
               <span
                 className={reminder["explain-x"]}
                 onClick={() => {
-                  console.log(111);
+                  // console.log(111);
                   this.props.actionFn();
                 }}
               ></span>

@@ -18,6 +18,7 @@ class index extends Component {
       bottom: "-12.24rem",
       show: "none",
       ReminderBottom: "-12.24rem",
+      sureShow: "none",
     };
   }
 
@@ -25,6 +26,7 @@ class index extends Component {
     document.body.style.overflow = "";
     this.setState({
       bottom: "-12.24rem",
+      sureShow: "none",
     });
   }
   actionTipsFn() {
@@ -388,6 +390,7 @@ class index extends Component {
             onClick={() => {
               this.setState({
                 bottom: "0",
+                sureShow: "block",
               });
               document.body.style.overflow = "hidden";
             }}
@@ -403,6 +406,7 @@ class index extends Component {
               bottom={this.state.bottom}
               actionFn={this.actionFn.bind(this)}
               ActionData={this.props.detailTime}
+              sureShow={this.state.sureShow}
             ></ActionPanel>
           ) : (
             <ActivityIndicator size="large" />

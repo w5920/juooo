@@ -1,5 +1,15 @@
+.shadom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  /* display: none; */
+}
 .actionPanel {
-  min-height: 12.24rem;
+  /* height: 12.24rem; */
   overflow-y: auto;
   width: 100%;
   position: absolute;
@@ -8,7 +18,7 @@
   z-index: 100000;
   transition: all 0.3s linear;
   background: #fff;
-  padding-bottom: 1.46667rem;
+  /* padding-bottom: 1.46667rem; */
 }
 .action-time {
   padding: 0.58667rem 0 0 0.4rem;
@@ -70,10 +80,10 @@
   width: 100%;
   height: 1.46667rem;
   padding: 0.2rem 0.32rem;
-  /* box-sizing: border-box; */
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  /* display: none; */
+  /* position: fixed; */
+  /* left: 0; */
+  /* bottom: 0; */
 }
 .action-pay p {
   height: 100%;

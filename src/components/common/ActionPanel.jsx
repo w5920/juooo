@@ -7,6 +7,7 @@ export default class ActionPanel extends Component {
   constructor(props) {
     super(props);
     this.paymoney = null; //选座购买
+    this.actionpanel = null;
     this.state = {
       selectDate: [],
       selectLocation: [],
@@ -21,108 +22,120 @@ export default class ActionPanel extends Component {
   //2.改变父组件传下的值得函数 actionFn
   //3所需要的数据
   render() {
+    if (this.actionpanel) {
+      const timer = setTimeout(() => {
+        this.actionpanel.style.bottom = this.props.bottom;
+        clearTimeout(timer);
+      }, 10);
+    }
+
     return (
       <Fragment>
         {this.state.selectPrice.length > 0 ? (
           <div
-            className={style["actionPanel"]}
-            style={{ bottom: this.props.bottom }}
+            className={style["shadom"]}
+            style={{ display: this.props.sureShow }}
           >
-            <div className={style["action-time"]}>
-              <p>选择日期</p>
-              <div className={style["action-select"]}>
-                {this.state.selectDate.map((v, i) => (
-                  <span
-                    key={v.id + 124}
-                    className={`${
-                      this.state.timeIndex / 1 === i ? style["active"] : ""
-                    }`}
-                    onClick={() => {
-                      this.setState({
-                        timeIndex: i,
-                      });
-                    }}
-                  >
-                    {v.project_time}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className={style["action-time"]}>
-              <p>选择场次</p>
-              <div className={style["action-select"]}>
-                {this.state.selectLocation.map((v, i) => (
-                  <span
-                    key={v.id + 11124}
-                    className={`${
-                      this.state.selectIndex / 1 === i ? style["active"] : ""
-                    }`}
-                    onClick={() => {
-                      this.setState({
-                        selectIndex: i,
-                      });
-                    }}
-                  >
-                    {v.session_time}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className={style["action-time"]}>
-              <p>选择价格</p>
-              <div className={style["action-select"]}>
-                {this.state.selectPrice.map((v, i) => (
-                  <span
-                    className={`${style["action-price"]} ${
-                      this.state.priceIndex / 1 === i ? style["active"] : ""
-                    }`}
-                    key={v.ticket_id}
-                    onClick={() => {
-                      this.setState(
-                        {
-                          priceIndex: i,
-                        },
-                        () => {
-                          this.paymoney.style.background =
-                            "linear-gradient(50deg, #ff9a34, #ff4d4a)";
-                          this.paymoney.style.color = "#Fff";
-                        }
-                      );
-                    }}
-                  >
-                    {v.price}
-                    <span className={style["action-register"]}>缺货登记</span>
-                  </span>
-                ))}
-              </div>
-            </div>
             <div
-              className={style["action-remove"]}
-              onClick={() => {
-                this.props.actionFn();
-              }}
+              className={style["actionPanel"]}
+              ref={(el) => (this.actionpanel = el)}
             >
-              X
-            </div>
+              <div className={style["action-time"]}>
+                <p>选择日期</p>
+                <div className={style["action-select"]}>
+                  {this.state.selectDate.map((v, i) => (
+                    <span
+                      key={v.id + 124}
+                      className={`${
+                        this.state.timeIndex / 1 === i ? style["active"] : ""
+                      }`}
+                      onClick={() => {
+                        this.setState({
+                          timeIndex: i,
+                        });
+                      }}
+                    >
+                      {v.project_time}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className={style["action-time"]}>
+                <p>选择场次</p>
+                <div className={style["action-select"]}>
+                  {this.state.selectLocation.map((v, i) => (
+                    <span
+                      key={v.id + 11124}
+                      className={`${
+                        this.state.selectIndex / 1 === i ? style["active"] : ""
+                      }`}
+                      onClick={() => {
+                        this.setState({
+                          selectIndex: i,
+                        });
+                      }}
+                    >
+                      {v.session_time}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className={style["action-time"]}>
+                <p>选择价格</p>
+                <div className={style["action-select"]}>
+                  {this.state.selectPrice.map((v, i) => (
+                    <span
+                      className={`${style["action-price"]} ${
+                        this.state.priceIndex / 1 === i ? style["active"] : ""
+                      }`}
+                      key={v.ticket_id}
+                      onClick={() => {
+                        this.setState(
+                          {
+                            priceIndex: i,
+                          },
+                          () => {
+                            this.paymoney.style.background =
+                              "linear-gradient(50deg, #ff9a34, #ff4d4a)";
+                            this.paymoney.style.color = "#Fff";
+                          }
+                        );
+                      }}
+                    >
+                      {v.price}
+                      <span className={style["action-register"]}>缺货登记</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div
+                className={style["action-remove"]}
+                onClick={() => {
+                  this.props.actionFn();
+                }}
+              >
+                X
+              </div>
 
-            <div className={style["action-pay"]}>
-              <WingBlank>
-                <WhiteSpace />
-                <p
-                  ref={(el) => {
-                    this.paymoney = el;
-                  }}
-                  onClick={() => {
-                    if (this.state.priceIndex > -1) {
-                      Toast.offline("敬请期待");
-                    } else {
-                      Toast.fail("Load failed !!!");
-                    }
-                  }}
-                >
-                  选座购买
-                </p>
-              </WingBlank>
+              <div className={style["action-pay"]}>
+                <WingBlank>
+                  <WhiteSpace />
+                  <p
+                    ref={(el) => {
+                      this.paymoney = el;
+                    }}
+                    onClick={() => {
+                      if (this.state.priceIndex > -1) {
+                        Toast.offline("敬请期待");
+                      } else {
+                        Toast.fail("Load failed !!!");
+                      }
+                    }}
+                  >
+                    选座购买
+                  </p>
+                </WingBlank>
+              </div>
             </div>
           </div>
         ) : (
@@ -155,10 +168,8 @@ export default class ActionPanel extends Component {
     }
     return arr;
   }
-  // componentWillMount() {
-  //   document.body.style.overflow = "hidden";
-  // }
-  async componentDidMount() {
+
+  async getBuyData() {
     const { list } = await axios.get(
       `Schedule/Schedule/getScheduleTicket?schedular_id=${this.props.ActionData[0].id}&version=6.1.1&referer=2`
     );
@@ -171,5 +182,15 @@ export default class ActionPanel extends Component {
       selectLocation: brr,
       selectPrice: list,
     });
+  }
+  componentDidUpdate(nextProps, preProps) {
+    if (this.props.sureShow === "block") {
+      this.getBuyData();
+      // console.log(nextProps, preProps);
+    }
+  }
+  componentDidMount() {
+    // console.log(this.props.sureShow, 11111);
+    this.getBuyData();
   }
 }
