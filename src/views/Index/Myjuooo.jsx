@@ -7,22 +7,22 @@ class Myjuooo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      helpShow: false
-    }
+      helpShow: false,
+    };
   }
   componentDidMount() {
-    document.body.style.backgroundColor = '#f5f5f5';
+    document.body.style.backgroundColor = "#f5f5f5";
     this.props.getBasicInfo();
     this.props.getMenuItemList();
   }
   //客服帮助
   callHelp() {
     this.setState({
-      helpShow: !this.state.helpShow
-    })
+      helpShow: !this.state.helpShow,
+    });
   }
   render() {
-
+    // console.log(2111);
     const is_login = localStorage.is_login;
     return (
       <div className={myjuoooCss.myjuooo}>
@@ -33,9 +33,14 @@ class Myjuooo extends Component {
           <div className={myjuoooCss.topMain}>
             <div className={myjuoooCss.mineInfo}>
               <div className={myjuoooCss.mineInfo_pic}>
-                <img src={require('../../assets/img/logo-user.png')} />
+                <img src={require("../../assets/img/logo-user.png")} />
               </div>
-              <div className={myjuoooCss.mineInfo_msg} onClick={is_login ? null : () => this.props.history.push('/Register')} >
+              <div
+                className={myjuoooCss.mineInfo_msg}
+                onClick={
+                  is_login ? null : () => this.props.history.push("/Register")
+                }
+              >
                 <p
                   className={
                     is_login
@@ -51,7 +56,8 @@ class Myjuooo extends Component {
                       ? myjuoooCss.mineInfo_userIdOne
                       : myjuoooCss.mineInfo_userIdZero
                   }
-                >用户ID:
+                >
+                  用户ID:
                   {is_login ? localStorage._id : "点击登录>"}
                 </p>
               </div>
@@ -64,19 +70,43 @@ class Myjuooo extends Component {
             <div className={myjuoooCss.mineInfo_conts}>
               <div className={myjuoooCss.mineInfo_cont}>
                 <a href="/Myjuooo/MyBalance">
-                  <p className={is_login ? myjuoooCss.mineInfo_contNumOne : myjuoooCss.mineInfo_contNumZero}>0</p>
+                  <p
+                    className={
+                      is_login
+                        ? myjuoooCss.mineInfo_contNumOne
+                        : myjuoooCss.mineInfo_contNumZero
+                    }
+                  >
+                    0
+                  </p>
                   <p className={myjuoooCss.mineInfo_contName}>账户余额</p>
                 </a>
               </div>
               <div className={myjuoooCss.mineInfo_cont}>
                 <a href="/Points">
-                  <p className={is_login ? myjuoooCss.mineInfo_contNumOne : myjuoooCss.mineInfo_contNumZero}>0</p>
+                  <p
+                    className={
+                      is_login
+                        ? myjuoooCss.mineInfo_contNumOne
+                        : myjuoooCss.mineInfo_contNumZero
+                    }
+                  >
+                    0
+                  </p>
                   <p className={myjuoooCss.mineInfo_contName}>积分</p>
                 </a>
               </div>
               <div className={myjuoooCss.mineInfo_cont}>
                 <a href="/Myjuooo/Coupon">
-                  <p className={is_login ? myjuoooCss.mineInfo_contNumOne : myjuoooCss.mineInfo_contNumZero}>0</p>
+                  <p
+                    className={
+                      is_login
+                        ? myjuoooCss.mineInfo_contNumOne
+                        : myjuoooCss.mineInfo_contNumZero
+                    }
+                  >
+                    0
+                  </p>
                   <p className={myjuoooCss.mineInfo_contName}>优惠券</p>
                 </a>
               </div>
@@ -103,7 +133,7 @@ class Myjuooo extends Component {
             <li className={myjuoooCss.myjuoooLink_cont}>
               <a href="/MyOrderList">
                 <span className={myjuoooCss.myjuoooLink_bgImg}>
-                  <img src={require('../../assets/img/myOrder_bg.png')} />
+                  <img src={require("../../assets/img/myOrder_bg.png")} />
                 </span>
                 <p>我的订单</p>
               </a>
@@ -111,7 +141,7 @@ class Myjuooo extends Component {
             <li className={myjuoooCss.myjuoooLink_cont}>
               <a href="/Eticket">
                 <span className={myjuoooCss.myjuoooLink_bgImg}>
-                  <img src={require('../../assets/img/myTicket_bg.png')} />
+                  <img src={require("../../assets/img/myTicket_bg.png")} />
                 </span>
                 <p>我的票夹</p>
               </a>
@@ -119,7 +149,7 @@ class Myjuooo extends Component {
             <li className={myjuoooCss.myjuoooLink_cont}>
               <a href="/MyWallet?id=3">
                 <span className={myjuoooCss.myjuoooLink_bgImg}>
-                  <img src={require('../../assets/img/myCard_bg.png')} />
+                  <img src={require("../../assets/img/myCard_bg.png")} />
                 </span>
                 <p>我的卡包</p>
               </a>
@@ -129,7 +159,7 @@ class Myjuooo extends Component {
             <li className={myjuoooCss.myjuoooLink_cont}>
               <a href="/Myjuooo/Certification">
                 <span className={myjuoooCss.myjuoooLink_bgImg}>
-                  <img src={require('../../assets/img/myPeople_bg.png')} />
+                  <img src={require("../../assets/img/myPeople_bg.png")} />
                 </span>
                 <p>实名购票人</p>
               </a>
@@ -137,7 +167,7 @@ class Myjuooo extends Component {
             <li className={myjuoooCss.myjuoooLink_cont}>
               <a href="/Myjuooo/MyAddress">
                 <span className={myjuoooCss.myjuoooLink_bgImg}>
-                  <img src={require('../../assets/img/myAddress_bg.png')} />
+                  <img src={require("../../assets/img/myAddress_bg.png")} />
                 </span>
                 <p>收货地址</p>
               </a>
@@ -145,37 +175,44 @@ class Myjuooo extends Component {
             <li className={myjuoooCss.myjuoooLink_cont}>
               <a href="/Feedback">
                 <span className={myjuoooCss.myjuoooLink_bgImg}>
-                  <img src={require('../../assets/img/myFeedback_bg.png')} />
+                  <img src={require("../../assets/img/myFeedback_bg.png")} />
                 </span>
                 <p>意见反馈</p>
               </a>
             </li>
-            <li className={myjuoooCss.myjuoooLink_cont} onClick={this.callHelp.bind(this)}>
+            <li
+              className={myjuoooCss.myjuoooLink_cont}
+              onClick={this.callHelp.bind(this)}
+            >
               <span className={myjuoooCss.myjuoooLink_bgImg}>
-                <img src={require('../../assets/img/myHelp_bg.png')} />
+                <img src={require("../../assets/img/myHelp_bg.png")} />
               </span>
               <p>客服帮助</p>
             </li>
           </ul>
         </div>
-        {
-          this.state.helpShow ?
-            <div className={myjuoooCss.callHelpWay} onClick={() => this.setState({ helpShow: false })}>
-              <div className={myjuoooCss.helpWayItem}>
-                <div>
-                  <img src={require('../../assets/img/helpOnline.png')} alt="" />
-                </div>
-                <p>在线咨询</p>
+        {this.state.helpShow ? (
+          <div
+            className={myjuoooCss.callHelpWay}
+            onClick={() => this.setState({ helpShow: false })}
+          >
+            <div className={myjuoooCss.helpWayItem}>
+              <div>
+                <img src={require("../../assets/img/helpOnline.png")} alt="" />
               </div>
-              <div className={myjuoooCss.helpWayItem}>
-                <div>
-                  <img src={require('../../assets/img/helpPhone.png')} alt="" />
-                </div>
-                <p>电话咨询</p>
+              <p>在线咨询</p>
+            </div>
+            <div className={myjuoooCss.helpWayItem}>
+              <div>
+                <img src={require("../../assets/img/helpPhone.png")} alt="" />
               </div>
-            </div> : ''
-        }
-      </div >
+              <p>电话咨询</p>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
     );
   }
 }

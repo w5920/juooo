@@ -101,7 +101,7 @@ class TheatreList extends Component {
     this.setState({
       theadList: theatre_list,
     });
-    console.log(theatre_list);
+    // console.log(theatre_list);
   }
 }
 

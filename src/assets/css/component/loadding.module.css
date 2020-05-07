@@ -15,16 +15,17 @@
   justify-content: center;
 }
 .people {
-  width: 280px;
-  height: 280px;
+  width: 2.8rem;
+  height: 2.8rem;
   background: url("../../img/loadding.png") no-repeat left center;
   animation: move1 2s steps(12) infinite;
+  background-size: 33.6rem 2.8rem;
 }
 @keyframes move1 {
   from {
-    background-position: 0px 0px;
+    background-position: 0 0;
   }
   to {
-    background-position: -3360px 0px;
+    background-position: -33.6rem 0;
   }
 }

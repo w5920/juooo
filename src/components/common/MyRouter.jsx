@@ -18,7 +18,6 @@ class MyRouter extends Component {
             render={() => <GuardRouter {...v}></GuardRouter>}
           ></Route>
         ))}
-
         <Redirect to={"/error"} from="*"></Redirect>
       </Switch>
     );
