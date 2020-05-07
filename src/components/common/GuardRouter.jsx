@@ -7,7 +7,10 @@ class GuardRouter extends Component {
   render() {
     return <this.props.component {...this.props} />;
   }
+<<<<<<< HEAD
+=======
 
+>>>>>>> c9cf4948fbc8d634a0913283602a7f7a9485ac8d
   componentWillMount() {
     if (this.props.meta) {
       if (this.props.meta.isAuthorization) {

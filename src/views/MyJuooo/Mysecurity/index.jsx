@@ -46,7 +46,7 @@ class index extends Component {
             <img src={require("../../../assets/img/arrow.png")} alt="" />
           </div>
         </a>
-        <button className={mySecutityCss.loginOut}>退出登录</button>
+        <button className={mySecutityCss.loginOut} onClick={this.loginOut}>退出登录</button>
       </div>
     );
   }
