@@ -5,7 +5,7 @@ class GuardRouter extends Component {
     super(props);
   }
   render() {
-    return <this.props.component {...this.props} />;
+    return <this.props.component {...this.props} pathName={this.props.path} />;
   }
   componentWillMount() {
     if (this.props.meta) {

@@ -50,7 +50,7 @@ export default [
         meta: { isAuthorization: true }
     },
     {
-        path: '/Myjuooo/MyAddress',
+        path: '/Myjuooo/MyAddress/',
         component: MyAddress,
         meta: { isAuthorization: true }
     },

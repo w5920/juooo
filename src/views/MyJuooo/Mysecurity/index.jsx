@@ -4,11 +4,12 @@ import PageHeaderWhite from "../../../components/common/PageHeaderWhite";
 
 class index extends Component {
   componentDidMount() {
-    document.body.style.background = "#f5f5f5";
+    document.body.style.background = "#f5f5f5 !important";
   }
 
   loginOut() {
     localStorage.clear();
+    this.props.history.push('/Myjuooo');
   }
   render() {
     return (
@@ -46,7 +47,7 @@ class index extends Component {
             <img src={require("../../../assets/img/arrow.png")} alt="" />
           </div>
         </a>
-        <button className={mySecutityCss.loginOut} onClick={this.loginOut}>退出登录</button>
+        <button className={mySecutityCss.loginOut} onClick={this.loginOut.bind(this)}>退出登录</button>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import myjuoooCss from "../../assets/css/myjuooo/myjuooo.module.css";
@@ -22,7 +23,6 @@ class Myjuooo extends Component {
     });
   }
   render() {
-    // console.log(2111);
     const is_login = localStorage.is_login;
     return (
       <div className={myjuoooCss.myjuooo}>
@@ -38,7 +38,7 @@ class Myjuooo extends Component {
               <div
                 className={myjuoooCss.mineInfo_msg}
                 onClick={
-                  is_login ? null : () => this.props.history.push("/Register")
+                  is_login ? null : () => this.props.history.push({ pathname: "/Register", state: '/Myjuooo' })
                 }
               >
                 <p
@@ -57,8 +57,7 @@ class Myjuooo extends Component {
                       : myjuoooCss.mineInfo_userIdZero
                   }
                 >
-                  用户ID:
-                  {is_login ? localStorage._id : "点击登录>"}
+                  {is_login ? '用户ID:' + localStorage._id : "点击登录>"}
                 </p>
               </div>
             </div>
@@ -191,28 +190,30 @@ class Myjuooo extends Component {
             </li>
           </ul>
         </div>
-        {this.state.helpShow ? (
-          <div
-            className={myjuoooCss.callHelpWay}
-            onClick={() => this.setState({ helpShow: false })}
-          >
-            <div className={myjuoooCss.helpWayItem}>
-              <div>
-                <img src={require("../../assets/img/helpOnline.png")} alt="" />
+        {
+          this.state.helpShow ? (
+            <div
+              className={myjuoooCss.callHelpWay}
+              onClick={() => this.setState({ helpShow: false })}
+            >
+              <div className={myjuoooCss.helpWayItem}>
+                <div>
+                  <img src={require("../../assets/img/helpOnline.png")} alt="" />
+                </div>
+                <p>在线咨询</p>
               </div>
-              <p>在线咨询</p>
-            </div>
-            <div className={myjuoooCss.helpWayItem}>
-              <div>
-                <img src={require("../../assets/img/helpPhone.png")} alt="" />
+              <div className={myjuoooCss.helpWayItem}>
+                <div>
+                  <img src={require("../../assets/img/helpPhone.png")} alt="" />
+                </div>
+                <p>电话咨询</p>
               </div>
-              <p>电话咨询</p>
             </div>
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
+          ) : (
+              ""
+            )
+        }
+      </div >
     );
   }
 }

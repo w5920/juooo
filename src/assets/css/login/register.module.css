@@ -29,13 +29,14 @@
     display: inline;
     color:#232323;
     border: 0;
+    background-color: #fff !important;
 }
 .regCode input {
     display: inline;
     color:#232323;
     margin-right: 15px;
     border: 0;
-    /* background-color: rgb(245, 245, 245); */
+    background-color: #fff !important;
 }
 .regCode i {
     display: inline;

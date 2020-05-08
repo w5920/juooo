@@ -27,8 +27,8 @@ class PageHeaderWhite extends Component {
                 }}
               />
             ) : (
-              ""
-            ),
+                ""
+              ),
           ]}
         >
           {this.props.pageName}
