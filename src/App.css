@@ -33,7 +33,9 @@
 .App-active {
   color: red;
 }
-
+.activeLink img{
+  background-color: #FF6743;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

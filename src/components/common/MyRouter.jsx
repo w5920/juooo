@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import GuardRouter from "./GuardRouter";
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
+
+import '../../assets/css/transitionGroup.css'
 
 class MyRouter extends Component {
   constructor(props) {
@@ -9,17 +12,29 @@ class MyRouter extends Component {
 
   render() {
     return (
-      <Switch>
-        {this.props.router.map((v) => (
-          <Route
-            key={v.path}
-            exact={v.exact}
-            path={v.path}
-            render={() => <GuardRouter {...v}></GuardRouter>}
-          ></Route>
-        ))}
-        <Redirect to={"/error"} from="*"></Redirect>
-      </Switch>
+      <Route
+        render={({ location }) => (
+          <TransitionGroup>
+            <CSSTransition
+              key={location.key}
+              classNames={this.props.type || 'fade'}
+              timeout={this.props.duration || 300}>
+              <Switch location={location}>
+                {this.props.router.map((v) => (
+                  <Route
+                    key={v.path}
+                    exact={v.exact}
+                    path={v.path}
+                    render={() => <GuardRouter {...v}></GuardRouter>}
+                  ></Route>
+                ))}
+                <Redirect to={"/error"} from="*"></Redirect>
+              </Switch>
+            </CSSTransition>
+          </TransitionGroup>
+        )}
+      >
+      </Route>
     );
   }
 }

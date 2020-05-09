@@ -13,25 +13,25 @@ class index extends Component {
         <div className={style.foot}>
           <nav className={style.navfoot}>
             <div className={style.footCommon}>
-              <NavLink to={"/"}>
+              <NavLink activeClassName={'activeLink'} exact to={"/"}>
                 <img src={require("../../assets/img/home.png")} alt="" />
                 首页
               </NavLink>
             </div>
             <div className={style.footCommon}>
-              <NavLink to={"/TheatreList"}>
+              <NavLink activeClassName={'activeLink'} to={"/TheatreList"}>
                 <img src={require("../../assets/img/eticket.png")} alt="" />
                 剧院
               </NavLink>
             </div>
             <div className={style.footCommon}>
-              <NavLink to={"/Eticket"}>
+              <NavLink activeClassName={'activeLink'} to={"/Eticket"}>
                 <img src={require("../../assets/img/eticket.png")} alt="" />
                 票夹
               </NavLink>
             </div>
             <div className={style.footCommon}>
-              <NavLink
+              <NavLink activeClassName={'activeLink'}
                 to={{ pathname: "/Myjuooo", state: { path: "/Eticket" } }}
               >
                 <img src={require("../../assets/img/my.png")} alt="" />
