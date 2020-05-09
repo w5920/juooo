@@ -17,30 +17,27 @@ class MyAccountSafe extends Component {
             password2: ''
         }
     }
-    /////??????????? oncahnge?
     handleChange(e) {
-        console.log(e.target.name);
-        if (e.target.name === "password1" || e.target.name === "password2") {
-            console.log(1111);
-            let reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/
-            if (!reg.test(e.target.value)) {
-                Toast.fail('密码格式错误', 1, () => {
-                    this.password1.value = '';
-                    this.password2.value = '';
-                });
-                return false
-            }
-        }
         this.setState({
             [e.target.name]: e.target.value
         })
     }
     //获取验证码
     async getMsgCode() {
+        let num = 5;
+        this.getCodeBtn.disabled = true;
+        const timer = setInterval(() => {
+            this.getCodeBtn.value = num;
+            if (num < 1) {
+                clearInterval(timer);
+                this.getCodeBtn.disabled = false;
+                this.getCodeBtn.value = '获取验证码';
+            }
+            num--;
+        }, 1000);
         const phoneNumber = this.state.phoneNumber;
         const data = await axios.post('/userLogin/userGetCaptcha', { phoneNumber });
         if (data.ok === 1) {
-            console.log(1111);
             this.setState({
                 captcha: data.captcha / 1
             })
@@ -57,7 +54,7 @@ class MyAccountSafe extends Component {
             this.phoneNumber.value = '';
             return false;
         }
-        else if (!(upCode === captcha)) {
+        else if (!(upCode / 1 === captcha)) {
             Toast.fail('请输入正确的验证码', 1);
             this.upCode.value = '';
             return false;
@@ -66,9 +63,18 @@ class MyAccountSafe extends Component {
                 this.password1.value = '';
                 this.password2.value = '';
             });
+            return false
+        } else if (!(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/.test(password1))) {
+            Toast.fail('密码格式错误', 1, () => {
+                this.password1.value = '';
+                this.password2.value = '';
+            });
+            return false
         } else {
-            const data = await axios.post('/userMsg', { phoneNumber, password1 });
-            console.log(data);
+            const data = await axios.post('/userLogin/userMsg', { phoneNumber, password1 });
+            if (data.ok === 1) {
+                this.props.history.go(-1);
+            }
         }
     }
     render() {
@@ -81,37 +87,45 @@ class MyAccountSafe extends Component {
                 </div>
                 <div className={myAccountSafeCss.containItem}>
                     <span>验证码:</span>
-                    <input type="text" value=""
+                    <input type="text" value={this.state.upCode}
                         name='upCode'
                         ref={upCode => this.upCode = upCode}
                         onChange={this.handleChange.bind(this)}
                         placeholder='请输入验证码'
                         className={myAccountSafeCss.codeInt} />
-                    <input type="button" value="获取验证码"
-                        onClick={this.getMsgCode.bind(this)}
-                        className={myAccountSafeCss.getCodeBtn} />
+                    <span style={{ width: '60px' }}>{this.state.captcha ? this.state.captcha : ''}</span>
                 </div>
-
+                <input type="button" value="获取验证码"
+                    name='getCodeBtn'
+                    ref={getCodeBtn => this.getCodeBtn = getCodeBtn}
+                    onClick={this.getMsgCode.bind(this)}
+                    className={myAccountSafeCss.getCodeBtn}
+                />
                 {this.state.captcha ?
                     <div className={myAccountSafeCss.changePasswordInt}>
                         <div className={myAccountSafeCss.containItem}>
                             <span>输入密码:</span>
-                            <input type="text" value=""
+                            <input type="text" value={this.state.password1}
                                 name='password1'
                                 ref={password1 => this.password1 = password1}
-                                onBlur={this.handleChange.bind(this)}
+                                onChange={this.handleChange.bind(this)}
                                 placeholder='请输入6-12位数字字母组合' />
                         </div>
                         <div className={myAccountSafeCss.containItem}>
                             <span>确认密码:</span>
-                            <input type="text" value=""
+                            <input type="text" value={this.state.password2}
                                 name='password2'
                                 ref={password2 => this.password2 = password2}
-                                onBlur={this.handleChange.bind(this)}
+                                onChange={this.handleChange.bind(this)}
                                 placeholder='请输入6-12位数字字母组合' />
                         </div>
+
+                        <button
+                            onClick={this.upDatePwd.bind(this)}
+                            className={myAccountSafeCss.updataBtn}>保存</button>
                     </div> : ''
                 }
+
             </div>
         );
     }
