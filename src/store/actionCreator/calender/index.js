@@ -13,7 +13,7 @@ export default {
       const data = await axios.get(
         "Show/Index/getShowCategoryList?version=6.1.1&referer=2"
       );
-      console.log(data);
+      // console.log(data);
       dispatch(calenderDefault(calenderType.NAV_LIST, data));
     };
   },
@@ -23,7 +23,7 @@ export default {
         "city/city/getCityList?version=6.1.1&referer=2"
       );
       dispatch(calenderDefault(calenderType.MAP_LIST, city_list));
-      console.log(city_list);
+      // console.log(city_list);
     };
   },
   getCalenderList() {
@@ -31,7 +31,7 @@ export default {
       const data = await axios.get(
         "Search/getCalendar?year=2020&month=5&category=0&version=6.1.1&referer=2"
       );
-      console.log(data);
+      // console.log(data);
     };
   },
   getShowList() {
@@ -39,7 +39,7 @@ export default {
       const { list } = await axios.get(
         `Show/Search/getShowList?category=0&city_id=0&start_time=2020%2F5%2F4&version=6.1.1&referer=2`
       );
-      console.log(list);
+      // console.log(list);
     };
   },
 };

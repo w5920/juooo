@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import "../../assets/css/transitionGroup.css";
 import GuardRouter from "./GuardRouter";
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
-
-import '../../assets/css/transitionGroup.css'
 
 class MyRouter extends Component {
   constructor(props) {
@@ -17,8 +16,9 @@ class MyRouter extends Component {
           <TransitionGroup>
             <CSSTransition
               key={location.key}
-              classNames={this.props.type || 'fade'}
-              timeout={this.props.duration || 300}>
+              classNames={this.props.type || "fade"}
+              timeout={this.props.duration || 300}
+            >
               <Switch location={location}>
                 {this.props.router.map((v) => (
                   <Route
@@ -33,8 +33,7 @@ class MyRouter extends Component {
             </CSSTransition>
           </TransitionGroup>
         )}
-      >
-      </Route>
+      ></Route>
     );
   }
 }

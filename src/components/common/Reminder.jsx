@@ -6,15 +6,15 @@ export default class Reminder extends Component {
     this.tip = null;
   }
   //传3个参数   1.遮罩层是否显示show   2.提示信息bottom的值  3.接受函数 改变传子的值
+  //遮罩层显示 提示信息显示太快  没有动画效果 加一个延时器
 
   render() {
-    //遮罩层显示 提示信息显示太快  没有动画效果 加一个延时器
-    if (this.tip) {
-      const timer = setTimeout(() => {
+    const timer = setTimeout(() => {
+      if (this.tip) {
         this.tip.style.bottom = this.props.bottom;
-        clearTimeout(timer);
-      }, 10);
-    }
+      }
+      clearTimeout(timer);
+    }, 10);
     return (
       <React.Fragment>
         <div

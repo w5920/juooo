@@ -21,13 +21,14 @@ export default class ActionPanel extends Component {
   //1.该组件的bottom值
   //2.改变父组件传下的值得函数 actionFn
   //3所需要的数据
+
   render() {
-    if (this.actionpanel) {
-      const timer = setTimeout(() => {
+    const timer = setTimeout(() => {
+      if (this.actionpanel) {
         this.actionpanel.style.bottom = this.props.bottom;
-        clearTimeout(timer);
-      }, 10);
-    }
+      }
+      clearTimeout(timer);
+    }, 10);
 
     return (
       <Fragment>

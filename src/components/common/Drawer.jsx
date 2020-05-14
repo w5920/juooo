@@ -17,9 +17,12 @@ export default class Drawer extends Component {
 
   render() {
     const timer = setTimeout(() => {
-      this.open.style.right = this.props.right;
+      if (this.open) {
+        this.open.style.right = this.props.right;
+      }
       clearTimeout(timer);
     }, 10);
+
     return (
       <div
         className={style["drawerassembly"]}

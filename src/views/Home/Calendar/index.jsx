@@ -34,7 +34,7 @@ class index extends Component {
         currentCity: currentCity,
       },
       () => {
-        console.log(this.state.currentCity);
+        // console.log(this.state.currentCity);
       }
     );
     // await this.props.defaultPageIndex.call(this); //重置为第一页
